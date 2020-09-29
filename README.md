@@ -86,7 +86,7 @@ Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya m
 
         $ git clone https://github.com/sanengineer/bakergun-backend.git
 
-        $ cd bakergun-backend
+        $ cd express
 
         $ npm install
 
