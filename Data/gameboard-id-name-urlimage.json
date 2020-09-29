@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Human Hand Start",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271359/bakergun-images-cdn/human-start-hand_d3j1tk.png"
+  },
+  {
+    "id": 2,
+    "name": "Bot Hand Start",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271359/bakergun-images-cdn/bot-start-hand_r1ryl0.png"
+  },
+  {
+    "id": 3,
+    "name": "Rock Icon",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271362/bakergun-images-cdn/rock-hand_bpggew.png"
+  },
+  {
+    "id": 4,
+    "name": "Paper Icon",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271362/bakergun-images-cdn/paper-hand_dobcku.png"
+  },
+  {
+    "id": 5,
+    "name": "Scissors Icon",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271362/bakergun-images-cdn/scissors-hand_irjinz.png"
+  },
+  {
+    "id": 6,
+    "name": "Emoji Kiss Right",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271358/bakergun-images-cdn/bot-face-start_krnhoa.png"
+  },
+  {
+    "id": 7,
+    "name": "Emoji Love Exited",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271358/bakergun-images-cdn/bot-face-start-2_wudvhv.png"
+  },
+  {
+    "id": 8,
+    "name": "Background Game Board",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271362/bakergun-images-cdn/whatsapp-stock-background-wallpaper_zxyhc5.jpg"
+  }
+]

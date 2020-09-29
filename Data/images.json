@@ -1,0 +1,188 @@
+[
+  {
+    "id": 1,
+    "name": "Avatar Asu",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271355/bakergun-images-cdn/avatar-asu_szagqb.png"
+  },
+  {
+    "id": 2,
+    "name": "Avatar Babi",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271355/bakergun-images-cdn/avatar-babi_nfz3dy.png"
+  },
+  {
+    "id": 3,
+    "name": "Avatar Bear",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271355/bakergun-images-cdn/avatar-bear_tnkvrs.png"
+  },
+  {
+    "id": 4,
+    "name": "Avatar Cat",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271355/bakergun-images-cdn/avatar-cat_cku3n1.png"
+  },
+  {
+    "id": 5,
+    "name": "Avatar Cow",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271355/bakergun-images-cdn/avatar-cow_jxdgvb.png"
+  },
+  {
+    "id": 6,
+    "name": "Avatar Fox",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271355/bakergun-images-cdn/avatar-fox_z9cjhh.png"
+  },
+  {
+    "id": 7,
+    "name": "Avatar Koala",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-koala_gfpvge.png"
+  },
+  {
+    "id": 8,
+    "name": "Avatar Man Astronout Dark Skin",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-astronout-dark-skin_bk3zqr.png"
+  },
+  {
+    "id": 9,
+    "name": "Avatar Man Astronout Light Skin",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-astronout-light-skin_kt3k1v.png"
+  },
+  {
+    "id": 10,
+    "name": "Avatar Man Beard Dark Skin",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-beard-dark-skin_itafwy.png"
+  },
+  {
+    "id": 11,
+    "name": "Avatar Man Beard Light Skin",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-beard-light-skin_dqkxur.png"
+  },
+  {
+    "id": 12,
+    "name": "Avatar Man Zombie",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-zombie_e80qjf.png"
+  },
+  {
+    "id": 13,
+    "name": "Avatar Monyet",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-monyet_goafjo.png"
+  },
+  {
+    "id": 14,
+    "name": "Avatar Mouse",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-mouse_c4sctc.png"
+  },
+  {
+    "id": 15,
+    "name": "Avatar Panda",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271357/bakergun-images-cdn/avatar-panda_i2ojuu.png"
+  },
+  {
+    "id": 16,
+    "name": "Avatar Rabbit",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271357/bakergun-images-cdn/avatar-rabbit_yoaras.png"
+  },
+  {
+    "id": 17,
+    "name": "Avatar Robot",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271357/bakergun-images-cdn/avatar-robot_bwuqcs.png"
+  },
+  {
+    "id": 18,
+    "name": "Avatar Woman Astronout Dark Skin",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271357/bakergun-images-cdn/avatar-woman-astronout-dark-skin_emoaws.png"
+  },
+  {
+    "id": 19,
+    "name": "Avatar Woman Astronout Light Skin",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271357/bakergun-images-cdn/avatar-woman-astronout-light-skin_otca2p.png"
+  },
+  {
+    "id": 20,
+    "name": "Avatar Woman Shorthair Dark Skin",
+    "imageUrl": "/assets/images/avatar-woman-shorthair-dark-skin.png"
+  },
+  {
+    "id": 21,
+    "name": "Avatar Woman Shorthair Light Skin",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271357/bakergun-images-cdn/avatar-woman-shorthair-dark-skin_uh2o9w.png"
+  },
+  {
+    "id": 22,
+    "name": "Avatar Woman Zombie",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271357/bakergun-images-cdn/avatar-woman-zombie_fo2hhr.png"
+  },
+  {
+    "id": 23,
+    "name": "Blog Page Header Bg",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271358/bakergun-images-cdn/blog-page-header-bg_gcncpa.png"
+  },
+  {
+    "id": 24,
+    "name": "Blog Page Hero Left Bg",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271358/bakergun-images-cdn/blog-page-hero-left-bg_yq7mjq.png"
+  },
+  {
+    "id": 25,
+    "name": "Blog Page Hero Right Bg",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271358/bakergun-images-cdn/blog-page-hero-right-bg_lsskan.png"
+  },
+  {
+    "id": 26,
+    "name": "Contact Page Header Bg",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271359/bakergun-images-cdn/contact-page-header-bg_py5amd.png"
+  },
+  {
+    "id": 27,
+    "name": "Landing Page Hero Background",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271361/bakergun-images-cdn/landing-page-hero-background_lkogwv.png"
+  },
+  {
+    "id": 28,
+    "name": "Landing Page Section About Us Carrousel Img 1",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271361/bakergun-images-cdn/landing-page-section-about-us-carrousel-img-1_erzgvv.png"
+  },
+  {
+    "id": 29,
+    "name": "Landing Page Section About Us Carrousel Img 2",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271361/bakergun-images-cdn/landing-page-section-about-us-carrousel-img-2_tu3p22.png"
+  },
+  {
+    "id": 30,
+    "name": "Landing Page Section About Us Carrousel Img 3",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271361/bakergun-images-cdn/landing-page-section-about-us-carrousel-img-3_dluram.png"
+  },
+  {
+    "id": 31,
+    "name": "Landing Page Section Feature Bg",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271361/bakergun-images-cdn/landing-page-section-feature-bg_xa6tmh.png"
+  },
+  {
+    "id": 32,
+    "name": "Landing Page Section Newsletter Bg",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271361/bakergun-images-cdn/landing-page-section-newsletter-bg_j6ogw9.png"
+  },
+  {
+    "id": 33,
+    "name": "Landing Page Section System Req Bg",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271362/bakergun-images-cdn/landing-page-section-system-req-bg_f8vg5s.png"
+  },
+
+  {
+    "id": 34,
+    "name": "Bakergun Landing Page UI Screenshot",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271358/bakergun-images-cdn/bakergun-landing-page_y9qcon.jpg"
+  },
+  {
+    "id": 35,
+    "name": "Contact Page Footer Bg",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600585128/bakergun-images-cdn/contact-page-footer-bg_mr5quy.png"
+  },
+  {
+    "id": 36,
+    "name": "Contact Page Feat Bg",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600589299/bakergun-images-cdn/contact-page-feat-image_n9uvyj.png"
+  },
+  {
+    "id": 37,
+    "name": "Sign Up Page Feat Bg",
+    "imageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600664998/bakergun-images-cdn/signup-page-feat-image_dysbk4.png"
+  }
+]

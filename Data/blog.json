@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "featImageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600421024/bakergun-images-cdn/blog-page-image-feat-post-1_rc1ltt.jpg",
+    "title": "Season 8 - Now Live Some Console Come",
+    "paragraph": "We put heavy focus on bringing Rock to the upper tiers of our map visuals. perfect attendance means. Data like that led to tons of improvements to the game.",
+    "avatar": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-beard-light-skin_dqkxur.png",
+    "author": "San Engineer",
+    "dateCreatePost": "December 01, 2020"
+  },
+  {
+    "id": 2,
+    "featImageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600421024/bakergun-images-cdn/blog-page-image-feat-post-2_pvkgek.jpg",
+    "title": "Ready For Some Console Come Ups?",
+    "paragraph": "School is back in session and, with BAKERGUN, perfect attendance means. Data like that led to tons of improvements to the game, in early iterations.",
+    "avatar": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-beard-light-skin_dqkxur.png",
+    "author": "San Engineer",
+    "dateCreatePost": "December 11, 2020"
+  },
+  {
+    "id": 3,
+    "featImageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600421024/bakergun-images-cdn/blog-page-image-feat-post-3_glraox.png",
+    "title": "Getting a Sense of BAKERGUN Pt. 1",
+    "paragraph": "Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Curabitur vitae nunc sed velit dignissim sodales ut eu.",
+    "avatar": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-beard-light-skin_dqkxur.png",
+    "author": "San Engineer",
+    "dateCreatePost": "December 18, 2020"
+  },
+  {
+    "id": 4,
+    "featImageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600421024/bakergun-images-cdn/blog-page-image-feat-post-4_ecxw9e.png",
+    "title": "Console Update 8 Patch 2.4 Back in Session",
+    "paragraph": "Viverra orci sagittis eu volutpat odio facilisis. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Metus aliquam eleifend mi in nulla posuere sollicitudin. Odio eu feugiat pretium nibh ipsum consequat nisl.",
+    "avatar": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-beard-light-skin_dqkxur.png",
+    "author": "San Engineer",
+    "dateCreatePost": "December 28, 2020"
+  },
+  {
+    "id": 5,
+    "featImageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600421024/bakergun-images-cdn/blog-page-image-feat-post-5_ifif0u.png",
+    "title": "Perfect Attendance Means Free Rewards",
+    "paragraph": "School is back in session and, with BAKERGUN, perfect attendance.",
+    "avatar": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-beard-light-skin_dqkxur.png",
+    "author": "San Engineer",
+    "dateCreatePost": "January 01, 2021"
+  },
+  {
+    "id": 6,
+    "featImageUrl": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600421024/bakergun-images-cdn/blog-page-image-feat-post-6_uu1fn2.jpg",
+    "title": "Strong penalties May Be Imposed On !",
+    "paragraph": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "avatar": "https://res.cloudinary.com/dsv9w1ey3/image/upload/v1600271356/bakergun-images-cdn/avatar-man-beard-light-skin_dqkxur.png",
+    "author": "San Engineer",
+    "dateCreatePost": "January 11, 2021"
+  }
+]
