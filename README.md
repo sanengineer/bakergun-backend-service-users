@@ -98,6 +98,6 @@ Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya m
 
 ### Run Server Dev Mode:
 
-        $ cd bakergun-backend
+        $ cd
 
         $ npm run dev
