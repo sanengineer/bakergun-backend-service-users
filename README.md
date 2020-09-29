@@ -2,7 +2,7 @@
 
 ![Flow_Diagram_NodeJS_ExpressJS_EJS_WithoutDB_sm.png](https://res.cloudinary.com/dsv9w1ey3/image/upload/v1601398600/github-images/Flow_Diagram_NodeJS_ExpressJS_EJS_PostgreSQL_haabjl.png)
 
-Backend stack ini dibuat dengan [NodeJS](https://nodejs.org), [ExpressJS 🚀](https://expressjs.com) dan JSON Dummy (Tidak ada intergrasi ke Database Platform atau noDB).
+Backend stack ini dibuat dengan [NodeJS](https://nodejs.org), [ExpressJS 🚀](https://expressjs.com)
 
 Pelayanan (**_serving_**) apa yang ada di dalam project ini? file berextensi .json untuk keperluan **ReSTAPI**(**Re**presentational **S**tate **T**ransfer **A**pplication **P**rogramming **I**nterface) ke [Front-End](https://github.com/sanengineer/bakergun-frontend-html-css-js).
 
