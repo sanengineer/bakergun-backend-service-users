@@ -84,7 +84,7 @@ Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya m
 
 ## Get Started
 
-        $ git clone https://github.com/sanengineer/bakergun-backend.git
+        $ git clone
 
         $ cd exp
 
