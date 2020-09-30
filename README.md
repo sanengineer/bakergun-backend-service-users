@@ -72,7 +72,7 @@ Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya m
 
 #### Blog Page
 
-- All Blog Post
+- All Bl
 
         localhost:8008/api/v1/blog
 
