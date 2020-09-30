@@ -64,7 +64,7 @@ Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya m
 
         localhost:8008/api/v1/players/2
 
-#### Images Url Asset on Game Page
+####
 
 - Asset Images Url Only
 
