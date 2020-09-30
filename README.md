@@ -90,7 +90,7 @@ Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya m
 
         $ npm i
 
-        $ npm start
+        $ npm
 
 ## Development Guide
 
