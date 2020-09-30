@@ -88,7 +88,7 @@ Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya m
 
         $ cd express
 
-        $ npm install
+        $ npm i
 
         $ npm start
 
