@@ -92,7 +92,7 @@ Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya m
 
         $ npm
 
-## Development Guide
+## Development
 
 ### Use Node Version 10.0.0 (Recomended)
 
