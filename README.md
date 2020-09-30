@@ -82,7 +82,7 @@ Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya m
 
         localhost:8008/api/v1/blog/2
 
-## Get Started
+## Get
 
         $ git clone
 
