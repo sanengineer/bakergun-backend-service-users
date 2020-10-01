@@ -10,7 +10,7 @@ Pelayanan (**_serving_**) apa yang ada di dalam project ini? file berextensi .js
 
 ### View
 
-Penggunaan view engine dengan ejs ataupun hbs, sebenarnya kurang begitu penting. Namun di project ini sudah saya siapkan routing untuk merender tiap halaman, dari mulai hala.
+Penggunaan view engine dengan ejs aari mulai hala.
 
 misal :
 
