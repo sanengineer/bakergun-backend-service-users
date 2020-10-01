@@ -8,9 +8,9 @@ Pelayanan (**_serving_**) apa yang ada di dalam project ini? file berextensi .js
 
 ## Feature
 
-### View Engine Ready To Use
+### View
 
-Penggunaan view engine dengan ejs ataupun hbs, sebenarnya kurang begitu penting. Namun di project ini sudah saya siapkan routing untuk merender tiap halaman, dari mulai halaman index sampai sub nya.
+Penggunaan view engine dengan ejs ataupun hbs, sebenarnya kurang begitu penting. Namun di project ini sudah saya siapkan routing untuk merender tiap halaman, dari mulai hala.
 
 misal :
 
