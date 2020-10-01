@@ -30,7 +30,7 @@ isinya object yang hanya memiliki value url image saja.
 
 #### gameboard-id-name-urlimage.json
 
-isinya object yang memiliki nama key id, key name, dan key imageUrl. Value dari masing-masing key tersebut misal untuk key **name**, value nya bisa di pakai untuk menembak ke attribute **alt** di element img di html.
+isinya obji nama key id, key name, dan key imageUrl. Value dari masing-masing key tersebut misal untuk key **name**, value nya bisa di pakai untuk menembak ke attribute **alt** di element img di html.
 
 untuk data json ini tidak diaktifkan, namun siap dipakai. Tinggal mengganti import module dari **_gameboard-urliamge.json_** ke **_gameboard-id-name-urlimage.json_**, lalu aktifan codingan method **READ** by params Id.
 
@@ -40,11 +40,11 @@ Isinya object untuk assets images yang ada di semua halaman.
 
 #### players.json
 
-Isinya json untuk list daftar nama para pemain, komentar tentang experience gamenya, avatar tiap tiap pemain, dan jobs description tiap tiap pemain.
+Isinya json untuk list daftar nama para pemain, komentar tentang experience gamenya, avatar tiap tiap pemain, dan jobs descn.
 
 #### blog.json
 
-Isinya object untuk halaman blog page, mulai dari feature image post, title, description, nama authornya, avatar-author dan tanggal postingnya.
+Isinya object untuk halaman blog page, mulai dari feature image post, title, description, nama authornya, avatar-au
 
 ### CRUD Method
 
