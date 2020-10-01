@@ -6,7 +6,7 @@ Backend stack ini dibuat dengan [NodeJS](https://nodejs.org), [ExpressJS 🚀](h
 
 ### View
 
-Penggunaan view engine dengan ejs aari mulai hala.
+Penggunaan view engine de.
 
 misal :
 
