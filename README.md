@@ -58,9 +58,9 @@ Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya m
 
         localhost:8008/api/v1/players
 
-- Player By Id
+- Player
 
-  example: Player Id 2
+  example: Play
 
         localhost:8008/api/v1/players/2
 
