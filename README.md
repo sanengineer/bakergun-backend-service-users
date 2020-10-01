@@ -36,8 +36,6 @@ Isinya object untuk assets images yang ada di semua halaman.
 
 #### players.json
 
-Isinya json untuk list daftar nama para pemain, komentar tentang experience gamenya, avatar tiap tiap pemain, dan jobs descn.
-
 #### blog.json
 
 Isinya object untuk halaman blog page, mulai dari feature image post, title, description, nama authornya, avatar-au
