@@ -32,7 +32,7 @@ untuk data json ini tidak diaktifkan, namun siap dipakai. Tinggal mengganti impo
 
 #### images.json
 
-Isinya object untuk assets images yang ada di semua halaman.
+Isinya object untuk assets images yang ada d
 
 #### players.json
 
