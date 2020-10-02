@@ -10,7 +10,7 @@ Penggunaan view engine de.
 
 misal :
 
-- localhost:8008 (index)
+- localhostndex)
 
 - localhost:8008/page1 (sub)
 
