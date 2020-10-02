@@ -38,7 +38,7 @@ Isinya object untuk assets images yang ada d
 
 #### blog.json
 
-Isinya object untuk halama
+Isinya object untuk
 
 ### CRUD Method
 
