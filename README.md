@@ -1,6 +1,6 @@
 # Backend Stack For Bakergun - NodeJS, ExpressJS and Data JSON Dummy
 
-Backend stack ini dibuat dengan [NodeJS](https://nodejs.org), [ExpressJS 🚀](https://expressjs.com)
+Backend stack ini n [NodeJS](https://nodejs.org), [ExpressJS 🚀](https://expressjs.com)
 
 ## Feature
 
