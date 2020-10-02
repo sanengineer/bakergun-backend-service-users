@@ -38,7 +38,7 @@ Isinya object untuk assets images yang ada d
 
 #### blog.json
 
-Isinya object untuk halaman blog page, mulai dari feature image post, title, description, nama authornya, avatar-au
+Isinya object untuk halama
 
 ### CRUD Method
 
