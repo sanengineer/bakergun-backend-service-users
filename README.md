@@ -16,7 +16,7 @@ misal :
 
 - localhost:8008/page2 (sub)
 
-Stepnya, membuat folder baru (misal: Views) di directory root project ini, lalu pakai module export-import dan uncomment codingan yang ada di file server.js .
+Stepnya, membuat folder baru (misalctory root project ini, lalu pakai module export-import dan uncomment codingan yang ada di file server.js .
 
 ### Data JSON Dummy
 
