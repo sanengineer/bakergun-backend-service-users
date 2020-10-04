@@ -9,39 +9,12 @@ Backend stack ini n [NodeJS](https://nodejs.org), [ExpressJS 🚀](https://expre
 
 ### CRUD Method
 
-Di project ini method CRUD sudah **ready to use**, tapi karena suatu hal hanya method READ yang bisa dilakukan.
-
 ### Endpoint ReSTAPI
 
 #### Players List
 
-- All Player
-
-        localhost:8008/api/v1/players
-
-- Player
-
-  example: Play
-
-        localhost:8008/api/v1/players/2
-
 ####
 
-- Ass
-
-        localhost:8008/api/v1/gameboard
-
-#### B
-
-- All Bl
-
-        localhost:8008/api/v1/blog
-
-- Blog Post by Id
-
-  example: Posy Id 2
-
-        localhost:8008/api/v1/blog/2
 
 ## Get
 
