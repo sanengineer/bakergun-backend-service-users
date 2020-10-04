@@ -6,28 +6,6 @@ Backend stack ini n [NodeJS](https://nodejs.org), [ExpressJS 🚀](https://expre
 
 ### View
 
-Penggunaan view engine de.
-
-misal :
-
-- localhostndex)
-
-- localhost:8008/page1 (sub)
-
-- localhost:8008/page2 (sub)
-
-Stepnya, membuat folder baru (misalctory root project ini, lalu pakai module export-import dan uncomment codingan yang ada di file server.js .
-
-### Data JSON Dummy
-
-#### gameboard-urlimage.json
-
-isinya object yang hanya memiliki value url image saja.
-
-#### gameboard-id-name-urlimage.json
-
-isinya obji nama key id, key name, dan key imageUrl. Value dari masing-masing key tersebut misal untuk key **name**, value nya bisa di pakai untuk menembak ke attribute **alt** di element img di html.
-
 
 ### CRUD Method
 
