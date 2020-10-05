@@ -3,11 +3,9 @@
 This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), EJS for admin dashboard, PosgreSQL and Sequelize (ORM For NodeJS).
 
 ## Feature
+- View For Superuser (Admin)
 
-### View
-
-
-### CRUD Method
+- CRUD Method
 
 
 ## Get Started
