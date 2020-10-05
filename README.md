@@ -1,6 +1,6 @@
-# Backend Stack For Bakergun - NodeJS, ExpressJS and Data JSON Dummy
+# Build Backend Stack CRUD with NodeJS, PostgreSQL and Sequelize
 
-Backend stack ini n [NodeJS](https://nodejs.org), [ExpressJS 🚀](https://expressjs.com)
+In this project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), PosgreSQL and Sequelize (ORM For NodeJS).
 
 ## Feature
 
