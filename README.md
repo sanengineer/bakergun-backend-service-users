@@ -1,6 +1,6 @@
 # Build Backend Stack CRUD with NodeJS, PostgreSQL and Sequelize
 
-In this project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), PosgreSQL and Sequelize (ORM For NodeJS).
+In this project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), EJS for admin dashboard, PosgreSQL and Sequelize (ORM For NodeJS).
 
 ## Feature
 
@@ -9,28 +9,16 @@ In this project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://no
 
 ### CRUD Method
 
-### Endpoint ReSTAPI
 
-#### Players List
+## Get Started
 
-####
-
-
-## Get
-
-        $ git clone
-
-        $ cd exp
-
-        $ npm i
-
-        $ npm
+        $ npm install
 
 ## Development
 
-### Use Node Version 10.0.0 (Recomended)
+Use Node Version 12.18.4 LTS (Recomended)
 
-### Run Server Dev Mode:
+### Run Server On Dev Mode:
 
         $ cd
 
