@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const db = require("./Models");
 const app = express();
 const path = require("path");
 const port = process.env.PORT || 8008;
@@ -30,6 +31,16 @@ app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(require("./Routes/api"));
+
+db.sequelize
+.sync({
+  force: true,
+})
+.then(() => {
+  console.log(`\x1b[91mDrop And Resync DB\x1b[91m`);
+  console.log("");
+});
+
 
 // Routing View Engine EJS
 
