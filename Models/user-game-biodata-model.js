@@ -8,6 +8,9 @@ module.exports =(sequelize, Sequelize) => {
         fullname: {
             type: Sequelize.STRING,
         },
+        sex: {
+            type: Sequelize.STRING,
+        },
         jobs: {
             type: Sequelize.STRING,
         }

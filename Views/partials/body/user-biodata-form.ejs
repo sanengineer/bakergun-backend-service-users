@@ -1,0 +1,68 @@
+        <!--- User Biodata -->
+        <h2 class="h4 font-weight-bolder mt-5">User Biodata</h2>
+         <!-- Nav tabs -->
+         <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="create-biodata-tab" data-toggle="tab" href="#createBiodataMeth" role="tab" aria-controls="create" aria-selected="true">Create</a>
+            </li>
+            <li class="nav-item" role="presentation">
+            <a class="nav-link" id="update-biodata-tab" data-toggle="tab" href="#updateBiodataMeth" role="tab" aria-controls="update" aria-selected="false">Update</a>
+            </li>
+            <li class="nav-item" role="presentation">
+            <a class="nav-link" id="delete-biodata-tab" data-toggle="tab" href="#deleteBiodataMeth" role="tab" aria-controls="delete" aria-selected="false">Delete</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content py-3">
+            <div class="tab-pane active" id="createBiodataMeth" role="tabpanel" aria-labelledby="create-biodata-tab">
+                <form method="post" action="/add">
+                    <div class="form-group">
+                    <label for="forFullname">Fullname</label>
+                        <input id="formFullname" type="text" name="fullname" class="form-control col-md-4"/>
+                    </div>
+                    <div class="form-group">
+                    <label for="forSex">Sex</label>
+                        <input id="formSex" type="text" name="sex" class="form-control col-md-4"/>
+                    </div>
+                    <div class="form-group">
+                    <label for="forJobs">Jobs</label>
+                        <input id="forJobs" type="text" name="jobs" class="form-control col-md-4"/>
+                    </div>
+                <button class="btn btn-success" type="submit">Add</button>
+                </form>
+            </div>
+            <div class="tab-pane" id="updateBiodataMeth" role="tabpanel" aria-labelledby="update-biodata-tab">
+                <form method="update" action="/add">
+                    <div class="form-group">
+                    <label for="forFullname">Fullname</label>
+                        <input id="formFullname" type="text" name="fullname" class="form-control col-md-4"/>
+                    </div>
+                    <div class="form-group">
+                    <label for="forSex">Sex</label>
+                        <input id="formSex" type="text" name="sex" class="form-control col-md-4"/>
+                    </div>
+                    <div class="form-group">
+                    <label for="forJobs">Jobs</label>
+                        <input id="forJobs" type="text" name="jobs" class="form-control col-md-4"/>
+                    </div>
+                <button class="btn btn-warning" type="submit">Update</button>
+                </form>
+            </div>
+            <div class="tab-pane" id="deleteBiodataMeth" role="tabpanel" aria-labelledby="delete-biodata-tab">
+                <form method="delete" action="/add">
+                    <div class="form-group">
+                    <label for="forFullname">Fullname</label>
+                        <input id="formFullname" type="text" name="fullname" class="form-control col-md-4"/>
+                    </div>
+                    <div class="form-group">
+                    <label for="forSex">Sex</label>
+                        <input id="formSex" type="text" name="sex" class="form-control col-md-4"/>
+                    </div>
+                    <div class="form-group">
+                    <label for="forJobs">Jobs</label>
+                        <input id="forJobs" type="text" name="jobs" class="form-control col-md-4"/>
+                    </div>
+                <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
