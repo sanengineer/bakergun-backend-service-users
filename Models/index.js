@@ -17,7 +17,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.userGame = require("./user/user-game")(sequelize, Sequelize);
-db.userGameBiodata = require("./user/user-game-biodata")(sequelize, Sequelize);
-db.userGameHistory = require("./user/user-game-history")(sequelize, Sequelize);
+// db.userGameBiodata = require("./user/user-game-biodata")(sequelize, Sequelize);
+// db.userGameHistory = require("./user/user-game-history")(sequelize, Sequelize);
 
 module.exports = db;
