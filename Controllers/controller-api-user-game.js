@@ -5,7 +5,7 @@ const UserGame = db.userGame;
 exports.create = (req, res) => {
   if (!req.body.username) {
     res.status(400).send({
-      message: "please fill, can't empty",
+      message: "please fill username, can't empty",
     });
     return;
   }
