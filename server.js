@@ -1,9 +1,10 @@
 const express = require("express");
-const morgan = require("morgan");
-const db = require("../Models/user");
+// const morgan = require("morgan");
+const db = require("./Models");
 const app = express();
 const path = require("path");
 const port = process.env.PORT || 8008;
+const bodyParser = require("body-parser");
 
 // // Setup Views Enginer EJS
 // app.set("views", "./Views");
@@ -15,21 +16,24 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "./Public"))); // Masih Belum Ngerti Maksud Harus ngasih __dirname
 
 // Configure CORS
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 // Setup Morgan
-app.use(morgan("tiny"));
+// app.use(morgan("tiny"));
 
 // Setup Express
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 app.use(require("./Routes/api"));
 
 db.sequelize
