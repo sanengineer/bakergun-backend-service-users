@@ -3,18 +3,17 @@ const UserGame = db.userGame;
 
 // create and save a new user game
 exports.create = (req, res) => {
-  if (!req.body.title) {
+  if (!req.body.username) {
     res.status(400).send({
       message: "please fill, can't empty",
     });
-
     return;
   }
 
   // create user
   const user = {
-    username: req.body.title,
-    email: req.body.title,
+    username: req.body.username,
+    email: req.body.email,
     password: req.body.password,
   };
 

@@ -3,7 +3,7 @@ const express = require("express");
 const db = require("./Models");
 const app = express();
 const path = require("path");
-const port = process.env.PORT || 8008;
+const port = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 
 // // Setup Views Enginer EJS
