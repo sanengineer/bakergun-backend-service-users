@@ -6,6 +6,9 @@ const path = require("path");
 const port = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 
+// admin router
+const adminRout = require("./Routes/admin");
+
 // // Setup Views Enginer EJS
 // app.set("views", "./Views");
 app.set("views", path.join(__dirname, "Views")); // Apa perbedaan line 11 dengan line 10 ?
@@ -34,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
-app.use(require("./Routes/api"));
+app.use("/admin", adminRout);
 
 db.sequelize
   .sync({
@@ -44,12 +47,6 @@ db.sequelize
     console.log(`\x1b[91mDrop And Resync DB\x1b[91m`);
     console.log("");
   });
-
-// Routing View Engine EJS
-
-app.get("/admin", (req, res) => {
-  res.render("index");
-});
 
 // Listen Port
 app.listen(port, () => {

@@ -1,4 +1,4 @@
-const dbConfig = require("../config/db-config.js");
+const dbConfig = require("../Config/db-local-config.js"); // setup local databases
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,

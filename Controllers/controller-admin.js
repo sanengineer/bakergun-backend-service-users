@@ -2,6 +2,11 @@ const db = require("../Models");
 const UserGame = db.userGame;
 
 module.exports = {
+  // render view dashboard
+  viewDashboard: (req, res) => {
+    res.render("admin/dashboard");
+  },
+
   // create and save a new user game
   create: (req, res) => {
     // create user
@@ -11,12 +16,9 @@ module.exports = {
       password: req.body.password,
     };
 
-    const userGameList = UserGame.create(user)
+    UserGame.create(user)
       .then((data) => {
         res.send(data);
-        res.render("/admin", {
-          userGameList,
-        });
       })
       .catch((err) => {
         res.status(500).send({

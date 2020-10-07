@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const middleware = require("../Helpers/middlewares");
-const controllerUserGame = require("../Controllers/controller-api-user-game");
+const controllerUserGame = require("../Controllers/controller-admin");
 
+router.get("/dashboard", controllerUserGame.viewDashboard);
 router.post("/", middleware.checkFieldsPost, controllerUserGame.create);
 router.get("/", controllerUserGame.getAll);
 router.get("/:id", middleware.mustBeInteger, controllerUserGame.getOne);
