@@ -43,9 +43,10 @@
         </p>
       </div>
       <h2 class="h4 font-weight-bolder mt-5">User List</h2>
-      <% for(let i = 0; i < user.length; i++){ %>
-      <!-- <p><%= i + 1 %></p> -->
-      <p><%= item[i].user %></p>
+      <% for(let i = 0; i < userGameList.length; i++){ %>
+      <option value="<%= userGameList[i].id %>">
+        <%= userGameList[i].username %>
+      </option>
       <%} %> <%- include("./partials/body/user-game-form.ejs") %> <%-
       include("./partials/body/user-biodata-form.ejs") %> <%-
       include("./partials/body/user-history-form.ejs") %>
