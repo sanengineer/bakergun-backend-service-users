@@ -34,7 +34,13 @@ exports.getOne = (req, res) => {
 
   UserGame.findByPk(id)
     .then((data) => {
-      res.send(data);
+      if (data == data) {
+        res.status(200).send(data);
+      } else {
+        res.status(200).send({
+          message: `id = ${id} maybe was deleted`,
+        });
+      }
     })
     .catch((err) => {
       res.status(500).send({
@@ -42,6 +48,9 @@ exports.getOne = (req, res) => {
       });
     });
 };
+
+// get all user
+exports.getAll = (req, res) => {};
 
 //delete user by id
 exports.deleteOne = (req, res) => {

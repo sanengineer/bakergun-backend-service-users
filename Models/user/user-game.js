@@ -1,8 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
   const usrGame = sequelize.define("user_game", {
-    user_id: {
-      type: Sequelize.STRING,
-    },
     avatar: {
       type: Sequelize.STRING,
     },

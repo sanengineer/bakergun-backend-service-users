@@ -10,34 +10,25 @@ function mustBeInteger(req, res, next) {
 }
 
 function checkFieldsPost(req, res, next) {
-  const { avatar, name, sex, jobs, comment } = req.body;
+  const {
+    username,
+    email,
+    password,
+    fullname,
+    jobs,
+    score,
+    comment,
+  } = req.body;
 
-  if (avatar && name && sex && jobs && comment) {
+  if (username && email && password && fullname && jobs && score && comment) {
     next();
   } else {
     // res.status(400);
-    res.status(400).json({ message: "Form field not pakem Gaess" });
-  }
-}
-
-function mustBeString(req, res, next) {
-  const id = req.params.id;
-}
-
-function checkFieldsPostGame(req, res, next) {
-  const { name, imageUrl } = req.body;
-
-  if (name && imageUrl) {
-    next();
-  } else {
-    // res.status(400);
-    res.status(400).json({ message: "Form field not pakem Gaess" });
+    res.status(400).json({ message: "Form field not can't be empty" });
   }
 }
 
 module.exports = {
   mustBeInteger,
-  mustBeString,
   checkFieldsPost,
-  checkFieldsPostGame,
 };
