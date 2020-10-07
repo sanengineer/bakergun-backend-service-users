@@ -47,25 +47,9 @@ db.sequelize
 
 // Routing View Engine EJS
 
-app.get("/", (req, res) => {
+app.get("/admin", (req, res) => {
   res.render("index");
 });
-
-// app.get("/page1", (req, res) => {
-//   res.render("page1");
-// });
-
-// app.get("/page2", (req, res) => {
-//   res.render("page2");
-// });
-
-// app.get("/page3", (req, res) => {
-//   res.render("page3");
-// });
-
-// app.get("/page4", (req, res) => {
-//   res.render("page4");
-// });
 
 // Listen Port
 app.listen(port, () => {
@@ -74,7 +58,10 @@ app.listen(port, () => {
     `\x1b[93mBackend Server now running 🚀 on  http://localhost:${port}\x1b[39m`
   );
   console.log(
-    "\x1b[93mby\x1b[39m \x1b[91mhttps://github.com/sanengineer\x1b[91m"
+    `\x1b[93mAdmin Dashboard now running 🚀 on  http://localhost:${port}/admin\x1b[39m`
+  );
+  console.log(
+    "\x1b[93mBuild by\x1b[39m \x1b[91mhttps://github.com/sanengineer\x1b[91m"
   );
   console.log(
     "\x1b[93mgive ⭐️ start, 🍴 fork and 🧲 clone others repository\x1b[39m"

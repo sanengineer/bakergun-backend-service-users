@@ -47,13 +47,13 @@
     role="tabpanel"
     aria-labelledby="create-tab"
   >
-    <form method="post" action="/add">
+    <form method="post" action="/admin/user">
       <div class="form-group">
         <label for="forUsername">Username</label>
         <input
           id="formName"
           type="text"
-          name="name"
+          name="username"
           class="form-control col-md-4"
         />
       </div>
@@ -84,7 +84,7 @@
     role="tabpanel"
     aria-labelledby="update-tab"
   >
-    <form method="update" action="/add">
+    <form method="update" action="/admin/user">
       <div class="form-group">
         <label for="forAvatar">Avatar</label>
         <input
@@ -99,7 +99,7 @@
         <input
           id="formName"
           type="text"
-          name="name"
+          name="username"
           class="form-control col-md-4"
         />
       </div>
@@ -130,7 +130,7 @@
     role="tabpanel"
     aria-labelledby="delete-tab"
   >
-    <form method="delete" action="/add">
+    <form method="delete" action="/admin/user">
       <div class="form-group">
         <label for="forAvatar">Avatar</label>
         <input
@@ -143,16 +143,16 @@
       <div class="form-group">
         <label for="forUsername">Username</label>
         <input
-          id="formName"
+          id="formUsername"
           type="text"
-          name="name"
+          name="username"
           class="form-control col-md-4"
         />
       </div>
       <div class="form-group">
         <label for="forEmail">Email</label>
         <input
-          id="forDescription"
+          id="forEmail"
           type="email"
           name="email"
           class="form-control col-md-4"
