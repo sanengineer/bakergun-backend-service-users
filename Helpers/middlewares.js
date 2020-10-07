@@ -10,17 +10,9 @@ function mustBeInteger(req, res, next) {
 }
 
 function checkFieldsPost(req, res, next) {
-  const {
-    username,
-    email,
-    password,
-    fullname,
-    jobs,
-    score,
-    comment,
-  } = req.body;
+  const { username, email, password } = req.body;
 
-  if (username && email && password && fullname && jobs && score && comment) {
+  if (username && email && password) {
     next();
   } else {
     // res.status(400);

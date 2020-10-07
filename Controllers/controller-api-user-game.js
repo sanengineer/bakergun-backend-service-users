@@ -3,13 +3,6 @@ const UserGame = db.userGame;
 
 // create and save a new user game
 exports.create = (req, res) => {
-  if (!req.body.username) {
-    res.status(400).send({
-      message: "please fill username, can't empty",
-    });
-    return;
-  }
-
   // create user
   const user = {
     username: req.body.username,
@@ -50,7 +43,42 @@ exports.getOne = (req, res) => {
 };
 
 // get all user
-exports.getAll = (req, res) => {};
+exports.getAll = (req, res) => {
+  UserGame.findAll() // findAll is function bawaan sequelize
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "something error to get all user",
+      });
+    });
+};
+
+//update user by id
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  UserGame.update(req.body, {
+    where: { id: id },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: `user with id=${id}was upadated successfully`,
+        });
+      } else {
+        res.send({
+          message: `can't update user with id=${id} maybe req.body is mty`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `error updating user with id=${id}`,
+      });
+    });
+};
 
 //delete user by id
 exports.deleteOne = (req, res) => {
@@ -60,7 +88,7 @@ exports.deleteOne = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "user by id was deleted successfully",
+          message: `user by id=${id} was deleted successfully`,
         });
       } else {
         res.send({
