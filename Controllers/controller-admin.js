@@ -1,5 +1,7 @@
 const db = require("../Models");
+const UserGameBiodata = db.userGameBiodata;
 const UserGame = db.userGame;
+const UserGameHistory = db.userGameHistory;
 
 module.exports = {
   // render view dashboard
@@ -8,7 +10,7 @@ module.exports = {
   },
 
   // create and save a new user game
-  create: (req, res) => {
+  createUserGame: (req, res) => {
     // create user
     const user = {
       username: req.body.username,
@@ -28,7 +30,7 @@ module.exports = {
   },
 
   // get one user by id
-  getOne: (req, res) => {
+  getOneUserGame: (req, res) => {
     const id = req.params.id;
 
     UserGame.findByPk(id)
@@ -49,7 +51,7 @@ module.exports = {
   },
 
   // get all user
-  getAll: (req, res) => {
+  getAllUserGame: (req, res) => {
     UserGame.findAll() // findAll is function bawaan sequelize
       .then((data) => {
         res.send(data);
@@ -62,7 +64,7 @@ module.exports = {
   },
 
   //update user by id
-  update: (req, res) => {
+  updateUserGame: (req, res) => {
     const id = req.params.id;
 
     UserGame.update(req.body, {
@@ -87,7 +89,7 @@ module.exports = {
   },
 
   //delete user by id
-  deleteOne: (req, res) => {
+  deleteOneUserGame: (req, res) => {
     const id = req.params.id;
 
     UserGame.destroy({ where: { id: id } })
@@ -110,7 +112,7 @@ module.exports = {
   },
 
   //delete all user
-  deleteAll: (req, res) => {
+  deleteAllUserGame: (req, res) => {
     UserGame.destroy({
       where: {},
       truncate: false, // apa itu truncate??
@@ -118,6 +120,252 @@ module.exports = {
       .then((nums) => {
         res.send({
           message: `${nums} Users was delete successfully`,
+        });
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Delete all failed",
+        });
+      });
+  },
+
+  // create and save a new user game history
+  createUserGameHistory: (req, res) => {
+    // create user
+    const usergamehistory = {
+      score: req.body.score,
+      comment: req.body.comment,
+    };
+
+    UserGameHistory.create(usergamehistory)
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "found error while creating user game history",
+        });
+      });
+  },
+
+  // get one user by id
+  getOneUserGameHistory: (req, res) => {
+    const id = req.params.id;
+
+    UserGameHistory.findByPk(id)
+      .then((data) => {
+        if (data == data) {
+          res.status(200).send(data);
+        } else {
+          res.status(200).send({
+            message: `id = ${id} maybe was deleted`,
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "no user game history with" + id,
+        });
+      });
+  },
+
+  // get all user
+  getAllUserGameHIstory: (req, res) => {
+    UserGameHistory.findAll() // findAll is function bawaan sequelize
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "something error to get all user game history",
+        });
+      });
+  },
+
+  //update user game history by id
+  updateUserGameHistory: (req, res) => {
+    const id = req.params.id;
+
+    UserGameHistory.update(req.body, {
+      where: { id: id },
+    })
+      .then((num) => {
+        if (num == 1) {
+          res.send({
+            message: `user with id=${id}was upadated successfully`,
+          });
+        } else {
+          res.send({
+            message: `can't update user with id=${id} maybe req.body is mty`,
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: `error updating user with id=${id}`,
+        });
+      });
+  },
+
+  //delete user game history by id
+  deleteOneUserGameHistory: (req, res) => {
+    const id = req.params.id;
+
+    UserGameHistory.destroy({ where: { id: id } })
+      .then((num) => {
+        if (num == 1) {
+          res.send({
+            message: `user game history by id=${id} was deleted successfully`,
+          });
+        } else {
+          res.send({
+            message: `can't delete user game history with id=${id}`,
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: "can't delete user game history with id=" + id,
+        });
+      });
+  },
+
+  //delete all user game history
+  deleteAllUserGameHistory: (req, res) => {
+    UserGameHistory.destroy({
+      where: {},
+      truncate: false, // apa itu truncate??
+    })
+      .then((nums) => {
+        res.send({
+          message: `${nums} user game history was delete successfully`,
+        });
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Delete all failed",
+        });
+      });
+  },
+
+  // create and save a new user game history
+  createUserGameBiodata: (req, res) => {
+    // create user
+    const usergamebiodata = {
+      fullname: req.body.fullname,
+      sex: req.body.sex,
+      jobs: req.body.jobs,
+    };
+
+    UserGameBiodata.create(usergamebiodata)
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "found error while creating user game biodata",
+        });
+      });
+  },
+
+  // get one user by id
+  getOneUserGameBiodata: (req, res) => {
+    const id = req.params.id;
+
+    UserGameBiodata.findByPk(id)
+      .then((data) => {
+        if (data == data) {
+          res.status(200).send(data);
+        } else {
+          res.status(200).send({
+            message: `id = ${id} maybe was deleted`,
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "no user game biodata with" + id,
+        });
+      });
+  },
+
+  // get all user
+  getAllUserGameBiodata: (req, res) => {
+    UserGameBiodata.findAll() // findAll is function bawaan sequelize
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "something error to get all user game biodata",
+        });
+      });
+  },
+
+  //update user game history by id
+  updateUserGameBiodata: (req, res) => {
+    const id = req.params.id;
+
+    userGameBiodata
+      .update(req.body, {
+        where: { id: id },
+      })
+      .then((num) => {
+        if (num == 1) {
+          res.send({
+            message: `user game biodata with id=${id}was upadated successfully`,
+          });
+        } else {
+          res.send({
+            message: `can't update user game biodata with id=${id} maybe req.body is mty`,
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: `error updating user game biodata with id=${id}`,
+        });
+      });
+  },
+
+  //delete user game history by id
+  deleteOneUserGameBiodata: (req, res) => {
+    const id = req.params.id;
+
+    userGameBiodata
+      .destroy({ where: { id: id } })
+      .then((num) => {
+        if (num == 1) {
+          res.send({
+            message: `user game biodata by id=${id} was deleted successfully`,
+          });
+        } else {
+          res.send({
+            message: `can't delete user game biodata with id=${id}`,
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: "can't delete user game biodata with id=" + id,
+        });
+      });
+  },
+
+  //delete all user game history
+  deleteAllUserGameBiodata: (req, res) => {
+    userGameBiodata
+      .destroy({
+        where: {},
+        truncate: false, // apa itu truncate??
+      })
+      .then((nums) => {
+        res.send({
+          message: `${nums} user game biodata was delete successfully`,
         });
       })
       .catch((err) => {

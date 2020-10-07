@@ -20,7 +20,31 @@ function checkFieldsPost(req, res, next) {
   }
 }
 
+function checkFieldsPostUserGameBiodata(req, res, next) {
+  const { fullname, sex, jobs } = req.body;
+
+  if (fullname && sex && jobs) {
+    next();
+  } else {
+    // res.status(400);
+    res.status(400).json({ message: "Form field not can't be empty" });
+  }
+}
+
+function checkFieldsPostUserGameHistory(req, res, next) {
+  const { score, comment } = req.body;
+
+  if (score && comment) {
+    next();
+  } else {
+    // res.status(400);
+    res.status(400).json({ message: "Form field not can't be empty" });
+  }
+}
+
 module.exports = {
   mustBeInteger,
   checkFieldsPost,
+  checkFieldsPostUserGameBiodata,
+  checkFieldsPostUserGameHistory,
 };
