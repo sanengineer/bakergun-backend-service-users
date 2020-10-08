@@ -2,10 +2,10 @@ module.exports = (sequelize, Sequelize) => {
   const usrGame = sequelize.define("user_game", {
     user_id: {
       // type: Sequelize.UUID,
-      type: Sequelize.INTEGER,
-      allowNull: false,
       // defaultValue: Sequelize.UUIDV4,
       // defaultValue: Sequelize.INTEGER,
+      type: Sequelize.INTEGER,
+      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },

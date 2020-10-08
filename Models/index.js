@@ -19,12 +19,6 @@ db.userGame = require("./user/user-game")(sequelize, Sequelize);
 db.userGameBiodata = require("./user/user-game-biodata")(sequelize, Sequelize);
 db.userGameHistory = require("./user/user-game-history")(sequelize, Sequelize);
 
-// db.History.hasOne(db.userGame);
-// db.Biodata.hasOne(db.userGame);
-
-// db.userGame.hasOne(db.History, { foreignKey: "user_id" });
-// db.userGame.hasOne(db.Biodata, { foreignKey: "user_id" });
-
 db.userGameHistory.belongsTo(db.userGame, {
   foreignKey: {
     name: "user_id",
@@ -36,13 +30,4 @@ db.userGameBiodata.belongsTo(db.userGame, {
   },
 });
 
-// db.userGameHistory.belongsTo(db.userGame, {
-//   foreignKey: "user_id",
-// });
-// db.userGameBiodata.belongsTo(db.userGame, {
-//   foreignKey: "user_id",
-// });
-
-// db.userGameHistory.belongsTo(db.userGame);
-// db.userGameBiodata.belongsTo(db.userGame);
 module.exports = db;
