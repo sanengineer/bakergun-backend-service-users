@@ -11,12 +11,20 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   },
 });
 
-const db = {};
+var db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.userGame = require("./user/user-game")(sequelize, Sequelize);
-db.userGameBiodata = require("./user/user-game-biodata")(sequelize, Sequelize);
-db.userGameHistory = require("./user/user-game-history")(sequelize, Sequelize);
+db.Biodata = require("./user/user-game-biodata")(sequelize, Sequelize);
+db.History = require("./user/user-game-history")(sequelize, Sequelize);
 
+// db.History.hasOne(db.userGame);
+// db.Biodata.hasOne(db.userGame);
+
+// db.userGame.hasOne(db.History, { foreignKey: "user_id" });
+// db.userGame.hasOne(db.Biodata, { foreignKey: "user_id" });
+
+db.History.belongsTo(db.userGame, { foreignKey: "user_id" });
+db.Biodata.belongsTo(db.userGame, { foreignKey: "user_id" });
 module.exports = db;

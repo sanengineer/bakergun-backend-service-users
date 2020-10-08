@@ -1,173 +1,32 @@
-<!--- User Game -->
-<h2 class="h4 font-weight-bolder mt-5">User Game</h2>
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a
-      class="nav-link active"
-      id="create-tab"
-      data-toggle="tab"
-      href="#createMeth"
-      role="tab"
-      aria-controls="create"
-      aria-selected="true"
-      >Create</a
-    >
-  </li>
-  <li class="nav-item" role="presentation">
-    <a
-      class="nav-link"
-      id="update-tab"
-      data-toggle="tab"
-      href="#updateMeth"
-      role="tab"
-      aria-controls="update"
-      aria-selected="false"
-      >Update</a
-    >
-  </li>
-  <li class="nav-item" role="presentation">
-    <a
-      class="nav-link"
-      id="delete-tab"
-      data-toggle="tab"
-      href="#deleteMeth"
-      role="tab"
-      aria-controls="delete"
-      aria-selected="false"
-      >Delete</a
-    >
-  </li>
-</ul>
-<!-- Tab panes -->
-<div class="tab-content py-3">
-  <div
-    class="tab-pane active"
-    id="createMeth"
-    role="tabpanel"
-    aria-labelledby="create-tab"
-  >
-    <form method="post" action="/admin/user-game">
-      <div class="form-group">
-        <label for="forUsername">Username</label>
-        <input
-          id="formName"
-          type="text"
-          name="username"
-          class="form-control col-md-4"
-        />
-      </div>
-      <div class="form-group">
-        <label for="forEmail">Email</label>
-        <input
-          id="forDescription"
-          type="email"
-          name="email"
-          class="form-control col-md-4"
-        />
-      </div>
-      <div class="form-group">
-        <label for="forPassword">Password</label>
-        <input
-          id="forPassword"
-          type="password"
-          name="password"
-          class="form-control col-md-4"
-        />
-      </div>
-      <button class="btn btn-success" type="submit">Add</button>
-    </form>
+<h2 class="h4 font-weight-bolder mt-5 mb-2">User Game</h2>
+
+<form method="post" action="/admin/user-game">
+  <div class="form-group">
+    <label for="forUsername">Username</label>
+    <input
+      id="formName"
+      type="text"
+      name="username"
+      class="form-control col-md-4"
+    />
   </div>
-  <div
-    class="tab-pane"
-    id="updateMeth"
-    role="tabpanel"
-    aria-labelledby="update-tab"
-  >
-    <form method="update" action="/admin/user-game">
-      <div class="form-group">
-        <label for="forAvatar">Avatar</label>
-        <input
-          id="formAvatar"
-          type="text"
-          name="avatar"
-          class="form-control col-md-4"
-        />
-      </div>
-      <div class="form-group">
-        <label for="forUsername">Username</label>
-        <input
-          id="formName"
-          type="text"
-          name="username"
-          class="form-control col-md-4"
-        />
-      </div>
-      <div class="form-group">
-        <label for="forEmail">Email</label>
-        <input
-          id="forDescription"
-          type="email"
-          name="email"
-          class="form-control col-md-4"
-        />
-      </div>
-      <div class="form-group">
-        <label for="forPassword">Password</label>
-        <input
-          id="forPassword"
-          type="password"
-          name="password"
-          class="form-control col-md-4"
-        />
-      </div>
-      <button class="btn btn-warning" type="submit">Update</button>
-    </form>
+  <div class="form-group">
+    <label for="forEmail">Email</label>
+    <input
+      id="forDescription"
+      type="email"
+      name="email"
+      class="form-control col-md-4"
+    />
   </div>
-  <div
-    class="tab-pane"
-    id="deleteMeth"
-    role="tabpanel"
-    aria-labelledby="delete-tab"
-  >
-    <form method="delete" action="/admin/user-game">
-      <div class="form-group">
-        <label for="forAvatar">Avatar</label>
-        <input
-          id="formAvatar"
-          type="text"
-          name="avatar"
-          class="form-control col-md-4"
-        />
-      </div>
-      <div class="form-group">
-        <label for="forUsername">Username</label>
-        <input
-          id="formUsername"
-          type="text"
-          name="username"
-          class="form-control col-md-4"
-        />
-      </div>
-      <div class="form-group">
-        <label for="forEmail">Email</label>
-        <input
-          id="forEmail"
-          type="email"
-          name="email"
-          class="form-control col-md-4"
-        />
-      </div>
-      <div class="form-group">
-        <label for="forPassword">Password</label>
-        <input
-          id="forPassword"
-          type="password"
-          name="password"
-          class="form-control col-md-4"
-        />
-      </div>
-      <button class="btn btn-danger" type="submit">Delete</button>
-    </form>
+  <div class="form-group">
+    <label for="forPassword">Password</label>
+    <input
+      id="forPassword"
+      type="password"
+      name="password"
+      class="form-control col-md-4"
+    />
   </div>
-</div>
+  <button class="btn btn-success" type="submit">Add</button>
+</form>

@@ -1,16 +1,25 @@
 module.exports = (sequelize, Sequelize) => {
   const usrGame = sequelize.define("user_game", {
-    avatar: {
-      type: Sequelize.STRING,
+    user_id: {
+      // type: Sequelize.UUID,
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      // defaultValue: Sequelize.UUIDV4,
+      // defaultValue: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     username: {
       type: Sequelize.STRING,
+      allowNull: false,
     },
     email: {
       type: Sequelize.STRING,
+      allowNull: false,
     },
     password: {
       type: Sequelize.STRING,
+      allowNull: false,
     },
   });
 

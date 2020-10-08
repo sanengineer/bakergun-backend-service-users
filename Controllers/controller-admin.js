@@ -133,6 +133,7 @@ module.exports = {
   createUserGameHistory: (req, res) => {
     // create user
     const usergamehistory = {
+      user_id: req.body.user_id,
       score: req.body.score,
       comment: req.body.comment,
     };
@@ -254,6 +255,7 @@ module.exports = {
   createUserGameBiodata: (req, res) => {
     // create user
     const usergamebiodata = {
+      user_id: req.body.user_id,
       fullname: req.body.fullname,
       sex: req.body.sex,
       jobs: req.body.jobs,
