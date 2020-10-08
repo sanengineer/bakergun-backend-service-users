@@ -5,15 +5,15 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       allowNull: false,
       // defaultValue: Sequelize.UUIDV4,
-      defaultValue: Sequelize.INTEGER,
+      // defaultValue: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    // user_id: {
-    //   type: Sequelize.INTEGER,
-    //   // type: Sequelize.UUID,
-    //   allowNull: false,
-    // },
+    user_id: {
+      type: Sequelize.INTEGER,
+      // type: Sequelize.UUID,
+      allowNull: false,
+    },
     score: {
       type: Sequelize.STRING,
     },

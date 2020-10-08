@@ -8,11 +8,11 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
       autoIncrement: true, // ini buat apa ya?
     },
-    // user_id: {
-    //   type: Sequelize.INTEGER,
-    //   // type: Sequelize.UUID,  // ini buat apa ya ?
-    //   allowNull: false,
-    // },
+    user_id: {
+      type: Sequelize.INTEGER,
+      // type: Sequelize.UUID,  // ini buat apa ya ?
+      allowNull: false,
+    },
     fullname: {
       type: Sequelize.STRING,
     },
