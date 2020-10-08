@@ -8,11 +8,11 @@ This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodej
 
 ## Feature
 
-- Dashboard view for Superuser (Admin)
+1. Dashboard view for Superuser (Admin)
 
-- CRUD Method
-- 2 RestAPI endpoint, for admin dashboard and Frontend
-  ![Flow Chart Backend ReSTAPI EJS end Front-End](https://res.cloudinary.com/dsv9w1ey3/image/upload/v1602142703/github-images/Flow_Chart_Admin_Dashboard_Challenge_Chapter_6_dc01be.png)
+2. CRUD Method
+3. 2 RestAPI endpoint, for admin dashboard and Frontend
+   ![Flow Chart Backend ReSTAPI EJS end Front-End](https://res.cloudinary.com/dsv9w1ey3/image/upload/v1602142703/github-images/Flow_Chart_Admin_Dashboard_Challenge_Chapter_6_dc01be.png)
 
 ## Get Started
 
