@@ -1,0 +1,162 @@
+<h2 class="h4 font-weight-bolder mt-5 mb-3">User Form</h2>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link font-weight-bolder active"
+      id="game-tab"
+      data-toggle="tab"
+      href="#game"
+      role="tab"
+      aria-controls="game"
+      aria-selected="true"
+      >Game</a
+    >
+  </li>
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link font-weight-bolder"
+      id="biodata-tab"
+      data-toggle="tab"
+      href="#biodata"
+      role="tab"
+      aria-controls="biodata"
+      aria-selected="false"
+      >Biodata</a
+    >
+  </li>
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link font-weight-bolder"
+      id="history-tab"
+      data-toggle="tab"
+      href="#history"
+      role="tab"
+      aria-controls="history"
+      aria-selected="false"
+      >History</a
+    >
+  </li>
+</ul>
+<div class="tab-content pt-3" id="myTabContent">
+  <div
+    class="tab-pane fade show active"
+    id="game"
+    role="tabpanel"
+    aria-labelledby="game-tab"
+  >
+    <form method="post" action="/admin/user-game">
+      <div class="form-group">
+        <label for="forUsername">Username</label>
+        <input
+          id="formName"
+          type="text"
+          name="username"
+          class="form-control col-md-4"
+        />
+      </div>
+      <div class="form-group">
+        <label for="forEmail">Email</label>
+        <input
+          id="forDescription"
+          type="email"
+          name="email"
+          class="form-control col-md-4"
+        />
+      </div>
+      <div class="form-group">
+        <label for="forPassword">Password</label>
+        <input
+          id="forPassword"
+          type="password"
+          name="password"
+          class="form-control col-md-4"
+        />
+      </div>
+      <button class="btn btn-success" type="submit">Add</button>
+    </form>
+  </div>
+  <div
+    class="tab-pane fade"
+    id="biodata"
+    role="tabpanel"
+    aria-labelledby="history-tab"
+  >
+    <form method="post" action="/admin/user-game-biodata">
+      <div class="form-group">
+        <label for="forUserGameId">User Id</label>
+        <input
+          id="formScore"
+          type="text"
+          name="user_id"
+          class="form-control col-md-4"
+        />
+      </div>
+      <div class="form-group">
+        <label for="forFullname">Fullname</label>
+        <input
+          id="formFullname"
+          type="text"
+          name="fullname"
+          class="form-control col-md-4"
+        />
+      </div>
+      <div class="form-group">
+        <label for="forSex">Sex</label>
+        <input
+          id="formSex"
+          type="text"
+          name="sex"
+          class="form-control col-md-4"
+        />
+      </div>
+      <div class="form-group">
+        <label for="forJobs">Jobs</label>
+        <input
+          id="forJobs"
+          type="text"
+          name="jobs"
+          class="form-control col-md-4"
+        />
+      </div>
+      <button class="btn btn-success" type="submit">Add</button>
+    </form>
+  </div>
+  <div
+    class="tab-pane fade"
+    id="history"
+    role="tabpanel"
+    aria-labelledby="history-tab"
+  >
+    <form method="post" action="/admin/user-game-history">
+      <div class="form-group">
+        <label for="forUserGameId">User Id</label>
+        <input
+          id="formScore"
+          type="text"
+          name="user_id"
+          class="form-control col-md-4"
+        />
+      </div>
+      <div class="form-group">
+        <label for="forScore">Score</label>
+        <input
+          id="formScore"
+          type="text"
+          name="score"
+          class="form-control col-md-4"
+        />
+      </div>
+      <div class="form-group">
+        <label for="forComment">Comment</label>
+        <input
+          id="formComment"
+          type="text"
+          name="comment"
+          class="form-control col-md-4"
+        />
+      </div>
+      <button class="btn btn-success" type="submit">Add</button>
+    </form>
+  </div>
+</div>

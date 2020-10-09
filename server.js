@@ -48,8 +48,9 @@ db.sequelize
     force: true,
   })
   .then(() => {
-    console.log(`\x1b[91mDrop And Resync DB\x1b[91m`);
     console.log("");
+    console.log(`\x1b[91mSuccesfully 🔥 Drop And ♻️  Resync Database\x1b[91m`);
+    console.log("\x1b[93m\x1b[39m");
   });
 
 // Listen Port
