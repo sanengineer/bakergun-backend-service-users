@@ -1,3 +1,4 @@
+const { userGame } = require("../Models");
 const db = require("../Models");
 const UserGameBiodata = db.userGameBiodata;
 const UserGame = db.userGame;
@@ -6,7 +7,13 @@ const UserGameHistory = db.userGameHistory;
 module.exports = {
   // render view dashboard
   viewDashboard: (req, res) => {
+    userGame.findAll();
     res.render("admin/dashboard");
+  },
+
+  // render view sign in
+  viewSignin: (req, res) => {
+    res.render("index");
   },
 
   // create and save a new user game

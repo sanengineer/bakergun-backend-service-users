@@ -6,6 +6,8 @@ const path = require("path");
 const port = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 
+const indexRout = require("./Routes/index");
+
 // admin router
 const adminRout = require("./Routes/admin");
 
@@ -37,6 +39,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
+
+app.use("/", indexRout);
 app.use("/admin", adminRout);
 
 db.sequelize

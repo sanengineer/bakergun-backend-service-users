@@ -4,6 +4,7 @@ const middleware = require("../Helpers/middlewares");
 const controllerAdmin = require("../Controllers/controller-admin");
 
 router.get("/dashboard", controllerAdmin.viewDashboard);
+router.get("/signin", controllerAdmin.viewSignin);
 
 // endpoint user game
 router.post(
