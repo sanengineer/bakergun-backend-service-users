@@ -1,6 +1,6 @@
 # Build Backend Stack CRUD with NodeJS, PostgreSQL and Sequelize
 
-This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), EJS for admin dashboard, PosgreSQL and Sequelize (ORM For NodeJS).
+This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), EJS for admin dashboard, PosgreSQL and [Sequelize](https://sequelize.org/) (ORM For NodeJS).
 
 ## ER Diagram For 🐘 PostgreSQL
 
