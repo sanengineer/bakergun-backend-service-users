@@ -33,28 +33,11 @@
               <td><%= i.comment %></td>
               <td><%= i.user_id %></td>
               <td>
-                <form action="/admin/item//delete?_method=DELETE" method="POST">
-                  <a
-                    href="/admin/item/show-image/"
-                    class="btn btn-info btn-circle btn-sm"
-                    ><i class="fas fa-image"></i
-                  ></a>
-                  <a
-                    href="/admin/item/"
-                    class="btn btn-warning btn-circle btn-sm"
-                    ><i class="fas fa-edit"></i
-                  ></a>
-                  <button
-                    type="submit"
-                    class="btn btn-danger btn-circle btn-sm"
-                  >
-                    <i class="fas fa-trash"></i>
-                  </button>
-                  <a
-                    href="/admin/item/show-detail-item/"
-                    class="btn btn-success btn-circle btn-sm"
-                    ><i class="fas fa-plus"></i
-                  ></a>
+                <form
+                  action="/admin/user-game-history/<%= usergame[i].user_id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <button class="btn btn-success" type="submit">Delete</button>
                 </form>
               </td>
             </tr>
