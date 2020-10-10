@@ -98,16 +98,17 @@ module.exports = {
 
   //update user by id
   updateUserGame: (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
 
     UserGame.update(req.body, {
-      where: { id: id },
+      where: { user_id: id },
     })
       .then((num) => {
         if (num == 1) {
-          res.send({
-            message: `user with id=${id}was upadated successfully`,
-          });
+          // res.send({
+          //   message: `user with id=${id}was upadated successfully`,
+          // });
+          res.redirect("/admin/dashboard");
         } else {
           res.send({
             message: `can't update user with id=${id} maybe req.body is mty`,
@@ -123,14 +124,15 @@ module.exports = {
 
   //delete user by id
   deleteOneUserGame: (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
 
-    UserGame.destroy({ where: { id: id } })
+    UserGame.destroy({ where: { user_id: id } })
       .then((num) => {
         if (num == 1) {
-          res.send({
-            message: `user by id=${id} was deleted successfully`,
-          });
+          // res.send({
+          //   message: `user by id=${id} was deleted successfully`,
+          // });
+          res.redirect("/admin/dashboard");
         } else {
           res.send({
             message: `can't delete user with id=${id}`,
@@ -222,17 +224,17 @@ module.exports = {
 
   //update user game history by id
   updateUserGameBiodata: (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
 
-    userGameBiodata
-      .update(req.body, {
-        where: { id: id },
-      })
+    UserGameBiodata.update(req.body, {
+      where: { user_game_biodata_id: id },
+    })
       .then((num) => {
         if (num == 1) {
-          res.send({
-            message: `user game biodata with id=${id}was upadated successfully`,
-          });
+          // res.send({
+          //   message: `user game biodata with id=${id}was upadated successfully`,
+          // });
+          res.redirect("/admin/dashboard");
         } else {
           res.send({
             message: `can't update user game biodata with id=${id} maybe req.body is mty`,
@@ -248,15 +250,15 @@ module.exports = {
 
   //delete user game history by id
   deleteOneUserGameBiodata: (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
 
-    userGameBiodata
-      .destroy({ where: { id: id } })
+    UserGameBiodata.destroy({ where: { user_game_biodata_id: id } })
       .then((num) => {
         if (num == 1) {
-          res.send({
-            message: `user game biodata by id=${id} was deleted successfully`,
-          });
+          // res.send({
+          //   message: `user game biodata by id=${id} was deleted successfully`,
+          // });
+          res.redirect("/admin/dashboard");
         } else {
           res.send({
             message: `can't delete user game biodata with id=${id}`,
@@ -265,18 +267,19 @@ module.exports = {
       })
       .catch((err) => {
         res.status(500).send({
-          message: "can't delete user game biodata with id=" + id,
+          message:
+            err.message ||
+            "respon(500) can't delete user game biodata with id=" + id,
         });
       });
   },
 
   //delete all user game history
   deleteAllUserGameBiodata: (req, res) => {
-    userGameBiodata
-      .destroy({
-        where: {},
-        truncate: false, // apa itu truncate??
-      })
+    UserGameBiodata.destroy({
+      where: {},
+      truncate: false, // apa itu truncate??
+    })
       .then((nums) => {
         res.send({
           message: `${nums} user game biodata was delete successfully`,
@@ -348,16 +351,17 @@ module.exports = {
 
   //update user game history by id
   updateUserGameHistory: (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
 
     UserGameHistory.update(req.body, {
-      where: { id: id },
+      where: { user_game_history_id: id },
     })
       .then((num) => {
         if (num == 1) {
-          res.send({
-            message: `user with id=${id}was upadated successfully`,
-          });
+          // res.send({
+          //   message: `user with id=${id}was upadated successfully`,
+          // });
+          res.redirect("/admin/dashboard");
         } else {
           res.send({
             message: `can't update user with id=${id} maybe req.body is mty`,
@@ -373,14 +377,15 @@ module.exports = {
 
   //delete user game history by id
   deleteOneUserGameHistory: (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
 
-    UserGameHistory.destroy({ where: { id: id } })
+    UserGameHistory.destroy({ where: { user_game_history_id: id } })
       .then((num) => {
         if (num == 1) {
-          res.send({
-            message: `user game history by id=${id} was deleted successfully`,
-          });
+          // res.send({
+          //   message: `user game history by id=${id} was deleted successfully`,
+          // });
+          res.redirect("/admin/dashboard");
         } else {
           res.send({
             message: `can't delete user game history with id=${id}`,
@@ -389,7 +394,8 @@ module.exports = {
       })
       .catch((err) => {
         res.status(500).send({
-          message: "can't delete user game history with id=" + id,
+          message:
+            err.message || "can't delete user game history with id=" + id,
         });
       });
   },

@@ -1,5 +1,4 @@
 const express = require("express");
-// const morgan = require("morgan");
 const db = require("./Models");
 const app = express();
 const path = require("path");
@@ -32,19 +31,12 @@ app.use(express.static(path.join(__dirname, "./Public"))); // Masih Belum Ngerti
 //   next();
 // });
 
-// Setup Morgan
-// app.use(morgan("tiny"));
-
 // Setup Express
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-
+app.use(methodOverride("_method"));
 app.use("/", indexRout);
 app.use("/admin", adminRout);
-app.use(methodOverride("_method"));
 
 db.sequelize.sync().then(() => {
   console.log("");

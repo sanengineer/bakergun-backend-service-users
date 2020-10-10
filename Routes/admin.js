@@ -40,6 +40,11 @@ router.get(
   controllerAdmin.getOneUserGameHistory
 );
 router.put("/user-game-history/:id", controllerAdmin.updateUserGameHistory);
+router.delete(
+  "/user-game-history/:id",
+  middleware.mustBeInteger,
+  controllerAdmin.deleteOneUserGameHistory
+);
 router.delete("/user-game-history/", controllerAdmin.deleteAllUserGameHistory);
 
 // endpoint user game biodata
@@ -57,7 +62,6 @@ router.get(
 router.put("/user-game-biodata/:id", controllerAdmin.updateUserGameBiodata);
 router.delete(
   "/user-game-biodata/:id",
-  middleware.mustBeInteger,
   controllerAdmin.deleteOneUserGameBiodata
 );
 router.delete("/user-game-biodata/", controllerAdmin.deleteAllUserGameBiodata);
