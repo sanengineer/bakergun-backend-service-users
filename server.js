@@ -38,19 +38,21 @@ app.use(methodOverride("_method"));
 app.use("/", indexRout);
 app.use("/admin", adminRout);
 
-db.sequelize.sync().then(() => {
-  console.log("");
-  console.log(`\x1b[91mSuccesfully Sync Database\x1b[91m`);
-  console.log("\x1b[93m\x1b[39m");
-});
-// .sync({
-//   force: true,
-// })
-// .then(() => {
-//   console.log("");
-//   console.log(`\x1b[91mSuccesfully 🔥 Drop And ♻️  Resync Database\x1b[91m`);
-//   console.log("\x1b[93m\x1b[39m");
-// });
+db.sequelize
+  // .sync().then(() => {
+  //   console.log("");
+  //   console.log(`\x1b[91mSuccesfully Sync Database\x1b[91m`);
+  //   console.log("\x1b[93m\x1b[39m");
+  //   console.log("");
+  // });
+  .sync({
+    force: true,
+  })
+  .then(() => {
+    console.log("");
+    console.log(`\x1b[91mSuccesfully 🔥 Drop And ♻️  Resync Database\x1b[91m`);
+    console.log("\x1b[93m\x1b[39m");
+  });
 
 // Listen Port
 app.listen(port, () => {
