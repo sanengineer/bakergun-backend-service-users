@@ -92,7 +92,7 @@
       <div class="modal-body">
         <% for( let i = 0; i < userbiodata.length; i++ ) { %>
         <form
-          action="/admin/user-game/<%= userbiodata[i].user_game_biodata_id %>?_method=PUT"
+          action="/admin/user-game-biodata/<%= userbiodata[i].user_game_biodata_id %>?_method=PUT"
           method="POST"
         >
           <div class="form-group">
