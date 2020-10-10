@@ -10,7 +10,7 @@ This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodej
 
 ### Dashboard View
 
-![Dashboard View With EJS](https://res.cloudinary.com/dsv9w1ey3/image/upload/v1602348752/github-images/dashboard-admin_a0mit6.png)
+![Dashboard View With EJS](https://res.cloudinary.com/dsv9w1ey3/image/upload/v1602350572/github-images/dashboard-admin-ejs_jncagc.png)
 
 ### CRUD Method
 
