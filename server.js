@@ -64,10 +64,7 @@ app.listen(port, () => {
     `\x1b[93mAdmin Dashboard now running 🚀 on  http://localhost:${port}/admin\x1b[39m`
   );
   console.log(
-    "\x1b[93mBuild by\x1b[39m \x1b[91mhttps://github.com/sanengineer\x1b[91m"
-  );
-  console.log(
-    "\x1b[93mgive ⭐️ start, 🍴 fork and 🧲 clone others repository\x1b[39m"
+    "\x1b[93mBuild by\x1b[39m \x1b[91mhttps://github.com/sanengineer\x1b[91m \x1b[93mgive ⭐️ start, 🍴 fork and 🧲 clone others repository\x1b[39m."
   );
   console.log("");
 });
