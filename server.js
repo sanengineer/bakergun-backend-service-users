@@ -7,9 +7,11 @@ const port = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 
 const indexRout = require("./Routes/index");
+const methodOverride = require("method-override");
 
 // admin router
 const adminRout = require("./Routes/admin");
+const test = require("./Controllers/controller-admin");
 
 // // Setup Views Enginer EJS
 // app.set("views", "./Views");
@@ -42,16 +44,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", indexRout);
 app.use("/admin", adminRout);
+app.use(methodOverride("_method"));
 
-db.sequelize
-  .sync({
-    force: true,
-  })
-  .then(() => {
-    console.log("");
-    console.log(`\x1b[91mSuccesfully 🔥 Drop And ♻️  Resync Database\x1b[91m`);
-    console.log("\x1b[93m\x1b[39m");
-  });
+db.sequelize.sync().then(() => {
+  console.log("");
+  console.log(`\x1b[91mSuccesfully Sync Database\x1b[91m`);
+  console.log("\x1b[93m\x1b[39m");
+});
+// .sync({
+//   force: true,
+// })
+// .then(() => {
+//   console.log("");
+//   console.log(`\x1b[91mSuccesfully 🔥 Drop And ♻️  Resync Database\x1b[91m`);
+//   console.log("\x1b[93m\x1b[39m");
+// });
 
 // Listen Port
 app.listen(port, () => {

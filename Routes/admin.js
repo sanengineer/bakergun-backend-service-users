@@ -5,6 +5,7 @@ const controllerAdmin = require("../Controllers/controller-admin");
 
 router.get("/dashboard", controllerAdmin.viewDashboard);
 router.get("/signin", controllerAdmin.viewSignin);
+// router.get("/dashboard", controllerAdmin.renderAllUserGame);
 
 // endpoint user game
 router.post(

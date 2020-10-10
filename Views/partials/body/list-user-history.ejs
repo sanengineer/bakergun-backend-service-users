@@ -1,0 +1,67 @@
+<h2 class="h5 font-weight-bold my-3">Tabel User History</h2>
+
+<div
+  class="tab-pane fade show active"
+  id="show-item"
+  role="tabpanel"
+  aria-labelledby="home-tab"
+>
+  <!-- DataTales Example -->
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>History ID</th>
+              <th>Score</th>
+              <th>Comments</th>
+              <th>User ID</th>
+              <th>Method</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% userhistory.forEach(i=> {%>
+            <tr>
+              <td><%= i.user_game_history_id %></td>
+              <td><%= i.score %></td>
+              <td><%= i.comment %></td>
+              <td><%= i.user_id %></td>
+              <td>
+                <form action="/admin/item//delete?_method=DELETE" method="POST">
+                  <a
+                    href="/admin/item/show-image/"
+                    class="btn btn-info btn-circle btn-sm"
+                    ><i class="fas fa-image"></i
+                  ></a>
+                  <a
+                    href="/admin/item/"
+                    class="btn btn-warning btn-circle btn-sm"
+                    ><i class="fas fa-edit"></i
+                  ></a>
+                  <button
+                    type="submit"
+                    class="btn btn-danger btn-circle btn-sm"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                  <a
+                    href="/admin/item/show-detail-item/"
+                    class="btn btn-success btn-circle btn-sm"
+                    ><i class="fas fa-plus"></i
+                  ></a>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

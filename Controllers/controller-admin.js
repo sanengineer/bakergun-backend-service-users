@@ -6,14 +6,39 @@ const UserGameHistory = db.userGameHistory;
 
 module.exports = {
   // render view dashboard
-  viewDashboard: (req, res) => {
-    userGame.findAll();
-    res.render("admin/dashboard");
+  viewDashboard: async (req, res) => {
+    try {
+      const usergame = await UserGame.findAll();
+      const userbiodata = await UserGameBiodata.findAll();
+      const userhistory = await UserGameHistory.findAll();
+      res.render("admin/dashboard", {
+        usergame,
+        userbiodata,
+        userhistory,
+      });
+    } catch (error) {
+      res.redirect("/admin/dashboard");
+    }
   },
 
   // render view sign in
   viewSignin: (req, res) => {
     res.render("index");
+  },
+
+  // render user list on dashboard
+  renderAllUserGame: (req, res) => {
+    UserGame.findAll()
+      .then((usergame) => {
+        res.render("admin/dashboard", {
+          usergame,
+        });
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "something error to get all user",
+        });
+      });
   },
 
   // create and save a new user game
@@ -27,7 +52,8 @@ module.exports = {
 
     UserGame.create(user)
       .then((data) => {
-        res.send(data);
+        // res.send(data);
+        res.redirect("dashboard");
       })
       .catch((err) => {
         res.status(500).send({
@@ -113,7 +139,7 @@ module.exports = {
       })
       .catch((err) => {
         res.status(500).send({
-          message: "can't delete user with id=" + id,
+          message: "(respon500) can't delete user with id=" + id,
         });
       });
   },
@@ -148,7 +174,8 @@ module.exports = {
 
     UserGameBiodata.create(usergamebiodata)
       .then((data) => {
-        res.send(data);
+        // res.send(data);
+        res.redirect("dashboard");
       })
       .catch((err) => {
         res.status(500).send({
@@ -273,7 +300,8 @@ module.exports = {
 
     UserGameHistory.create(usergamehistory)
       .then((data) => {
-        res.send(data);
+        // res.send(data);
+        res.redirect("dashboard");
       })
       .catch((err) => {
         res.status(500).send({

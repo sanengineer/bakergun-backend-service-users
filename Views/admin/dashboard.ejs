@@ -43,7 +43,17 @@
           create, update and delete feature for this project, watch demo !
         </p>
       </div>
-      <h2 class="h4 font-weight-bolder mt-5">User List</h2>
+      <h2 class="h4 font-weight-bolder mt-5 mb-4">Tabel User Database</h2>
+
+      <div class="user-game-table my-5">
+        <%- include("../partials/body/list-user-game.ejs") %>
+      </div>
+      <div class="user-game-history-table my-5">
+        <%- include("../partials/body/list-user-history.ejs") %>
+      </div>
+      <div class="user-game-biodata-table my-5">
+        <%- include("../partials/body/list-user-biodata.ejs") %>
+      </div>
       <%- include("../partials/body/user-form.ejs") %>
     </div>
     <%- include("../partials/footer.ejs") %>
