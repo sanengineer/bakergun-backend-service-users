@@ -8,7 +8,7 @@ This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodej
 
 ## Feature
 
-### Dashboard view for Superuser (Admin)
+### Dashboard View
 
 ### CRUD Method
 
