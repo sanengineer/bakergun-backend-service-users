@@ -4,7 +4,7 @@ This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodej
 
 ## ER Diagram For 🐘 PostgreSQL
 
-![Entity Diagram PostgreSQL](https://res.cloudinary.com/dsv9w1ey3/image/upload/v1602142037/github-images/Challange_Ch_6_Entity_Diagram_tbaovc.png)
+![Entity Diagram PostgreSQL](https://res.cloudinary.com/dsv9w1ey3/image/upload/v1602518877/github-images/Challange_Ch_6_Entity_Diagram_z7jldc.png)
 
 ## Feature
 
