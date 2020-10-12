@@ -92,6 +92,7 @@
           action="/admin/user-game-history/<%= userhistory[i].user_game_history_id %>?_method=PUT"
           method="POST"
         >
+          <% } %>
           <div class="form-group">
             <label for="forUserGameId">User Id</label>
             <input
@@ -131,7 +132,6 @@
             Update
           </button>
         </form>
-        <% } %>
       </div>
     </div>
   </div>
