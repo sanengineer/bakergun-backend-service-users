@@ -10,7 +10,6 @@ const methodOverride = require("method-override");
 
 // admin router
 const adminRout = require("./Routes/admin");
-const test = require("./Controllers/controller-admin");
 
 // // Setup Views Enginer EJS
 // app.set("views", "./Views");
@@ -51,7 +50,9 @@ db.sequelize
   .then(() => {
     console.log("");
     console.log(`\x1b[91mSuccesfully 🔥 Drop And ♻️  Resync Database\x1b[91m`);
-    console.log("\x1b[93m\x1b[39m");
+    console.log("");
+    console.log("\x1b[93mby https://github.com/sanengineer\x1b[39m");
+    console.log("\x1b[93mLet's \x1b[39m");
   });
 
 // Listen Port

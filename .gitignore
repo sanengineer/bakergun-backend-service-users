@@ -25,6 +25,8 @@ yarn-error.log*
 
 
 #security db
-
+/.env
+.env
+./.env
 /Config
 /config

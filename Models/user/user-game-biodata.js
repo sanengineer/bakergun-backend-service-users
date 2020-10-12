@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true, // ini buat apa ya?
+      autoIncrement: true,
     },
     user_id: {
       // type: Sequelize.UUID,  // ini buat apa ya ?

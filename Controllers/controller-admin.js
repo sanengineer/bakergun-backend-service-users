@@ -106,7 +106,7 @@ module.exports = {
       .then((num) => {
         if (num == 1) {
           // res.send({
-          //   message: `user with id=${id}was upadated successfully`,
+          //   message: `user with id=${id}was updated successfully`,
           // });
           res.redirect("/admin/dashboard");
         } else {
@@ -232,7 +232,7 @@ module.exports = {
       .then((num) => {
         if (num == 1) {
           // res.send({
-          //   message: `user game biodata with id=${id}was upadated successfully`,
+          //   message: `user game biodata with id=${id}was updated successfully`,
           // });
           res.redirect("/admin/dashboard");
         } else {
@@ -359,7 +359,7 @@ module.exports = {
       .then((num) => {
         if (num == 1) {
           // res.send({
-          //   message: `user with id=${id}was upadated successfully`,
+          //   message: `user with id=${id}was updated successfully`,
           // });
           res.redirect("/admin/dashboard");
         } else {
