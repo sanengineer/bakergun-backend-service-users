@@ -35,22 +35,101 @@
               <td><%= userbiodata[i].jobs %></td>
               <td><%= userbiodata[i].user_id %></td>
               <td>
+                <button
+                  type="button"
+                  class="btn btn-warning font-weight-bolder w-100"
+                  data-toggle="modal"
+                  data-target="#modal-edit-user-biodata-<%= userbiodata[i].user_game_biodata_id %>"
+                  data-whatever="@sanengineer"
+                >
+                  Update
+                </button>
+                <div
+                  class="modal fade"
+                  id="modal-edit-user-biodata-<%= userbiodata[i].user_game_biodata_id %>"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">User Game Details</h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form
+                          action="/admin/user-game-biodata/<%= userbiodata[i].user_game_biodata_id %>?_method=PUT"
+                          method="POST"
+                        >
+                          <div class="form-group">
+                            <label for="forUserGameId">User Id</label>
+                            <input
+                              id="formScore"
+                              type="text"
+                              name="user_id"
+                              class="form-control col"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="forFullname">Fullname</label>
+                            <input
+                              id="formFullname"
+                              type="text"
+                              name="fullname"
+                              class="form-control col"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="forSex">Sex</label>
+                            <input
+                              id="formSex"
+                              type="text"
+                              name="sex"
+                              class="form-control col"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="forJobs">Jobs</label>
+                            <input
+                              id="forJobs"
+                              type="text"
+                              name="jobs"
+                              class="form-control col"
+                            />
+                          </div>
+                          <button
+                            type="button"
+                            class="btn btn-danger font-weight-bolder"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button
+                            class="btn btn-warning font-weight-bolder"
+                            type="hidden"
+                            name="_method"
+                            value="PUT"
+                          >
+                            Update
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <form
                   action="/admin/user-game-biodata/<%= userbiodata[i].user_game_biodata_id %>?_method=DELETE"
                   method="POST"
                 >
-                  <a
-                    href="#"
-                    type="button"
-                    class="btn btn-warning"
-                    data-toggle="modal"
-                    data-target="#updateUserBiodataModal"
-                    data-whatever="@sanengineer"
-                  >
-                    Update
-                  </a>
                   <button
-                    class="btn btn-danger"
+                    class="btn btn-danger font-weight-bolder mt-2 w-100"
                     type="hidden"
                     name="_method"
                     value="DELETE"
@@ -64,86 +143,6 @@
             <% } %>
           </tbody>
         </table>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div
-  class="modal fade"
-  id="updateUserBiodataModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">User Game Details</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <% for( let i = 0; i < userbiodata.length; i++ ) { %>
-        <form
-          action="/admin/user-game-biodata/<%= userbiodata[i].user_game_biodata_id %>?_method=PUT"
-          method="POST"
-        >
-          <% } %>
-          <div class="form-group">
-            <label for="forUserGameId">User Id</label>
-            <input
-              id="formScore"
-              type="text"
-              name="user_id"
-              class="form-control col"
-            />
-          </div>
-          <div class="form-group">
-            <label for="forFullname">Fullname</label>
-            <input
-              id="formFullname"
-              type="text"
-              name="fullname"
-              class="form-control col"
-            />
-          </div>
-          <div class="form-group">
-            <label for="forSex">Sex</label>
-            <input
-              id="formSex"
-              type="text"
-              name="sex"
-              class="form-control col"
-            />
-          </div>
-          <div class="form-group">
-            <label for="forJobs">Jobs</label>
-            <input
-              id="forJobs"
-              type="text"
-              name="jobs"
-              class="form-control col"
-            />
-          </div>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-            Close
-          </button>
-          <button
-            class="btn btn-warning"
-            type="hidden"
-            name="_method"
-            value="PUT"
-          >
-            Update
-          </button>
-        </form>
       </div>
     </div>
   </div>
