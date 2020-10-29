@@ -1,63 +1,80 @@
 const { userGame } = require("../Models");
 const db = require("../Models");
+const jwt = require("jsonwebtoken");
+const passport = require("passport");
+
+require("../Config/passport")(passport);
+
 const UserGameBiodata = db.userGameBiodata;
 const UserGame = db.userGame;
 const UserGameHistory = db.userGameHistory;
 
 module.exports = {
-  // render view dashboard
-  viewDashboard: async (req, res) => {
-    try {
-      const usergame = await UserGame.findAll();
-      const userbiodata = await UserGameBiodata.findAll();
-      const userhistory = await UserGameHistory.findAll();
-      res.render("admin/dashboard", {
-        usergame,
-        userbiodata,
-        userhistory,
-      });
-    } catch (error) {
-      res.redirect("/admin/dashboard");
-    }
-  },
-
-  // render view sign in
-  viewSignin: (req, res) => {
-    res.render("index");
-  },
-
-  // render user list on dashboard
-  renderAllUserGame: (req, res) => {
-    UserGame.findAll()
-      .then((usergame) => {
-        res.render("admin/dashboard", {
-          usergame,
-        });
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "something error to get all user",
-        });
-      });
-  },
-
+  // Sign Up User Game
+  //
   // create and save a new user game
-  createUserGame: (req, res) => {
+  signUpUserGame: (req, res) => {
     // create user
-    const user = {
+    const signUpUserGameReqBody = {
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     };
 
-    UserGame.create(user)
+    if (!signUpUserGameReqBody) {
+      res.status(400).send({ msg: "Please pass username, password, email." });
+    } else
+      UserGame.create(signUpUserGameReqBody)
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "found error while sign up user",
+          });
+        });
+  },
+  // Login User Game
+  //
+  loginUserGame: (req, res) => {
+    UserGame.findOne({
+      where: {
+        username: req.body.username,
+      },
+    })
       .then((data) => {
-        // res.send(data);
-        res.redirect("dashboard");
+        if (!data) {
+          return res.status(401).send({
+            message: "Authentication failed. User not found",
+          });
+        }
+        data.comparePassword(req.body.password, (err, isMatch) => {
+          if (isMatch && !err) {
+            var token = jwt.sign(
+              JSON.parse(JSON.stringify(user)),
+              "nodeauthsec",
+              {
+                expiresIn: 86400 * 30,
+              }
+            );
+            jwt.verify(token, "nodeauthsec", function (err, data) {
+              console.log(err, data);
+            });
+            res.json({
+              success: true,
+              token: "JWT" + token,
+            });
+          } else {
+            res.status(401).send({
+              success: false,
+              msg: "Authentication failed. Wrong password", // ini tu kok gak message tapi msg, knap ya?
+            });
+          }
+        });
       })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "found error while creating user",
+      .catch((error) => {
+        res.status(400).send({
+          message: error.message || "something error when login",
         });
       });
   },
@@ -84,55 +101,65 @@ module.exports = {
   },
 
   // get all user
-  getAllUserGame: (req, res) => {
-    UserGame.findAll() // findAll is function bawaan sequelize
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "something error to get all user",
-        });
-      });
-  },
+  // getAllUserGame: (req, res) => {
+  //   UserGame.findAll() // findAll is function bawaan sequelize
+  //     .then((data) => {
+  //       res.send(data);
+  //     })
+  //     .catch((err) => {
+  //       res.status(500).send({
+  //         message: err.message || "something error to get all user",
+  //       });
+  //     });
+  // },
 
   //update user by id
   updateUserGame: (req, res) => {
     const { id } = req.params;
 
-    UserGame.update(req.body, {
-      where: { user_id: id },
-    })
-      .then((num) => {
-        if (num == 1) {
-          // res.send({
-          //   message: `user with id=${id}was updated successfully`,
-          // });
-          res.redirect("/admin/dashboard");
-        } else {
-          res.send({
-            message: `can't update user with id=${id} maybe req.body is mty`,
-          });
-        }
+    var token = getToken(req.headers)
+    
+    if (token) {
+      UserGame.update(req.body, {
+        where: { user_id: id },
       })
-      .catch((err) => {
-        res.status(500).send({
-          message: `error updating user with id=${id}`,
+        .then((num) => {
+          if (num == 1) {
+            res.send({
+              message: `user with id=${id}was updated successfully`,
+            });
+          } else {
+            res.send({
+              message: `can't update user with id=${id} maybe req.body is mty`,
+            });
+          }
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: `error updating user with id=${id}`,
+          });
         });
-      });
+    } else {
+      return res.status(403).send({
+        success:false, message: "Access Denied"
+      })
+    }
+   
   },
 
   //delete user by id
   deleteOneUserGame: (req, res) => {
     const { id } = req.params;
 
-    UserGame.destroy({ where: { user_id: id } })
+    var token = getToken(req.headers)
+
+    if (token){
+      UserGame.destroy({ where: { user_id: id } })
       .then((num) => {
         if (num == 1) {
-          // res.send({
-          //   message: `user by id=${id} was deleted successfully`,
-          // });
-          res.redirect("/admin/dashboard");
+          res.send({
+            message: `user by id=${id} was deleted successfully`,
+          });
         } else {
           res.send({
             message: `can't delete user with id=${id}`,
@@ -141,28 +168,17 @@ module.exports = {
       })
       .catch((err) => {
         res.status(500).send({
-          message: "(respon500) can't delete user with id=" + id,
+          message: "can't delete user with id=" + id,
         });
       });
+    } else {
+      return res.status(403).send({
+        success:false, message: "Access Denied"
+      })
+    }
+    
   },
 
-  //delete all user
-  deleteAllUserGame: (req, res) => {
-    UserGame.destroy({
-      where: {},
-      truncate: false, // apa itu truncate??
-    })
-      .then((nums) => {
-        res.send({
-          message: `${nums} Users was delete successfully`,
-        });
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "Delete all failed",
-        });
-      });
-  },
 
   // create and save a new user game history
   createUserGameBiodata: (req, res) => {
@@ -174,10 +190,11 @@ module.exports = {
       user_id: req.body.user_id,
     };
 
-    UserGameBiodata.create(usergamebiodata)
+    var token = getToken(req.headers)
+    if (token) {
+      UserGameBiodata.create(usergamebiodata)
       .then((data) => {
-        // res.send(data);
-        res.redirect("dashboard");
+        res.send(data);
       })
       .catch((err) => {
         res.status(500).send({
@@ -185,13 +202,22 @@ module.exports = {
             err.message || "found error while creating user game biodata",
         });
       });
+    } else {
+      return res.status(403).send({
+        success:false, message: "Access Denied"
+      })
+    }
+   
   },
 
-  // get one user by id
+  // get one user game biodata by id
   getOneUserGameBiodata: (req, res) => {
     const id = req.params.id;
 
-    UserGameBiodata.findByPk(id)
+    var token = getToken(req.headers)
+
+    if(token) {
+      UserGameBiodata.findByPk(id)
       .then((data) => {
         if (data == data) {
           res.status(200).send(data);
@@ -206,92 +232,51 @@ module.exports = {
           message: err.message || "no user game biodata with" + id,
         });
       });
-  },
-
-  // get all user
-  getAllUserGameBiodata: (req, res) => {
-    UserGameBiodata.findAll() // findAll is function bawaan sequelize
-      .then((data) => {
-        res.send(data);
+    } else {
+      return res.status(403).send({
+        success: false, message: "Access Denied"
       })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "something error to get all user game biodata",
-        });
-      });
+    }
+    
   },
 
-  //update user game history by id
+  //update user game biodata by id
   updateUserGameBiodata: (req, res) => {
     const { id } = req.params;
 
-    UserGameBiodata.update(req.body, {
-      where: { user_game_biodata_id: id },
-    })
-      .then((num) => {
-        if (num == 1) {
-          // res.send({
-          //   message: `user game biodata with id=${id}was updated successfully`,
-          // });
-          res.redirect("/admin/dashboard");
-        } else {
-          res.send({
-            message: `can't update user game biodata with id=${id} maybe req.body is mty`,
+    var token = getToken(req.headers)
+
+    if(token){
+      UserGameBiodata.update(req.body, {
+        where: { user_game_biodata_id: id },
+      })
+        .then((num) => {
+          if (num == 1) {
+            res.send({
+              message: `user game biodata with id=${id}was updated successfully`,
+            });
+          } else {
+            res.send({
+              message: `can't update user game biodata with id=${id} maybe req.body is mty`,
+            });
+          }
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: `error updating user game biodata with id=${id}`,
           });
-        }
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: `error updating user game biodata with id=${id}`,
         });
-      });
+    } else {
+      return res.status(403).send({
+        success:false, message:"Access Denied"
+      })
+    }
+    
   },
 
-  //delete user game history by id
-  deleteOneUserGameBiodata: (req, res) => {
-    const { id } = req.params;
+  
 
-    UserGameBiodata.destroy({ where: { user_game_biodata_id: id } })
-      .then((num) => {
-        if (num == 1) {
-          // res.send({
-          //   message: `user game biodata by id=${id} was deleted successfully`,
-          // });
-          res.redirect("/admin/dashboard");
-        } else {
-          res.send({
-            message: `can't delete user game biodata with id=${id}`,
-          });
-        }
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message ||
-            "respon(500) can't delete user game biodata with id=" + id,
-        });
-      });
-  },
-
-  //delete all user game history
-  deleteAllUserGameBiodata: (req, res) => {
-    UserGameBiodata.destroy({
-      where: {},
-      truncate: false, // apa itu truncate??
-    })
-      .then((nums) => {
-        res.send({
-          message: `${nums} user game biodata was delete successfully`,
-        });
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "Delete all failed",
-        });
-      });
-  },
-
+  
   // create and save a new user game history
   createUserGameHistory: (req, res) => {
     // create user
@@ -301,10 +286,12 @@ module.exports = {
       user_id: req.body.user_id,
     };
 
-    UserGameHistory.create(usergamehistory)
+    var token = getToken(req.headers)
+
+    if(token) {
+      UserGameHistory.create(usergamehistory)
       .then((data) => {
-        // res.send(data);
-        res.redirect("dashboard");
+        res.send(data);
       })
       .catch((err) => {
         res.status(500).send({
@@ -312,13 +299,23 @@ module.exports = {
             err.message || "found error while creating user game history",
         });
       });
+    } else {
+      return res.status(403).send({
+        success: false, message:"Access Denied"
+      })
+    }
+
+    
   },
 
-  // get one user by id
+  // get one user game history by id
   getOneUserGameHistory: (req, res) => {
     const id = req.params.id;
 
-    UserGameHistory.findByPk(id)
+    var token = getToken(req.headers)
+
+    if(token){
+      UserGameHistory.findByPk(id)
       .then((data) => {
         if (data == data) {
           res.status(200).send(data);
@@ -333,21 +330,28 @@ module.exports = {
           message: err.message || "no user game history with" + id,
         });
       });
+    } else {
+      return res.status(403).send({
+        success:false, message: "Access Denied"
+      })
+    }
+
+    
   },
 
   // get all user
-  getAllUserGameHIstory: (req, res) => {
-    UserGameHistory.findAll() // findAll is function bawaan sequelize
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "something error to get all user game history",
-        });
-      });
-  },
+  // getAllUserGameHIstory: (req, res) => {
+  //   UserGameHistory.findAll() 
+  //     .then((data) => {
+  //       res.send(data);
+  //     })
+  //     .catch((err) => {
+  //       res.status(500).send({
+  //         message:
+  //           err.message || "something error to get all user game history",
+  //       });
+  //     });
+  // },
 
   //update user game history by id
   updateUserGameHistory: (req, res) => {
@@ -358,10 +362,9 @@ module.exports = {
     })
       .then((num) => {
         if (num == 1) {
-          // res.send({
-          //   message: `user with id=${id}was updated successfully`,
-          // });
-          res.redirect("/admin/dashboard");
+          res.send({
+            message: `user with id=${id}was updated successfully`,
+          });
         } else {
           res.send({
             message: `can't update user with id=${id} maybe req.body is mty`,
@@ -417,4 +420,17 @@ module.exports = {
         });
       });
   },
+
+  getToken = function(headers) {
+    if (headers && headers.authorization){
+      var parted = headers.authorization.split(" ");
+      if (parted.length === 2) {
+        return parted[1]
+      } else {
+        return null
+      }
+    } else {
+      return null
+    }
+  }
 };
