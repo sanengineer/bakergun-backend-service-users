@@ -1,4 +1,3 @@
-const { userGame } = require("../Models");
 const db = require("../Models");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
@@ -8,6 +7,19 @@ require("../Config/passport")(passport);
 const UserGameBiodata = db.userGameBiodata;
 const UserGame = db.userGame;
 const UserGameHistory = db.userGameHistory;
+
+function getToken (headers) {
+  if (headers && headers.authorization){
+    var parted = headers.authorization.split(" ");
+    if (parted.length === 2) {
+      return parted[1]
+    } else {
+      return null
+    }
+  } else {
+    return null
+  }
+}
 
 module.exports = {
   // Sign Up User Game
@@ -42,13 +54,13 @@ module.exports = {
         username: req.body.username,
       },
     })
-      .then((data) => {
-        if (!data) {
+      .then((user) => {
+        if (!user) {
           return res.status(401).send({
-            message: "Authentication failed. User not found",
+            message: "Authentication failed. username not found",
           });
         }
-        data.comparePassword(req.body.password, (err, isMatch) => {
+        user.comparePassword(req.body.password, (err, isMatch) => {
           if (isMatch && !err) {
             var token = jwt.sign(
               JSON.parse(JSON.stringify(user)),
@@ -57,12 +69,12 @@ module.exports = {
                 expiresIn: 86400 * 30,
               }
             );
-            jwt.verify(token, "nodeauthsec", function (err, data) {
-              console.log(err, data);
+            jwt.verify(token, "nodeauthsec", function (err, user) {
+              console.log(err, user);
             });
             res.json({
               success: true,
-              token: "JWT" + token,
+              token: "JWT " + token,
             });
           } else {
             res.status(401).send({
@@ -387,18 +399,4 @@ module.exports = {
     }
     
   },
-
-
-  getToken = function(headers) {
-    if (headers && headers.authorization){
-      var parted = headers.authorization.split(" ");
-      if (parted.length === 2) {
-        return parted[1]
-      } else {
-        return null
-      }
-    } else {
-      return null
-    }
-  }
 };

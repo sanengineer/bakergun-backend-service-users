@@ -13,19 +13,19 @@ const apiRout = require("./Routes/api");
 app.use(express.static(path.join(__dirname, "./Public"))); // Masih Belum Ngerti Maksud Harus ngasih __dirname
 
 // Configure CORS
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 // Setup Express
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/api", apiRout);
+app.use("/api/v1", apiRout);
 
 db.sequelize
   // .sync().then(() => {
@@ -50,7 +50,7 @@ app.listen(port, () => {
     `\x1b[93mBackend Server now running 🚀 on  http://localhost:${port}\x1b[39m`
   );
   console.log(
-    `\x1b[93mAdmin Dashboard now running 🚀 on  http://localhost:${port}/admin\x1b[39m`
+    `\x1b[93mEndpoint RestAPI now running 🚀 on  http://localhost:${port}/api/v1\x1b[39m`
   );
   console.log(
     "\x1b[93mBuild by\x1b[39m \x1b[91mhttps://github.com/sanengineer\x1b[91m \x1b[93mgive ⭐️ start, 🍴 fork and 🧲 clone others repository\x1b[39m."

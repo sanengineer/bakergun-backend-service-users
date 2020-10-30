@@ -29,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
     if (user.changed("password")) {
       user.password = bcrypt.hashSync(
         user.password,
-        bcrypt.genSaltSync(31),
+        bcrypt.genSaltSync(8),
         null
       );
     }
