@@ -357,69 +357,37 @@ module.exports = {
   updateUserGameHistory: (req, res) => {
     const { id } = req.params;
 
-    UserGameHistory.update(req.body, {
-      where: { user_game_history_id: id },
-    })
-      .then((num) => {
-        if (num == 1) {
-          res.send({
-            message: `user with id=${id}was updated successfully`,
-          });
-        } else {
-          res.send({
-            message: `can't update user with id=${id} maybe req.body is mty`,
-          });
-        }
+    var token = getToken(req.headers)
+
+    if(token) {
+      UserGameHistory.update(req.body, {
+        where: { user_game_history_id: id },
       })
-      .catch((err) => {
-        res.status(500).send({
-          message: `error updating user with id=${id}`,
+        .then((num) => {
+          if (num == 1) {
+            res.send({
+              message: `user with id=${id}was updated successfully`,
+            });
+          } else {
+            res.send({
+              message: `can't update user with id=${id} maybe req.body is mty`,
+            });
+          }
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: `error updating user with id=${id}`,
+          });
         });
-      });
+    } else {
+      return res 
+      .status(403).send({
+        success:false, message: "Access Denied"  // maksudnya ada success false apa? 
+      })
+    }
+    
   },
 
-  //delete user game history by id
-  deleteOneUserGameHistory: (req, res) => {
-    const { id } = req.params;
-
-    UserGameHistory.destroy({ where: { user_game_history_id: id } })
-      .then((num) => {
-        if (num == 1) {
-          // res.send({
-          //   message: `user game history by id=${id} was deleted successfully`,
-          // });
-          res.redirect("/admin/dashboard");
-        } else {
-          res.send({
-            message: `can't delete user game history with id=${id}`,
-          });
-        }
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "can't delete user game history with id=" + id,
-        });
-      });
-  },
-
-  //delete all user game history
-  deleteAllUserGameHistory: (req, res) => {
-    UserGameHistory.destroy({
-      where: {},
-      truncate: false, // apa itu truncate??
-    })
-      .then((nums) => {
-        res.send({
-          message: `${nums} user game history was delete successfully`,
-        });
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "Delete all failed",
-        });
-      });
-  },
 
   getToken = function(headers) {
     if (headers && headers.authorization){

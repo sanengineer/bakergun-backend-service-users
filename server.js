@@ -5,16 +5,8 @@ const path = require("path");
 const port = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 
-const indexRout = require("./Routes/index");
-const methodOverride = require("method-override");
-
-// admin router
-const adminRout = require("./Routes/admin");
-
-// // Setup Views Enginer EJS
-// app.set("views", "./Views");
-app.set("views", path.join(__dirname, "Views")); // Apa perbedaan line 11 dengan line 10 ?
-app.set("view engine", "ejs");
+// api router
+const apiRout = require("./Routes/api");
 
 // Static Files
 // app.use(express.static("./Public"));
@@ -33,9 +25,7 @@ app.use(express.static(path.join(__dirname, "./Public"))); // Masih Belum Ngerti
 // Setup Express
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
-app.use("/", indexRout);
-app.use("/admin", adminRout);
+app.use("/api", apiRout);
 
 db.sequelize
   // .sync().then(() => {
