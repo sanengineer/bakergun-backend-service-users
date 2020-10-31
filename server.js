@@ -27,21 +27,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/v1", apiRout);
 
-db.sequelize
-  // .sync().then(() => {
-  //   console.log("");
-  //   console.log(`\x1b[91mSuccesfully Sync Database\x1b[91m`);
-  //   console.log("\x1b[93m\x1b[39m");
-  //   console.log("");
-  // });
-  .sync({
-    force: true,
-  })
-  .then(() => {
-    console.log("");
-    console.log(`\x1b[91mSuccesfully 🔥 Drop And ♻️  Resync Database\x1b[91m`);
-    console.log("");
-  });
+db.sequelize.sync().then(() => {
+  console.log("");
+  console.log(`\x1b[91mSuccesfully Sync Database\x1b[91m`);
+  console.log("\x1b[93m\x1b[39m");
+  console.log("");
+});
+// .sync({
+//   force: true,
+// })
+// .then(() => {
+//   console.log("");
+//   console.log(`\x1b[91mSuccesfully 🔥 Drop And ♻️  Resync Database\x1b[91m`);
+//   console.log("");
+// });
 
 // Listen Port
 app.listen(port, () => {

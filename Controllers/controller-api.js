@@ -1,25 +1,32 @@
 const db = require("../Models");
 const jwt = require("jsonwebtoken");
-const passport = require("passport");
-
-require("../Config/passport")(passport);
+// const passport = require("passport");
+// require("../Config/passport")(passport);
+// require("../Config/passport_binar")(passport);
 
 const UserGameBiodata = db.userGameBiodata;
 const UserGame = db.userGame;
 const UserGameHistory = db.userGameHistory;
 
-function getToken (headers) {
-  if (headers && headers.authorization){
+function getToken(headers) {
+  if (headers && headers.authorization) {
     var parted = headers.authorization.split(" ");
     if (parted.length === 2) {
-      return parted[1]
+      return parted[1];
     } else {
-      return null
+      return null;
     }
   } else {
-    return null
+    return null;
   }
 }
+
+// function format(user) {
+//   const {id,username} = user
+//   return {
+//     id
+//   }
+// }
 
 module.exports = {
   // Sign Up User Game
@@ -33,16 +40,22 @@ module.exports = {
       password: req.body.password,
     };
 
-    if (!signUpUserGameReqBody) {
-      res.status(400).send({ msg: "Please pass username, password, email." });
+    if (
+      !signUpUserGameReqBody.username ||
+      !signUpUserGameReqBody.email ||
+      !signUpUserGameReqBody.password
+    ) {
+      res
+        .status(400)
+        .send({ message: "Please pass username, password, email." });
     } else
       UserGame.create(signUpUserGameReqBody)
         .then((data) => {
           res.send(data);
         })
-        .catch((err) => {
+        .catch((error) => {
           res.status(500).send({
-            message: err.message || "found error while sign up user",
+            message: error.message || "found error while sign up user",
           });
         });
   },
@@ -54,23 +67,29 @@ module.exports = {
         username: req.body.username,
       },
     })
-      .then((user) => {
-        if (!user) {
+      .then((data) => {
+        if (!data) {
           return res.status(401).send({
             message: "Authentication failed. username not found",
           });
         }
-        user.comparePassword(req.body.password, (err, isMatch) => {
+        data.comparePassword(req.body.password, (err, isMatch) => {
           if (isMatch && !err) {
             var token = jwt.sign(
-              JSON.parse(JSON.stringify(user)),
+              // { username: req.body.username },
+              JSON.parse(JSON.stringify(data)),
               "nodeauthsec",
               {
                 expiresIn: 86400 * 30,
               }
             );
-            jwt.verify(token, "nodeauthsec", function (err, user) {
-              console.log(err, user);
+
+            // debugging token
+            console.log(
+              `\n\x1b[93mThis is token 👇 :\x1b[93m\n \x1b[91m${token}\x1b[91m\n\n`
+            );
+            jwt.verify(token, "nodeauthsec", function (err, data) {
+              console.log(err, data);
             });
             res.json({
               success: true,
@@ -79,7 +98,7 @@ module.exports = {
           } else {
             res.status(401).send({
               success: false,
-              msg: "Authentication failed. Wrong password", // ini tu kok gak message tapi msg, knap ya?
+              message: "Authentication failed. Wrong password", // ini tu kok gak message tapi msg, knap ya?
             });
           }
         });
@@ -129,8 +148,8 @@ module.exports = {
   updateUserGame: (req, res) => {
     const { id } = req.params;
 
-    var token = getToken(req.headers)
-    
+    var token = getToken(req.headers);
+
     if (token) {
       UserGame.update(req.body, {
         where: { user_id: id },
@@ -153,44 +172,43 @@ module.exports = {
         });
     } else {
       return res.status(403).send({
-        success:false, message: "Access Denied"
-      })
+        success: false,
+        message: "Access Denied",
+      });
     }
-   
   },
 
   //delete user by id
   deleteOneUserGame: (req, res) => {
     const { id } = req.params;
 
-    var token = getToken(req.headers)
+    var token = getToken(req.headers);
 
-    if (token){
+    if (token) {
       UserGame.destroy({ where: { user_id: id } })
-      .then((num) => {
-        if (num == 1) {
-          res.send({
-            message: `user by id=${id} was deleted successfully`,
+        .then((num) => {
+          if (num == 1) {
+            res.send({
+              message: `user by id=${id} was deleted successfully`,
+            });
+          } else {
+            res.send({
+              message: `can't delete user with id=${id}`,
+            });
+          }
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: "can't delete user with id=" + id,
           });
-        } else {
-          res.send({
-            message: `can't delete user with id=${id}`,
-          });
-        }
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: "can't delete user with id=" + id,
         });
-      });
     } else {
       return res.status(403).send({
-        success:false, message: "Access Denied"
-      })
+        success: false,
+        message: "Access Denied",
+      });
     }
-    
   },
-
 
   // create and save a new user game history
   createUserGameBiodata: (req, res) => {
@@ -202,63 +220,63 @@ module.exports = {
       user_id: req.body.user_id,
     };
 
-    var token = getToken(req.headers)
+    var token = getToken(req.headers);
     if (token) {
       UserGameBiodata.create(usergamebiodata)
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "found error while creating user game biodata",
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message:
+              err.message || "found error while creating user game biodata",
+          });
         });
-      });
     } else {
       return res.status(403).send({
-        success:false, message: "Access Denied"
-      })
+        success: false,
+        message: "Access Denied",
+      });
     }
-   
   },
 
   // get one user game biodata by id
   getOneUserGameBiodata: (req, res) => {
     const id = req.params.id;
 
-    var token = getToken(req.headers)
+    var token = getToken(req.headers);
 
-    if(token) {
+    if (token) {
       UserGameBiodata.findByPk(id)
-      .then((data) => {
-        if (data == data) {
-          res.status(200).send(data);
-        } else {
-          res.status(200).send({
-            message: `id = ${id} maybe was deleted`,
+        .then((data) => {
+          if (data == data) {
+            res.status(200).send(data);
+          } else {
+            res.status(200).send({
+              message: `id = ${id} maybe was deleted`,
+            });
+          }
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "no user game biodata with" + id,
           });
-        }
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "no user game biodata with" + id,
         });
-      });
     } else {
       return res.status(403).send({
-        success: false, message: "Access Denied"
-      })
+        success: false,
+        message: "Access Denied",
+      });
     }
-    
   },
 
   //update user game biodata by id
   updateUserGameBiodata: (req, res) => {
     const { id } = req.params;
 
-    var token = getToken(req.headers)
+    var token = getToken(req.headers);
 
-    if(token){
+    if (token) {
       UserGameBiodata.update(req.body, {
         where: { user_game_biodata_id: id },
       })
@@ -280,15 +298,12 @@ module.exports = {
         });
     } else {
       return res.status(403).send({
-        success:false, message:"Access Denied"
-      })
+        success: false,
+        message: "Access Denied",
+      });
     }
-    
   },
 
-  
-
-  
   // create and save a new user game history
   createUserGameHistory: (req, res) => {
     // create user
@@ -298,62 +313,60 @@ module.exports = {
       user_id: req.body.user_id,
     };
 
-    var token = getToken(req.headers)
+    var token = getToken(req.headers);
 
-    if(token) {
+    if (token) {
       UserGameHistory.create(usergamehistory)
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "found error while creating user game history",
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message:
+              err.message || "found error while creating user game history",
+          });
         });
-      });
     } else {
       return res.status(403).send({
-        success: false, message:"Access Denied"
-      })
+        success: false,
+        message: "Access Denied",
+      });
     }
-
-    
   },
 
   // get one user game history by id
   getOneUserGameHistory: (req, res) => {
     const id = req.params.id;
 
-    var token = getToken(req.headers)
+    var token = getToken(req.headers);
 
-    if(token){
+    if (token) {
       UserGameHistory.findByPk(id)
-      .then((data) => {
-        if (data == data) {
-          res.status(200).send(data);
-        } else {
-          res.status(200).send({
-            message: `id = ${id} maybe was deleted`,
+        .then((data) => {
+          if (data == data) {
+            res.status(200).send(data);
+          } else {
+            res.status(200).send({
+              message: `id = ${id} maybe was deleted`,
+            });
+          }
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "no user game history with" + id,
           });
-        }
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "no user game history with" + id,
         });
-      });
     } else {
       return res.status(403).send({
-        success:false, message: "Access Denied"
-      })
+        success: false,
+        message: "Access Denied",
+      });
     }
-
-    
   },
 
   // get all user
   // getAllUserGameHIstory: (req, res) => {
-  //   UserGameHistory.findAll() 
+  //   UserGameHistory.findAll()
   //     .then((data) => {
   //       res.send(data);
   //     })
@@ -369,9 +382,9 @@ module.exports = {
   updateUserGameHistory: (req, res) => {
     const { id } = req.params;
 
-    var token = getToken(req.headers)
+    var token = getToken(req.headers);
 
-    if(token) {
+    if (token) {
       UserGameHistory.update(req.body, {
         where: { user_game_history_id: id },
       })
@@ -392,11 +405,10 @@ module.exports = {
           });
         });
     } else {
-      return res 
-      .status(403).send({
-        success:false, message: "Access Denied"  // maksudnya ada success false apa? 
-      })
+      return res.status(403).send({
+        success: false,
+        message: "Access Denied", // maksudnya ada success false apa?
+      });
     }
-    
   },
 };

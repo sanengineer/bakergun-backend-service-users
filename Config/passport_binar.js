@@ -2,19 +2,18 @@ const JwtStrategy = require("passport-jwt").Strategy,
   ExtractJwt = require("passport-jwt").ExtractJwt;
 
 // load user model
-const UserGame = require("../Models").userGame;
-
-console.log(UserGame);
+const User = require("../Models");
 
 module.exports = function (passport) {
   const options = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("JWT"),
-    secretOrKey: "nodeauthsec",
+    jwtFromRequest: ExtractJwt.fromHeader("authorization"),
+    secretOrKey: "sanodeauthsecret",
   };
+
   passport.use(
     "jwt",
-    new JwtStrategy(options, function (jwt_payload, done) {
-      UserGame.findByPk(jwt_payload.id)
+    new JwtStrategy(options, async (payload, done) => {
+      User.findByPk(payload.id)
         .then((user) => {
           return done(null, user);
         })

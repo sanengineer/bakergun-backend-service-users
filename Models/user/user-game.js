@@ -3,9 +3,6 @@ const bcrypt = require("bcryptjs");
 module.exports = (sequelize, Sequelize) => {
   const usrGame = sequelize.define("user_game", {
     user_id: {
-      // type: Sequelize.UUID,
-      // defaultValue: Sequelize.UUIDV4,
-      // defaultValue: Sequelize.INTEGER,
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -25,6 +22,18 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
+  // generateToken = () => {
+  //   const payload = {
+  //     id: this.id,
+  //     username: this.username,
+  //   };
+
+  //   const secret = "sanodesecret";
+
+  //   const token = jwt.sign(payload, secret);
+  //   return token;
+  // };
+
   usrGame.beforeSave((user, options) => {
     if (user.changed("password")) {
       user.password = bcrypt.hashSync(
@@ -43,5 +52,6 @@ module.exports = (sequelize, Sequelize) => {
       callbck(null, isMatch);
     });
   };
+
   return usrGame;
 };

@@ -1,3 +1,5 @@
+const passport = require("../Config/passport_binar");
+
 function mustBeInteger(req, res, next) {
   const id = req.params.id;
 
