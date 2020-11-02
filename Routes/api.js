@@ -24,7 +24,6 @@ router.post("/user-game-history", restric, controllerApi.createUserGameHistory);
 router.get(
   "/user-game-history/:id",
   middleware.mustBeInteger,
-  restric,
   controllerApi.getOneUserGameHistory
 );
 router.put("/user-game-history/:id", controllerApi.updateUserGameHistory);

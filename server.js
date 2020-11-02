@@ -3,7 +3,9 @@ const db = require("./Models");
 const app = express();
 const path = require("path");
 const port = process.env.PORT || 8080;
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
 
 // api router
 const apiRout = require("./Routes/api");
@@ -23,8 +25,12 @@ app.use(function (req, res, next) {
 });
 
 // Setup Express
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use("/api/v1", apiRout);
 
 db.sequelize.sync().then(() => {

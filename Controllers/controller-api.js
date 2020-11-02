@@ -21,13 +21,6 @@ function getToken(headers) {
   }
 }
 
-// function format(user) {
-//   const {id,username} = user
-//   return {
-//     id
-//   }
-// }
-
 module.exports = {
   // Sign Up User Game
   //
@@ -51,7 +44,7 @@ module.exports = {
     } else
       UserGame.create(signUpUserGameReqBody)
         .then((data) => {
-          res.send(data);
+          res.status(201).send(data);
         })
         .catch((error) => {
           res.status(500).send({
@@ -67,17 +60,17 @@ module.exports = {
         username: req.body.username,
       },
     })
-      .then((data) => {
-        if (!data) {
+      .then((user) => {
+        if (!user) {
           return res.status(401).send({
             message: "Authentication failed. username not found",
           });
         }
-        data.comparePassword(req.body.password, (err, isMatch) => {
+        user.comparePassword(req.body.password, (err, isMatch) => {
           if (isMatch && !err) {
             var token = jwt.sign(
-              // { username: req.body.username },
-              JSON.parse(JSON.stringify(data)),
+              { username: req.body.username },
+              // JSON.parse(JSON.stringify(user)),
               "nodeauthsec",
               {
                 expiresIn: 86400 * 30,
@@ -114,21 +107,38 @@ module.exports = {
   getOneUserGame: (req, res) => {
     const id = req.params.id;
 
-    UserGame.findByPk(id)
-      .then((data) => {
-        if (data == data) {
-          res.status(200).send(data);
-        } else {
-          res.status(200).send({
-            message: `id = ${id} maybe was deleted`,
+    var token = getToken(req.headers);
+
+    // debugging
+    console.log(
+      `\nThis is token On Crete User Game History Controller: \n${token}\n`
+    );
+    console.log(`\nThis is Request Headers:`);
+    console.log(req.headers);
+    console.log(`\n`);
+
+    if (token) {
+      UserGame.findByPk(id)
+        .then((data) => {
+          if (data == data) {
+            res.status(200).send(data);
+          } else {
+            res.status(200).send({
+              message: `id = ${id} maybe was deleted`,
+            });
+          }
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "no user with" + id,
           });
-        }
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "no user with" + id,
         });
+    } else {
+      return res.status(403).send({
+        success: false,
+        message: "Access Denied",
       });
+    }
   },
 
   // get all user
@@ -149,6 +159,12 @@ module.exports = {
     const { id } = req.params;
 
     var token = getToken(req.headers);
+
+    // debugging
+    console.log(`\nThis is token On Update User Game Controller: \n${token}\n`);
+    console.log(`\nThis is Request Headers:`);
+    console.log(req.headers);
+    console.log(`\n`);
 
     if (token) {
       UserGame.update(req.body, {
@@ -184,6 +200,12 @@ module.exports = {
 
     var token = getToken(req.headers);
 
+    // debugging
+    console.log(`\nThis is token On Delete User Game Controller: \n${token}\n`);
+    console.log(`\nThis is Request Headers:`);
+    console.log(req.headers);
+    console.log(`\n`);
+
     if (token) {
       UserGame.destroy({ where: { user_id: id } })
         .then((num) => {
@@ -210,7 +232,7 @@ module.exports = {
     }
   },
 
-  // create and save a new user game history
+  // create and save a new user game bioadata
   createUserGameBiodata: (req, res) => {
     // create user
     const usergamebiodata = {
@@ -221,6 +243,15 @@ module.exports = {
     };
 
     var token = getToken(req.headers);
+
+    // debugging
+    console.log(
+      `\nThis is token On Create User Game Biodata Controller: \n${token}\n`
+    );
+    console.log(`\nThis is Request Headers:`);
+    console.log(req.headers);
+    console.log(`\n`);
+
     if (token) {
       UserGameBiodata.create(usergamebiodata)
         .then((data) => {
@@ -245,6 +276,14 @@ module.exports = {
     const id = req.params.id;
 
     var token = getToken(req.headers);
+
+    // debugging
+    console.log(
+      `\nThis is token On Get User Game Biodata By Id Controller: \n${token}\n`
+    );
+    console.log(`\nThis is Request Headers:`);
+    console.log(req.headers);
+    console.log(`\n`);
 
     if (token) {
       UserGameBiodata.findByPk(id)
@@ -275,6 +314,14 @@ module.exports = {
     const { id } = req.params;
 
     var token = getToken(req.headers);
+
+    // debugging
+    console.log(
+      `\nThis is token On Update User Game Biodata by Id Controller: \n${token}\n`
+    );
+    console.log(`\nThis is Request Headers:`);
+    console.log(req.headers);
+    console.log(`\n`);
 
     if (token) {
       UserGameBiodata.update(req.body, {
@@ -315,10 +362,18 @@ module.exports = {
 
     var token = getToken(req.headers);
 
+    // debugging
+    console.log(
+      `\nThis is token On Crete User Game History Controller: \n${token}\n`
+    );
+    console.log(`\nThis is Request Headers:`);
+    console.log(req.headers);
+    console.log(`\n`);
+
     if (token) {
       UserGameHistory.create(usergamehistory)
         .then((data) => {
-          res.send(data);
+          res.status(201).send(data);
         })
         .catch((err) => {
           res.status(500).send({
@@ -339,6 +394,14 @@ module.exports = {
     const id = req.params.id;
 
     var token = getToken(req.headers);
+
+    // debugging
+    console.log(
+      `\nThis is token On Get User Game History By Id Controller: \n${token}\n`
+    );
+    console.log(`\nThis is Request Headers:`);
+    console.log(req.headers);
+    console.log(`\n`);
 
     if (token) {
       UserGameHistory.findByPk(id)
@@ -383,6 +446,14 @@ module.exports = {
     const { id } = req.params;
 
     var token = getToken(req.headers);
+
+    // debugging
+    console.log(
+      `\nThis is token On Update User Game History by Id Controller: \n${token}\n`
+    );
+    console.log(`\nThis is Request Headers:`);
+    console.log(req.headers);
+    console.log(`\n`);
 
     if (token) {
       UserGameHistory.update(req.body, {
