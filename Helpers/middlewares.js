@@ -1,4 +1,5 @@
-const passport = require("../Config/passport_binar");
+// const passport = require("passport");
+// require("../Config/passport")(passport);
 
 function mustBeInteger(req, res, next) {
   const id = req.params.id;
@@ -11,6 +12,11 @@ function mustBeInteger(req, res, next) {
   }
 }
 
+// function RestricAccess(passport) {
+//   passport.authenticate("jwt", { session: false });
+// }
+
 module.exports = {
   mustBeInteger,
+  // RestricAccess,
 };

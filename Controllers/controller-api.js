@@ -1,9 +1,5 @@
 const db = require("../Models");
 const jwt = require("jsonwebtoken");
-// const passport = require("passport");
-// require("../Config/passport")(passport);
-// require("../Config/passport_binar")(passport);
-
 const UserGameBiodata = db.userGameBiodata;
 const UserGame = db.userGame;
 const UserGameHistory = db.userGameHistory;
@@ -140,19 +136,6 @@ module.exports = {
       });
     }
   },
-
-  // get all user
-  // getAllUserGame: (req, res) => {
-  //   UserGame.findAll() // findAll is function bawaan sequelize
-  //     .then((data) => {
-  //       res.send(data);
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).send({
-  //         message: err.message || "something error to get all user",
-  //       });
-  //     });
-  // },
 
   //update user by id
   updateUserGame: (req, res) => {
@@ -426,20 +409,6 @@ module.exports = {
       });
     }
   },
-
-  // get all user
-  // getAllUserGameHIstory: (req, res) => {
-  //   UserGameHistory.findAll()
-  //     .then((data) => {
-  //       res.send(data);
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).send({
-  //         message:
-  //           err.message || "something error to get all user game history",
-  //       });
-  //     });
-  // },
 
   //update user game history by id
   updateUserGameHistory: (req, res) => {
