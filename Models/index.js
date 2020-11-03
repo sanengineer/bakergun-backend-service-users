@@ -11,6 +11,22 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   },
 });
 
+// const sequelize = new Sequelize(
+//   process.env.YOUR_LOCAL_DB_NAME,
+//   process.env.YOUR_LOCAL_DB_USERNAME,
+//   process.env.YOUR_LOCAL_DB_PASSWORD,
+//   {
+//     host: process.env.YOUR_LOCAL_DB_LOCALHOST,
+//     dialect: process.env.YOUR_LOCAL_DB_DIALECT,
+//     pool: {
+//       max: dbConfig.pool.max,
+//       min: dbConfig.pool.min,
+//       acquire: dbConfig.pool.acquire,
+//       idle: dbConfig.pool.idle,
+//     },
+//   }
+// );
+
 var db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
