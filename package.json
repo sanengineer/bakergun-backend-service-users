@@ -1,5 +1,5 @@
 {
-  "name": "backergun_backend",
+  "name": "bakergun-backend-service-users",
   "version": "1.0.0",
   "description": "Backend stack ini dibuat dengan [NodeJS](https://nodejs.org) dan [ExpressJS 🚀](https://expressjs.com)",
   "main": "index.js",
