@@ -7,7 +7,7 @@ const port = process.env.PORT || 8080;
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-require("dotenv").config();
+// require("dotenv").config();
 
 // api router
 const apiRout = require("./Routes/api");
