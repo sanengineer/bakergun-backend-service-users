@@ -1,5 +1,5 @@
 module.exports = {
-  HOST: "https://bakergun-backend-service-users.herokuapp.com",
+  HOST: "ec2-34-206-252-187.compute-1.amazonaws.com",
   // USER: process.env.USER,
   // PASSWORD: process.env.PASSWORD,
   // DB: process.env.DB,
