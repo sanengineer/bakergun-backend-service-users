@@ -28,4 +28,4 @@ yarn-error.log*
 /.env
 .env
 ./.env
-/Config/db-local-config.js
+./Config/db-local-config.js
