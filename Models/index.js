@@ -1,33 +1,16 @@
 const dbConfig = require("../Config/db-local-config.js"); // setup local databases
 const Sequelize = require("sequelize");
-// const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-//   host: dbConfig.HOST,
-//   dialect: dbConfig.dialect,
-//   pool: {
-//     max: dbConfig.pool.max,
-//     min: dbConfig.pool.min,
-//     acquire: dbConfig.pool.acquire,
-//     idle: dbConfig.pool.idle,
-//   },
-// });
 
-// console.log(dbConfig);
-
-const sequelize = new Sequelize(
-  process.env.DB,
-  process.env.USERNAME,
-  process.env.PASSWORD,
-  {
-    host: dbConfig.HOST,
-    dialect: dbConfig.DIALECT,
-    pool: {
-      max: dbConfig.pool.max,
-      min: dbConfig.pool.min,
-      acquire: dbConfig.pool.acquire,
-      idle: dbConfig.pool.idle,
-    },
-  }
-);
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+  host: dbConfig.HOST,
+  dialect: dbConfig.DIALECT,
+  pool: {
+    max: dbConfig.pool.max,
+    min: dbConfig.pool.min,
+    acquire: dbConfig.pool.acquire,
+    idle: dbConfig.pool.idle,
+  },
+});
 
 console.log(dbConfig);
 
