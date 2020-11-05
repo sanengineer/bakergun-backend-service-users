@@ -35,20 +35,26 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use("/api/v1", apiRout);
 
-db.sequelize.sync().then(() => {
-  console.log("");
-  console.log(`\x1b[91mSuccesfully Sync Database\x1b[91m`);
-  console.log("\x1b[93m\x1b[39m");
-  console.log("");
-});
-// .sync({
-//   force: true,
-// })
-// .then(() => {
+// Sync Database
+//
+// db.sequelize.sync().then(() => {
 //   console.log("");
-//   console.log(`\x1b[91mSuccesfully 🔥 Drop And ♻️  Resync Database\x1b[91m`);
+//   console.log(`\x1b[91mSuccesfully Sync Database\x1b[91m`);
+//   console.log("\x1b[93m\x1b[39m");
 //   console.log("");
 // });
+
+// Drop And ♻️  Resync Database
+//
+db.sequelize
+  .sync({
+    force: true,
+  })
+  .then(() => {
+    console.log("");
+    console.log(`\x1b[91mSuccesfully 🔥 Drop And ♻️  Resync Database\x1b[91m`);
+    console.log("");
+  });
 
 // Listen Port
 app.listen(port, () => {
