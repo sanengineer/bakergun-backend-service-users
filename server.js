@@ -10,6 +10,7 @@ var logger = require("morgan");
 // require("dotenv").config();
 
 // api router
+const indexRout = require("./Routes/index");
 const apiRout = require("./Routes/api");
 
 // Static Files
@@ -34,6 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use("/api/v1", apiRout);
+app.use("/", indexRout);
 
 // Sync Database
 //

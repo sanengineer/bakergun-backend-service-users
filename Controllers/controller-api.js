@@ -36,7 +36,7 @@ module.exports = {
     ) {
       res
         .status(400)
-        .send({ message: "Please pass username, password, email." });
+        .send({ message: "Please fill form username, password, and email." });
     } else
       UserGame.create(signUpUserGameReqBody)
         .then((data) => {
