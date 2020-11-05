@@ -11,6 +11,8 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   },
 });
 
+console.log(dbConfig);
+
 // const sequelize = new Sequelize(
 //   process.env.YOUR_LOCAL_DB_NAME,
 //   process.env.YOUR_LOCAL_DB_USERNAME,
