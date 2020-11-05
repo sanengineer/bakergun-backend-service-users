@@ -18,13 +18,28 @@ const apiRout = require("./Routes/api");
 app.use(express.static(path.join(__dirname, "./Public"))); // Masih Belum Ngerti Maksud Harus ngasih __dirname
 
 // Configure CORS
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+app.use((req, res, next) => {
+  const allowedOrigins = [
+    "https://bakergun-frontend.vercel.app",
+
+    // Configure cors for local machine
+    // "http://localhost:3000",
+    // "http://127.0.0.1:3000",
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, OPTIONS, DELETE, PUT, POST, PATCH, HEAD"
+  );
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type,  Authorization, Accept"
   );
-  next();
+
+  return next();
 });
 
 // Setup Express
