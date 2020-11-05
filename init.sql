@@ -1,24 +1,21 @@
 CREATE TABLE user_game (
-	user_id INT NOT NULL AUTO_INCREMENT,
-	usename VARCHAR CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	email VARCHAR CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	password VARCHAR CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	PRIMARY KEY (user_id)
+	user_id SERIAL PRIMARY KEY NOT NULL,
+	usename VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE user_game_history (
-	user_game_history_id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE user_game_history(
+	user_game_history_id SERIAL PRIMARY KEY NOT NULL ,
 	user_id INT NOT NULL,
 	score INT NOT NULL,
-	comment VARCHAR CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	PRIMARY KEY (user_game_history_id)
+	comment VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE user_game_biodata (
-	user_game_biodata_id INT NOT NULL AUTO_INCREMENT,
+	user_game_biodata_id SERIAL PRIMARY KEY NOT NULL ,
 	user_id INT NOT NULL,
-	fullname VARCHAR CHARACTER SET utf8 COLLATE utf8_general_ci,
-	sex VARCHAR CHARACTER SET utf8 COLLATE utf8_general_ci,
-	jobs INT,
-	PRIMARY KEY (user_game_biodata_id)
+	fullname VARCHAR(255),
+	sex VARCHAR(255),
+	jobs VARCHAR(255)
 );
