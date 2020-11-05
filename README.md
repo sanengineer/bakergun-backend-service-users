@@ -1,6 +1,10 @@
-# Build Backend Stack CRUD with NodeJS, PostgreSQL and Sequelize
+# Build Backend Stack CRUD and Private ReSTAPI with Authorization with NodeJS, PostgreSQL and Sequelize
 
 This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), EJS for admin dashboard, [PosgreSQL](https://www.postgresql.org/) and [Sequelize](https://sequelize.org/) (ORM For NodeJS).
+
+## Let's Try Demo
+
+on https://bakergun-backend-service-users.herokuapp.com
 
 ## Flow Chart Full Stack On This Project
 ![Flow_Chart_Fullstack_Web_Develompent](https://res.cloudinary.com/dsv9w1ey3/image/upload/v1604595086/github-images/Fullstack_Web_Developers_Simple_Flow_Chart_zpdn9t.png)
@@ -12,6 +16,15 @@ This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodej
 ## Feature
 
 ### CRUD Method 
+
+#### Endpoint User Game
+        */api/v1/user-game
+
+#### Endpoint User Game Biodata
+        */api/v1/user-game-biodata
+
+#### Endpoint User Game Biodata
+        */api/v1/user-game-history
 
 ### Private Hit ReSTAPI For User Has Sign Up
 - **GET, PUT, DELETE** on :
@@ -71,4 +84,9 @@ Use Node Version 12.18.4 LTS (Recomended)
 
 ----
 
-###### **NOTED**: For Deploy On Cloud Like Heroku, Please **Deactivate** Line Code `require("dotenv").config()` file db-local-config.js on Config directory.
+###### **NOTED**: For deploy on cloud like *Heroku*, please **deactivate** code line `require("dotenv").config()` file db-local-config.js on *config directory*.
+###### UI Design : https://www.figma.com/file/LcJvUL3iMNdFZ9lsLu0XHq/Bakergun-UI-3D-Models-UI-UX?node-id=0%3A1
+
+###### Backend Frontend: https://github.com/sanengineer/bakergun-frontend
+
+###### Backend Images Asset Services: https://github.com/sanengineer/bakergun-backend-service-images
