@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();  // Deactivate this line (dotenv) to deploy on cloud
 
 module.exports = {
   HOST: process.env.HOST,
