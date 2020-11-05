@@ -19,7 +19,7 @@ const sequelize = new Sequelize(
   process.env.PASSWORD,
   {
     host: process.env.HOST,
-    dialect: process.env.DIALECT,
+    dialect: dbConfig.DIALECT,
     pool: {
       max: dbConfig.pool.max,
       min: dbConfig.pool.min,
@@ -28,6 +28,8 @@ const sequelize = new Sequelize(
     },
   }
 );
+
+console.log(dbConfig);
 
 var db = {};
 db.Sequelize = Sequelize;

@@ -3,7 +3,7 @@ module.exports = {
   // USER: process.env.USER,
   // PASSWORD: process.env.PASSWORD,
   // DB: process.env.DB,
-  // DIALECT: process.env.DIALECT,
+  DIALECT: "postgres",
   pool: {
     max: 5,
     min: 0,
