@@ -20,6 +20,7 @@ router.put(
 router.delete(
   "/user-game/:id",
   middleware.mustBeInteger,
+  middleware.RestricAccess,
   controllerApi.deleteOneUserGame
 );
 
@@ -32,6 +33,7 @@ router.post(
 router.get(
   "/user-game-history/:id",
   middleware.mustBeInteger,
+  middleware.RestricAccess,
   controllerApi.getOneUserGameHistory
 );
 router.put(
@@ -54,6 +56,7 @@ router.get(
 );
 router.put(
   "/user-game-biodata/:id",
+  middleware.mustBeInteger,
   middleware.RestricAccess,
   controllerApi.updateUserGameBiodata
 );
