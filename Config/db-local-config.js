@@ -1,5 +1,5 @@
 module.exports = {
-  // HOST: process.env.HOST,
+  HOST: "https://bakergun-backend-service-users.herokuapp.com",
   // USER: process.env.USER,
   // PASSWORD: process.env.PASSWORD,
   // DB: process.env.DB,
