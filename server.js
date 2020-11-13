@@ -21,25 +21,26 @@ app.use(express.static(path.join(__dirname, "./Public"))); // Masih Belum Ngerti
 
 // Configure CORS
 app.use((req, res, next) => {
-  const allowedOrigins = [
-    "https://bakergun-frontend.vercel.app",
-    "https://editor.swagger.io/",
+  // const allowedOrigins = [
+  //   "https://bakergun-frontend.vercel.app",
+  //   "https://editor.swagger.io/",
 
-    // Configure cors for local machine
-    // "http://localhost:3000",
-    // "http://127.0.0.1:3000",
-  ];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
+  // Configure cors for local machine
+  // "http://localhost:3000",
+  // "http://127.0.0.1:3000",
+  // ];
+  // const origin = req.headers.origin;
+  // if (allowedOrigins.includes(origin)) {
+  //   res.setHeader("Access-Control-Allow-Origin", origin);
+  // }
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods",
     "GET, OPTIONS, DELETE, PUT, POST, PATCH, HEAD"
   );
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type,  Authorization, Accept"
+    "Origin, X-Requested-With, Content-Type, Authorization, Accept"
   );
 
   return next();

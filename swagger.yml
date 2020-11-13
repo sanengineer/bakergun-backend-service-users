@@ -3,7 +3,7 @@ info:
   description: "This is Bakergun Games backend server service users. Demo ReSTAPI on [https://bakergun-backend-service-users.herokuapp.com](https://bakergun-backend-service-users.herokuapp.com) "
   version: "1.0.0"
   title: "Bakergun Backend Service Users"
-host: "localhost:8080"
+host: "127.0.0.1:8080"
 basePath: "/api/v1"
 schemes:
 - "http"
@@ -29,8 +29,6 @@ paths:
       responses:
         "201":
           description: "Success create new user."
-          schema:
-            $ref: "#/definitions/ApiResponse"
   /login:
     post:
       tags: 
@@ -50,26 +48,30 @@ paths:
         schema:
           $ref: "#/definitions/Login"
       responses:
-        "201":
+        "200":
           description: "Success create new user."
-          schema:
-            $ref: "#/definitions/ApiResponse"
         "400":
           description: "Please fill form username, password, and email."
         "500":
           description: "Found error while sign up user."
-  /user-game/:id:
-    put:
+  /user-game/{user_id}:
+    get:
       tags: 
       - "User Game"
-      summary: "Update user by id"
-      description: "update user game"
-      operationId: "updateUserGame"
+      summary: "Get one user by id"
+      description: "get user game by id"
+      operationId: "getUserGame"
       consumes:
       - "application/json"
       produces:
       - "application/json"
       parameters:
+      - in: "path"
+        name: "user_id"
+        description: "ID of user_game to return"
+        required: true
+        type: "integer"
+        format: "int64"
       - in: "header"
         name: "header"
         description: "Tokens"
@@ -88,12 +90,83 @@ paths:
           description: "Please fill form username, password, and email."
         "500":
           description: "Found error while sign up user."
-     /user-game/:id:
-      delete:
-        tags: "User Game"
-      summary: "Delete user by id"
-      description: "delete user game"
+    put:
+      tags: 
+      - "User Game"
+      summary: "Update user by id"
+      description: "update user game"
+      operationId: "updateUserGame"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "user_id"
+        description: "ID of user_game to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Login user on Games"
+        required: true
+        schema:
+          $ref: "#/definitions/UserGames"
+      responses:
+        "200":
+          description: "Success update user columns"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+    delete:
+      tags: 
+      - "User Game"
+      summary: "Delete one user by id"
+      description: "delete user game by id"
       operationId: "deleteUserGame"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "user_id"
+        description: "ID of user_game to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Login user on Games"
+        required: true
+        schema:
+          $ref: "#/definitions/UserGames"
+      responses:
+        "200":
+          description: "Success delete user by {user_id}"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+  /user-game-biodata:
+    post:    
+      tags: 
+      - "User Game Biodata"
+      summary: "Create user game biodata"
+      description: "create user game biodata"
+      operationId: "createUserGameBiodata"
       consumes:
       - "application/json"
       produces:
@@ -106,17 +179,245 @@ paths:
         type: "string"
       - in: "body"
         name: "body"
-        description: "Delete user on Games"
+        description: "Login user on Games"
         required: true
         schema:
-          $ref: "#/definitions/UserGames"
+          $ref: "#/definitions/UserGameBiodata"
       responses:
         "200":
-          description: "Success delete user columns"
+          description: "Success update user columns"
         "400":
           description: "Please fill form username, password, and email."
         "500":
           description: "Found error while sign up user."
+  
+  /user-game-history:
+    post:    
+      tags: 
+      - "User Game History"
+      summary: "Create user game history"
+      description: "create user game history"
+      operationId: "createUserGameHistory"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Create user game history"
+        required: true
+        schema:
+          $ref: "#/definitions/UserGameHistory"
+      responses:
+        "200":
+          description: "Success update user columns"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."  
+  
+  /user-game-biodata/{user_game_biodata_id}:
+    get:    
+      tags: 
+      - "User Game Biodata"
+      summary: "get one user game biodata by id"
+      description: "get one user game biodata by id"
+      operationId: "getOneUserGameBiodata"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "user_game_biodata_id"
+        description: "User Game Biodata ID"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Success update user columns"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+          
+    put:    
+      tags: 
+      - "User Game Biodata"
+      summary: "Update user game biodata"
+      description: "update user game biodata"
+      operationId: "updateUserGameBiodata"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "user_game_biodata_id"
+        description: "User Game Biodata ID"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Login user on Games"
+        required: true
+        schema:
+          $ref: "#/definitions/UserGameBiodata"
+      responses:
+        "200":
+          description: "Success update user columns"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+    
+    delete:    
+      tags: 
+      - "User Game Biodata"
+      summary: "Delete user game biodata by ID"
+      description: "delete user game biodata by ID"
+      operationId: "deleteOneUserGameBiodata"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "user_game_biodata_id"
+        description: "User Game Biodata ID"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Success update user columns"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+  
+  
+  /user-game-history/{user_game_history_id}:
+    get:    
+      tags: 
+      - "User Game History"
+      summary: "get one user game history by id"
+      description: "get one user game history by id"
+      operationId: "getOneUserGameHistory"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "user_game_history_id"
+        description: "User Game History ID"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Success update user columns"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+          
+    put:    
+      tags: 
+      - "User Game History"
+      summary: "Update user game history"
+      description: "update user game history"
+      operationId: "updateUserGameHistory"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "user_game_history_id"
+        description: "User Game History ID"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Login user on Games"
+        required: true
+        schema:
+          $ref: "#/definitions/UserGameHistory"
+      responses:
+        "200":
+          description: "Success update user columns"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+    
+    delete:    
+      tags: 
+      - "User Game History"
+      summary: "Delete user game history by ID"
+      description: "delete user game history by ID"
+      operationId: "deleteOneUserGameHistory"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "user_game_history_id"
+        description: "User Game History ID"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Success update user columns"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+      
+      
 definitions:
   SignUp:
     type: "object"
@@ -143,10 +444,25 @@ definitions:
         type: "string"
       password:
         type: "string"
-      
-  ApiResponse:
+  
+  UserGameBiodata:
     type: "object"
-    properties: 
-      message: 
+    properties:
+      user_id:
+        type: "number"  
+      fullname:
         type: "string"
-      
+      sex:
+        type: "string"
+      jobs:
+        type: "string"
+  
+  UserGameHistory:
+    type: "object"
+    properties:
+      user_id:
+        type: "number"  
+      score:
+        type: "string"
+      comment:
+        type: "string"
