@@ -40,7 +40,10 @@ module.exports = {
     } else
       UserGame.create(signUpUserGameReqBody)
         .then((data) => {
-          res.status(201).send(data);
+          // res.status(201).send(data);
+          res.status(201).send({
+            message: "Success create new user.",
+          });
         })
         .catch((error) => {
           res.status(500).send({

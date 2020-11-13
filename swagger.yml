@@ -1,0 +1,152 @@
+swagger: "2.0"
+info:
+  description: "This is Bakergun Games backend server service users. Demo ReSTAPI on [https://bakergun-backend-service-users.herokuapp.com](https://bakergun-backend-service-users.herokuapp.com) "
+  version: "1.0.0"
+  title: "Bakergun Backend Service Users"
+host: "localhost:8080"
+basePath: "/api/v1"
+schemes:
+- "http"
+paths:
+  /signup:
+    post:
+      tags:
+      - "Sign Up"
+      summary: "Add a new user"
+      description: "create user game (register)"
+      operationId: "registerUserGame"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "New user already add on Games"
+        required: true
+        schema:
+          $ref: "#/definitions/SignUp"
+      responses:
+        "201":
+          description: "Success create new user."
+          schema:
+            $ref: "#/definitions/ApiResponse"
+  /login:
+    post:
+      tags: 
+      - "Login"
+      summary: "Find user by username"
+      description: "find user game (login)"
+      operationId: "loginUserGame"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Login user"
+        required: true
+        schema:
+          $ref: "#/definitions/Login"
+      responses:
+        "201":
+          description: "Success create new user."
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+  /user-game/:id:
+    put:
+      tags: 
+      - "User Game"
+      summary: "Update user by id"
+      description: "update user game"
+      operationId: "updateUserGame"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Login user on Games"
+        required: true
+        schema:
+          $ref: "#/definitions/UserGames"
+      responses:
+        "200":
+          description: "Success update user columns"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+     /user-game/:id:
+      delete:
+        tags: "User Game"
+      summary: "Delete user by id"
+      description: "delete user game"
+      operationId: "deleteUserGame"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "header"
+        name: "header"
+        description: "Tokens"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Delete user on Games"
+        required: true
+        schema:
+          $ref: "#/definitions/UserGames"
+      responses:
+        "200":
+          description: "Success delete user columns"
+        "400":
+          description: "Please fill form username, password, and email."
+        "500":
+          description: "Found error while sign up user."
+definitions:
+  SignUp:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+
+  Login:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
+        
+  UserGames:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
+      
+  ApiResponse:
+    type: "object"
+    properties: 
+      message: 
+        type: "string"
+      

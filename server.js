@@ -3,6 +3,8 @@ const db = require("./Models");
 const app = express();
 const path = require("path");
 const port = process.env.PORT || 8080;
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 // const bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
@@ -21,6 +23,7 @@ app.use(express.static(path.join(__dirname, "./Public"))); // Masih Belum Ngerti
 app.use((req, res, next) => {
   const allowedOrigins = [
     "https://bakergun-frontend.vercel.app",
+    "https://editor.swagger.io/",
 
     // Configure cors for local machine
     // "http://localhost:3000",
@@ -49,6 +52,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/api/v1", apiRout);
 app.use("/", indexRout);
 
