@@ -102,7 +102,7 @@ paths:
         type: "integer"
         format: "int64"
       - in: "header"
-        name: "header"
+        name: "Authorization"
         description: "Tokens"
         required: true
         type: "string"
@@ -137,7 +137,7 @@ paths:
         type: "integer"
         format: "int64"
       - in: "header"
-        name: "header"
+        name: "Authorization"
         description: "Tokens"
         required: true
         type: "string"
@@ -167,7 +167,7 @@ paths:
       - "application/json"
       parameters:
       - in: "header"
-        name: "header"
+        name: "Authorization"
         description: "Tokens"
         required: true
         type: "string"
@@ -198,7 +198,7 @@ paths:
       - "application/json"
       parameters:
       - in: "header"
-        name: "header"
+        name: "Authorization"
         description: "Tokens"
         required: true
         type: "string"
@@ -235,7 +235,7 @@ paths:
         type: "integer"
         format: "int64"
       - in: "header"
-        name: "header"
+        name: "Authorization"
         description: "Tokens"
         required: true
         type: "string"
@@ -265,7 +265,7 @@ paths:
         type: "integer"
         format: "int64"
       - in: "header"
-        name: "header"
+        name: "Authorization"
         description: "Tokens"
         required: true
         type: "string"
@@ -301,7 +301,7 @@ paths:
         type: "integer"
         format: "int64"
       - in: "header"
-        name: "header"
+        name: "Authorization"
         description: "Tokens"
         required: true
         type: "string"
@@ -333,7 +333,7 @@ paths:
         type: "integer"
         format: "int64"
       - in: "header"
-        name: "header"
+        name: "Authorization"
         description: "Tokens"
         required: true
         type: "string"
@@ -363,7 +363,7 @@ paths:
         type: "integer"
         format: "int64"
       - in: "header"
-        name: "header"
+        name: "Authorization"
         description: "Tokens"
         required: true
         type: "string"
@@ -399,7 +399,7 @@ paths:
         type: "integer"
         format: "int64"
       - in: "header"
-        name: "header"
+        name: "Authorization"
         description: "Tokens"
         required: true
         type: "string"
