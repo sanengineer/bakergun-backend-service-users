@@ -14,6 +14,7 @@ var logger = require("morgan");
 // api router
 const indexRout = require("./Routes/index");
 const apiRout = require("./Routes/api");
+const adminRout = require("./Routes/admin");
 
 // Static Files
 // app.use(express.static("./Public"));
@@ -55,6 +56,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/api/v1", apiRout);
+app.use("/admin-api/v1/", adminRout);
 app.use("/", indexRout);
 
 // Sync Database
@@ -86,6 +88,9 @@ app.listen(port, () => {
   );
   console.log(
     `\x1b[93mEndpoint RestAPI now running 🚀 on  http://localhost:${port}/api/v1\x1b[39m`
+  );
+  console.log(
+    `\x1b[93mDocumentations APi now running 🚀 on  http://localhost:${port}/api-docs\x1b[39m`
   );
   console.log(
     "\x1b[93mBuild by\x1b[39m \x1b[91mhttps://github.com/sanengineer\x1b[91m \x1b[93mgive ⭐️ start, 🍴 fork and 🧲 clone others repository\x1b[39m."

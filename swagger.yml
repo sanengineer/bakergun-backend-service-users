@@ -1,8 +1,8 @@
 swagger: "2.0"
 info:
-  description: "This is Bakergun Games backend server service users. Demo ReSTAPI on [https://bakergun-backend-service-users.herokuapp.com](https://bakergun-backend-service-users.herokuapp.com) "
+  description: "This is Bakergun Games backend server service users. Demo ReSTAPI on 🚀 [https://bakergun-backend-service-users.herokuapp.com](https://bakergun-backend-service-users.herokuapp.com) "
   version: "1.0.0"
-  title: "Bakergun Backend Service Users"
+  title: "🎮 Bakergun Backend Service Users"
 host: "127.0.0.1:8080"
 basePath: "/api/v1"
 schemes:
