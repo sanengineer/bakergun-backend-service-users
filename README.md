@@ -1,4 +1,4 @@
-# Build Backend Stack CRUD and Private ReSTAPI with Authorization with NodeJS, PostgreSQL, Sequelize and Swagger (API Documentations)
+# Build Backend Stack CRUD and Private ReSTAPI with Authorization with NodeJS, PostgreSQL, Sequelize and 🔫 Swagger (API Documentations)
 
 This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), EJS for admin dashboard, [PosgreSQL](https://www.postgresql.org/) and [Sequelize](https://sequelize.org/) (ORM For NodeJS).
 
