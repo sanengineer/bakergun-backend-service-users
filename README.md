@@ -1,4 +1,4 @@
-# Build Backend Stack CRUD and Private ReSTAPI with Authorization with NodeJS, PostgreSQL and Sequelize
+# Build Backend Stack CRUD and Private ReSTAPI with Authorization with NodeJS, PostgreSQL, Sequelize and Swagger (API Documentations)
 
 This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), EJS for admin dashboard, [PosgreSQL](https://www.postgresql.org/) and [Sequelize](https://sequelize.org/) (ORM For NodeJS).
 
@@ -7,6 +7,7 @@ This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodej
 on https://bakergun-backend-service-users.herokuapp.com
 
 ## Flow Chart Full Stack On This Project
+
 ![Flow_Chart_Fullstack_Web_Develompent](https://res.cloudinary.com/dsv9w1ey3/image/upload/v1604595086/github-images/Fullstack_Web_Developers_Simple_Flow_Chart_zpdn9t.png)
 
 ## ER Diagram For 🐘 PostgreSQL
@@ -15,39 +16,41 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 ## Feature
 
-### CRUD Method 
+### CRUD Method
 
 #### Endpoint User Game
+
         */api/v1/user-game
 
 #### Endpoint User Game Biodata
+
         */api/v1/user-game-biodata
 
 #### Endpoint User Game Biodata
+
         */api/v1/user-game-history
 
 ### Private Hit ReSTAPI For User Has Sign Up
+
 - **GET, PUT, DELETE** on :
 
         http://localhost:{PORT}/api/v1/user-game/:id
 
 - **POST** on :
-        
+
         http://localhost:{PORT}/api/v1/user-game-history
 
 - **GET** and **PUT** on :
 
         http://localhost:{PORT}/api/v1/user-game-history/:id
 
-
 - **POST** on :
-        
+
         http://localhost:{PORT}/api/v1/user-game-biodata
 
 - **GET**, And **PUT** on:
-  
-        http://localhost:{PORT}/api/v1/user-game-biodata/:id
 
+        http://localhost:{PORT}/api/v1/user-game-biodata/:id
 
 ## Production Package Used
 
@@ -67,7 +70,6 @@ on https://bakergun-backend-service-users.herokuapp.com
 - [Dot Env](https://github.com/motdotla/dotenv),
 - [Nodemon](https://github.com/remy/nodemon)
 
-
 ## Get Started
 
         $ npm install
@@ -82,9 +84,10 @@ Use Node Version 12.18.4 LTS (Recomended)
 
         $ npm run dev
 
-----
+---
 
-###### **NOTED**: For deploy on cloud like *Heroku*, please **deactivate** code line `require("dotenv").config()` file db-local-config.js on *config directory*.
+###### **NOTED**: For deploy on cloud like _Heroku_, please **deactivate** code line `require("dotenv").config()` file db-local-config.js on _config directory_.
+
 ###### UI Design : https://www.figma.com/file/LcJvUL3iMNdFZ9lsLu0XHq/Bakergun-UI-3D-Models-UI-UX?node-id=0%3A1
 
 ###### Backend Frontend: https://github.com/sanengineer/bakergun-frontend
