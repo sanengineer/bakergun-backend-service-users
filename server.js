@@ -4,7 +4,8 @@ const app = express();
 const path = require("path");
 const port = process.env.PORT || 8080;
 const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger.json");
+const swaggerDocumentPublicApi = require("./swagger_pub_api.json");
+const swaggerDocumentAdminApi = require("./swagger_admin_api.json");
 // const bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
@@ -54,7 +55,16 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(
+  "/api-docs/v1",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocumentPublicApi)
+);
+app.use(
+  "/admin-api-docs/v1",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocumentAdminApi)
+);
 app.use("/api/v1", apiRout);
 app.use("/admin-api/v1/", adminRout);
 app.use("/", indexRout);
@@ -90,7 +100,10 @@ app.listen(port, () => {
     `\x1b[93mEndpoint RestAPI now running 🚀 on  http://localhost:${port}/api/v1\x1b[39m`
   );
   console.log(
-    `\x1b[93mDocumentations APi now running 🚀 on  http://localhost:${port}/api-docs\x1b[39m`
+    `\x1b[93mDocumentations 📓️ Public API now running 🚀 on  http://localhost:${port}/api-docs/v1\x1b[39m`
+  );
+  console.log(
+    `\x1b[93mDocumentations 📓️ Admin API now running 🚀 on  http://localhost:${port}/admin-api-docs/v1\x1b[39m`
   );
   console.log(
     "\x1b[93mBuild by\x1b[39m \x1b[91mhttps://github.com/sanengineer\x1b[91m \x1b[93mgive ⭐️ start, 🍴 fork and 🧲 clone others repository\x1b[39m."

@@ -1,0 +1,410 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is Bakergun Games backend server service users. Demo ReSTAPI on 🚀 [https://bakergun-backend-service-users.herokuapp.com](https://bakergun-backend-service-users.herokuapp.com) ",
+    "version": "1.0.0",
+    "title": "🖥️ Admin ReSTAPI Documentation 🎮 Bakergun Backend Service Users"
+  },
+  "host": "127.0.0.1:8080",
+  "basePath": "/admin-api/v1",
+  "schemes": ["http"],
+  "paths": {
+    "/user-game": {
+      "post": {
+        "tags": ["User Game"],
+        "summary": "Add One New User",
+        "description": "create new user game ",
+        "operationId": "createUserGame",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "New user already add on Games",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateUserGame"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success create new user."
+          }
+        }
+      },
+      "get": {
+        "tags": ["User Game"],
+        "summary": "Retrive All User game",
+        "description": "get all user game",
+        "operationId": "getAllUserGame",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success retrive all user game"
+          },
+          "500": {
+            "description": "Found error while retrive all user game."
+          }
+        }
+      }
+    },
+    "/user-game/{user_id}": {
+      "put": {
+        "tags": ["User Game"],
+        "summary": "Update User By ID",
+        "description": "update user game",
+        "operationId": "updateUserGame",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "description": "ID of user_game to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "update user on Games",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserGames"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success update user game"
+          },
+          "500": {
+            "description": "Found error while update user game."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["User Game"],
+        "summary": "Delete User Game By ID",
+        "description": "delete user game by id",
+        "operationId": "deleteUserGame",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "description": "ID of user_game to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete user with id={user_id}"
+          },
+          "500": {
+            "description": "Found error while delete user by id."
+          }
+        }
+      }
+    },
+    "/user-game-biodata": {
+      "post": {
+        "tags": ["User Game Biodata"],
+        "summary": "Create User Game Biodata",
+        "description": "create user game biodata",
+        "operationId": "createUserGameBiodata",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "create user game biodata",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserGameBiodata"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success create biodata of user game"
+          },
+          "400": {
+            "description": "Please fill all from"
+          },
+          "500": {
+            "description": "Found error while create user game biodata"
+          }
+        }
+      },
+      "get": {
+        "tags": ["User Game Biodata"],
+        "summary": "get all user game biodata",
+        "description": "get all user game biodata",
+        "operationId": "getAllUserGameBiodata",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success retrive all history of user game"
+          },
+          "500": {
+            "description": "Found error while retrive all history of user game"
+          }
+        }
+      }
+    },
+    "/user-game-biodata/{user_game_biodata_id}": {
+      "put": {
+        "tags": ["User Game Biodata"],
+        "summary": "Update User Game Biodata By ID",
+        "description": "update user game biodata byid",
+        "operationId": "updateUserGameBiodata",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_game_biodata_id",
+            "description": "User Game Biodata ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Update user game biodata",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserGameBiodata"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success update user biodata with id={user_game_biodata_id} "
+          },
+          "500": {
+            "description": "Found error while update user game biodata"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["User Game Biodata"],
+        "summary": "Delete User Game Biodata By ID",
+        "description": "delete user game biodata by ID",
+        "operationId": "deleteOneUserGameBiodata",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_game_biodata_id",
+            "description": "User Game Biodata ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete user game biodata with id={user_game_biodata_id}"
+          },
+
+          "500": {
+            "description": "Found error while sign up user."
+          }
+        }
+      }
+    },
+    "/user-game-history": {
+      "post": {
+        "tags": ["User Game History"],
+        "summary": "Create User Game History",
+        "description": "create user game history",
+        "operationId": "createUserGameHistory",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Create user game history",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserGameHistory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success create user game history"
+          },
+          "400": {
+            "description": "Please fill all form"
+          },
+          "500": {
+            "description": "Found error while create user game history."
+          }
+        }
+      },
+      "get": {
+        "tags": ["User Game History"],
+        "summary": "Retrive All User Game History",
+        "description": "get all user game history",
+        "operationId": "getOneUserGameHistory",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success retrive all user game history"
+          },
+          "500": {
+            "description": "Found error while retrive all user game history"
+          }
+        }
+      }
+    },
+    "/user-game-history/{user_game_history_id}": {
+      "put": {
+        "tags": ["User Game History"],
+        "summary": "Update User Game History By ID",
+        "description": "update user game history by id",
+        "operationId": "updateUserGameHistory",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_game_history_id",
+            "description": "User Game History ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Login user on Games",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserGameHistory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success update user game history with id={user_game_history_id}"
+          },
+          "500": {
+            "description": "Found error while update user game history"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["User Game History"],
+        "summary": "Delete User Game History By ID",
+        "description": "delete user game history by ID",
+        "operationId": "deleteOneUserGameHistory",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_game_history_id",
+            "description": "User Game History ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success delete user game history with id={user_game_history_id}"
+          },
+          "500": {
+            "description": "Found error while delete user game history with id={user_game_history_id}"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateUserGame": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Login": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "UserGames": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "UserGameBiodata": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "number"
+        },
+        "fullname": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string"
+        },
+        "jobs": {
+          "type": "string"
+        }
+      }
+    },
+    "UserGameHistory": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "number"
+        },
+        "score": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

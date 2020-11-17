@@ -3,28 +3,20 @@
   "info": {
     "description": "This is Bakergun Games backend server service users. Demo ReSTAPI on 🚀 [https://bakergun-backend-service-users.herokuapp.com](https://bakergun-backend-service-users.herokuapp.com) ",
     "version": "1.0.0",
-    "title": "🎮 Bakergun Backend Service Users"
+    "title": " 📢️ Public ReSTAPI Documentation 🎮 Bakergun Backend Service Users"
   },
   "host": "127.0.0.1:8080",
   "basePath": "/api/v1",
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["http"],
   "paths": {
     "/signup": {
       "post": {
-        "tags": [
-          "Sign Up"
-        ],
+        "tags": ["Sign Up"],
         "summary": "Add a new user",
         "description": "create user game (register)",
         "operationId": "registerUserGame",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "body",
@@ -45,18 +37,12 @@
     },
     "/login": {
       "post": {
-        "tags": [
-          "Login"
-        ],
+        "tags": ["Login"],
         "summary": "Find user by username",
         "description": "find user game (login)",
         "operationId": "loginUserGame",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "body",
@@ -83,18 +69,12 @@
     },
     "/user-game/{user_id}": {
       "get": {
-        "tags": [
-          "User Game"
-        ],
+        "tags": ["User Game"],
         "summary": "Get one user by id",
         "description": "get user game by id",
         "operationId": "getUserGame",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "path",
@@ -125,18 +105,12 @@
         }
       },
       "put": {
-        "tags": [
-          "User Game"
-        ],
+        "tags": ["User Game"],
         "summary": "Update user by id",
         "description": "update user game",
         "operationId": "updateUserGame",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "path",
@@ -176,18 +150,12 @@
         }
       },
       "delete": {
-        "tags": [
-          "User Game"
-        ],
+        "tags": ["User Game"],
         "summary": "Delete one user by id",
         "description": "delete user game by id",
         "operationId": "deleteUserGame",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "path",
@@ -229,18 +197,12 @@
     },
     "/user-game-biodata": {
       "post": {
-        "tags": [
-          "User Game Biodata"
-        ],
+        "tags": ["User Game Biodata"],
         "summary": "Create user game biodata",
         "description": "create user game biodata",
         "operationId": "createUserGameBiodata",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "header",
@@ -274,18 +236,12 @@
     },
     "/user-game-history": {
       "post": {
-        "tags": [
-          "User Game History"
-        ],
+        "tags": ["User Game History"],
         "summary": "Create user game history",
         "description": "create user game history",
         "operationId": "createUserGameHistory",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "header",
@@ -319,18 +275,12 @@
     },
     "/user-game-biodata/{user_game_biodata_id}": {
       "get": {
-        "tags": [
-          "User Game Biodata"
-        ],
+        "tags": ["User Game Biodata"],
         "summary": "get one user game biodata by id",
         "description": "get one user game biodata by id",
         "operationId": "getOneUserGameBiodata",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "path",
@@ -361,18 +311,12 @@
         }
       },
       "put": {
-        "tags": [
-          "User Game Biodata"
-        ],
+        "tags": ["User Game Biodata"],
         "summary": "Update user game biodata",
         "description": "update user game biodata",
         "operationId": "updateUserGameBiodata",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "path",
@@ -412,18 +356,12 @@
         }
       },
       "delete": {
-        "tags": [
-          "User Game Biodata"
-        ],
+        "tags": ["User Game Biodata"],
         "summary": "Delete user game biodata by ID",
         "description": "delete user game biodata by ID",
         "operationId": "deleteOneUserGameBiodata",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "path",
@@ -456,18 +394,12 @@
     },
     "/user-game-history/{user_game_history_id}": {
       "get": {
-        "tags": [
-          "User Game History"
-        ],
+        "tags": ["User Game History"],
         "summary": "get one user game history by id",
         "description": "get one user game history by id",
         "operationId": "getOneUserGameHistory",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "path",
@@ -498,18 +430,12 @@
         }
       },
       "put": {
-        "tags": [
-          "User Game History"
-        ],
+        "tags": ["User Game History"],
         "summary": "Update user game history",
         "description": "update user game history",
         "operationId": "updateUserGameHistory",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "path",
@@ -549,18 +475,12 @@
         }
       },
       "delete": {
-        "tags": [
-          "User Game History"
-        ],
+        "tags": ["User Game History"],
         "summary": "Delete user game history by ID",
         "description": "delete user game history by ID",
         "operationId": "deleteOneUserGameHistory",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "path",
