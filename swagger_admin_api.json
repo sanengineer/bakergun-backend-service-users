@@ -36,8 +36,8 @@
       },
       "get": {
         "tags": ["User Game"],
-        "summary": "Retrive All User Game Or Filtered By Username ",
-        "description": "get all user game or filtered by username",
+        "summary": "Retrive All User Game Or Filtered By Username, Email ",
+        "description": "get all user game or filtered by username, Email",
         "operationId": "getAllUserGame",
         "consumes": ["application/json"],
         "produces": ["application/json"],
@@ -46,6 +46,13 @@
             "name": "username",
             "in": "query",
             "description": "Username value is optionals if you want need to filtered by username",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Email value is optionals if you want need to filtered by email",
             "required": false,
             "type": "string"
           }
