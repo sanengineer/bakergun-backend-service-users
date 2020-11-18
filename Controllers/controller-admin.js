@@ -1,5 +1,4 @@
 const db = require("../Models");
-const userGameHistory = require("../Models/user/user-game-history");
 const UserGame = db.userGame;
 const UserGameBiodata = db.userGameBiodata;
 const UserGameHistory = db.userGameHistory;
@@ -23,7 +22,7 @@ module.exports = {
         message: "Please fill username, email, and password",
       });
     } else
-      UserGame.create(createUserGame)
+      UserGame.create(createUserGameReqBody)
         .then((data) => {
           // res.status(201).send(data)
           res.status(201).send({
@@ -38,34 +37,49 @@ module.exports = {
   },
 
   // get all user game
-  getAllUserGame: (req, res) => {
-    UserGame.findAll() // findAll is function bawaan sequelize
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "something error to get all user",
-        });
-      });
-  },
+  // getAllUserGame: (req, res) => {
+  //   UserGame.findAll() // findAll is function bawaan sequelize
+  //     .then((data) => {
+  //       res.send(data);
+  //     })
+  //     .catch((err) => {
+  //       res.status(500).send({
+  //         message: err.message || "something error to get all user",
+  //       });
+  //     });
+  // },
 
   // search user game by username
-  searchByUsername: (req, res) => {
-    const username = req.query.username;
-    var condition = username
+  getAllOrSearchByUsername: (req, res) => {
+    const { username, email } = req.query;
+
+    var conditionUsername = username
       ? { username: { [Op.like]: `%${username}%` } }
       : null;
 
-    UserGame.findAll({ where: condition })
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "error occured while search username",
+    var conditionEmail = email ? { email: { [Op.like]: `%${email}%` } } : null;
+
+    if (conditionUsername) {
+      UserGame.findAll({ where: conditionUsername })
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "error occured while search username",
+          });
         });
-      });
+    } else {
+      UserGame.findAll({ where: conditionEmail })
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "error occured while search email",
+          });
+        });
+    }
   },
 
   // update user game by id

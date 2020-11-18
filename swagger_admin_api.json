@@ -36,11 +36,20 @@
       },
       "get": {
         "tags": ["User Game"],
-        "summary": "Retrive All User game",
-        "description": "get all user game",
+        "summary": "Retrive All User Game Or Filtered By Username ",
+        "description": "get all user game or filtered by username",
         "operationId": "getAllUserGame",
         "consumes": ["application/json"],
         "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "Username value is optionals if you want need to filtered by username",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success retrive all user game"

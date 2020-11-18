@@ -4,8 +4,7 @@ const router = express.Router();
 
 // user game
 router.post("/user-game", controllerAdmin.createUserGame);
-router.get("/user-game", controllerAdmin.getAllUserGame);
-router.get("/user-game", controllerAdmin.searchByUsername);
+router.get("/user-game", controllerAdmin.getAllOrSearchByUsername);
 router.put("/user-game/:id", controllerAdmin.updateUserGame);
 router.delete("/user-game/:id", controllerAdmin.deletOneUserGame);
 
