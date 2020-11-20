@@ -1,12 +1,17 @@
 const express = require("express");
 const controllerAdmin = require("../Controllers/controller-admin");
+const middlewares = require("../Helpers/middlewares");
 const router = express.Router();
 
 // user game
 router.post("/user-game", controllerAdmin.createUserGame);
 router.get("/user-game", controllerAdmin.getAllOrSearchByUsername);
 router.put("/user-game/:id", controllerAdmin.updateUserGame);
-router.delete("/user-game/:id", controllerAdmin.deletOneUserGame);
+router.delete(
+  "/user-game/:id",
+  middlewares.mustBeString,
+  controllerAdmin.deletOneUserGame
+);
 
 // user game biodata
 router.post("/user-game-biodata", controllerAdmin.createUserGameBiodata);

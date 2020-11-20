@@ -12,9 +12,22 @@ function mustBeInteger(req, res, next) {
   }
 }
 
+function mustBeString(req, res, next) {
+  const username = req.query.username;
+
+  if (!username) {
+    res.status(400).json({
+      message: "give me a value of username please",
+    });
+  } else {
+    next();
+  }
+}
+
 const RestricAccess = passport.authenticate("jwt", { session: false });
 
 module.exports = {
   mustBeInteger,
+  mustBeString,
   RestricAccess,
 };

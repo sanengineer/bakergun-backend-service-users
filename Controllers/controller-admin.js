@@ -110,9 +110,10 @@ module.exports = {
   //delete user game by id
   deletOneUserGame: (req, res) => {
     const { id } = req.params;
+    const { username } = req.query;
 
     UserGame.destroy({
-      where: { user_id: id },
+      where: { user_id: id, username: username },
     })
       .then((num) => {
         if (num == 1) {
