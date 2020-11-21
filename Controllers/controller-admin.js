@@ -221,7 +221,7 @@ module.exports = {
   createUserGameHistory: (req, res) => {
     const userGameHistoryReqBody = {
       score: req.body.score,
-      comment: req.body.commet,
+      comment: req.body.comment,
       user_id: req.body.user_id,
     };
 
