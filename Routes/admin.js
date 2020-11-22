@@ -10,7 +10,7 @@ router.put("/user-game/:id", controllerAdmin.updateUserGame);
 router.put("/user-game-password/:id", controllerAdmin.changeUserGamePassword);
 router.delete(
   "/user-game/:id",
-  middlewares.mustBeString,
+  middlewares.deleteWithQueryUsername,
   controllerAdmin.deletOneUserGame
 );
 
@@ -20,6 +20,7 @@ router.get("/user-game-biodata", controllerAdmin.getAllUserGameBiodata);
 router.put("/user-game-biodata/:id", controllerAdmin.updateUserGameBiodata);
 router.delete(
   "/user-game-biodata/:id",
+  middlewares.deleteWithQueryFullname,
   controllerAdmin.deleteOneUserGameBiodata
 );
 
@@ -29,6 +30,7 @@ router.get("/user-game-history", controllerAdmin.getAllUserGameHistory);
 router.put("/user-game-history/:id", controllerAdmin.updateUserGameHistory);
 router.delete(
   "/user-game-history/:id",
+  middlewares.deleteWithQueryScore,
   controllerAdmin.deleteOneUserGameHistory
 );
 

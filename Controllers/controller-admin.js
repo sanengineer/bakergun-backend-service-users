@@ -340,8 +340,11 @@ module.exports = {
   // delete user game biodata by id
   deleteOneUserGameBiodata: (req, res) => {
     const { id } = req.params;
+    const { fullname } = req.query;
 
-    UserGameBiodata.destroy({ where: { user_game_biodata_id: id } })
+    UserGameBiodata.destroy({
+      where: { user_game_biodata_id: id, fullname: fullname },
+    })
       .then((num) => {
         if (num == 1) {
           res.send({
@@ -459,8 +462,11 @@ module.exports = {
   // delete user game biodata by id
   deleteOneUserGameHistory: (req, res) => {
     const { id } = req.params;
+    const { score } = req.query;
 
-    UserGameHistory.destroy({ where: { user_game_history_id: id } })
+    UserGameHistory.destroy({
+      where: { user_game_history_id: id, score: score },
+    })
       .then((num) => {
         if (num == 1) {
           res.send({

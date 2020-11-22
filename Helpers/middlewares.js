@@ -12,7 +12,7 @@ function mustBeInteger(req, res, next) {
   }
 }
 
-function mustBeString(req, res, next) {
+function deleteWithQueryUsername(req, res, next) {
   const username = req.query.username;
 
   if (!username) {
@@ -23,11 +23,35 @@ function mustBeString(req, res, next) {
     next();
   }
 }
+function deleteWithQueryFullname(req, res, next) {
+  const fullname = req.query.fullname;
+
+  if (!fullname) {
+    res.status(400).json({
+      message: "give me a value of fullname please",
+    });
+  } else {
+    next();
+  }
+}
+function deleteWithQueryScore(req, res, next) {
+  const score = req.query.score;
+
+  if (!score) {
+    res.status(400).json({
+      message: "give me a value of score please",
+    });
+  } else {
+    next();
+  }
+}
 
 const RestricAccess = passport.authenticate("jwt", { session: false });
 
 module.exports = {
   mustBeInteger,
-  mustBeString,
+  deleteWithQueryUsername,
+  deleteWithQueryFullname,
+  deleteWithQueryScore,
   RestricAccess,
 };
