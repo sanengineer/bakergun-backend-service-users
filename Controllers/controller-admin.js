@@ -1,9 +1,11 @@
 const db = require("../Models");
 const bcrypt = require("bcryptjs");
+
 const UserGame = db.userGame;
 const UserGameBiodata = db.userGameBiodata;
 const UserGameHistory = db.userGameHistory;
 const Op = db.Sequelize.Op;
+const sequelize = db.Sequelize.literal;
 
 module.exports = {
   // create user game
@@ -11,8 +13,21 @@ module.exports = {
     const createUserGameReqBody = {
       username: req.body.username,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 10),
+      password: req.body.password,
     };
+
+    //
+    //Debugging
+    console.log(
+      "\n\n\n  🧪 \x1b[93mCreate Table User Game: \n\x1b[39m",
+      "\n\x1b[93m    ✅ Username: " +
+        createUserGameReqBody.username +
+        "\x1b[39m\n",
+      "\n\x1b[93m    ✅ Email: " + createUserGameReqBody.email + "\x1b[39m\n",
+      "\n\x1b[93m    ✅ Password: " +
+        createUserGameReqBody.password +
+        "\x1b[39m\n"
+    );
 
     if (
       !createUserGameReqBody.username ||
@@ -61,7 +76,11 @@ module.exports = {
     var conditionEmail = email ? { email: { [Op.like]: `%${email}%` } } : null;
 
     if (conditionUsername) {
-      UserGame.findAll({ where: conditionUsername })
+      UserGame.findAll({
+        where: conditionUsername,
+        attributes: { exclude: ["password", "email"] },
+        order: sequelize(["user_id ASC"]),
+      })
         .then((data) => {
           res.send(data);
         })
@@ -70,8 +89,25 @@ module.exports = {
             message: err.message || "error occured while search username",
           });
         });
+    } else if (conditionEmail) {
+      UserGame.findAll({
+        where: conditionEmail,
+        attributes: { exclude: ["password", "username"] },
+        order: sequelize(["user_id ASC"]),
+      })
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "error occured while search email",
+          });
+        });
     } else {
-      UserGame.findAll({ where: conditionEmail })
+      UserGame.findAll({
+        attributes: { exclude: ["password"] },
+        order: sequelize(["user_id ASC"]),
+      })
         .then((data) => {
           res.send(data);
         })
@@ -90,19 +126,18 @@ module.exports = {
     const updateUserGameReqBody = {
       username: req.body.username,
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 10),
     };
 
-    // UserGame.update(req.body, {
-    //   where: { user_id: id },
-    // })
-    // UserGame.update(
-    //   req.body,
-    //   { password: hash },
-    //   {
-    //     where: { user_id: id },
-    //   }
-    // )
+    //
+    //Debugging
+    console.log(
+      "\n\n\n  🧪 \x1b[93mUpdate Table User Game: \n\x1b[39m",
+      "\n\x1b[93m    ✅ Username: " +
+        updateUserGameReqBody.username +
+        "\x1b[39m\n",
+      "\n\x1b[93m    ✅ Email: " + updateUserGameReqBody.email + "\x1b[39m\n"
+    );
+
     UserGame.update(updateUserGameReqBody, {
       where: { user_id: id },
     })
@@ -120,6 +155,45 @@ module.exports = {
       .catch((e) => {
         res.status(500).send({
           message: e.message || `error updating user game with id=${id}`,
+        });
+      });
+  },
+
+  // change user game password by id
+  changeUserGamePassword: (req, res) => {
+    const { id } = req.params;
+
+    const changeUserGamePasswordReqBody = {
+      password: bcrypt.hashSync(req.body.password, 10),
+    };
+
+    //
+    //Debugging
+    console.log(
+      "\n\n\n  🧪 \x1b[93mUpdate Coloumn Password On Table User Game : \n\x1b[39m",
+      "\n\x1b[93m    ✅ Password: " +
+        changeUserGamePasswordReqBody.password +
+        "\x1b[39m\n"
+    );
+
+    UserGame.update(changeUserGamePasswordReqBody, {
+      where: { user_id: id },
+    })
+      .then((num) => {
+        if (num == 1) {
+          res.send({
+            message: `user game password with id=${id} was updated successfully`,
+          });
+        } else {
+          res.send({
+            message: `can't updated user game password with id=${id} cause req.body is empty`,
+          });
+        }
+      })
+      .catch((e) => {
+        res.status(500).send({
+          message:
+            e.message || `error updating user game password with id=${id}`,
         });
       });
   },
@@ -174,7 +248,7 @@ module.exports = {
   getAllUserGameBiodata: (req, res) => {
     const { fullname, sex, jobs } = req.query;
 
-    var conditionsFullname = fullname
+    var conditionFullname = fullname
       ? { fullname: { [Op.iLike]: `%${fullname}%` } }
       : null;
 
@@ -182,8 +256,12 @@ module.exports = {
 
     var conditionJobs = jobs ? { jobs: { [Op.iLike]: `%${jobs}%` } } : null;
 
-    if (conditionsFullname) {
-      UserGameBiodata.findAll({ where: conditionsFullname })
+    if (conditionFullname) {
+      UserGameBiodata.findAll({
+        where: conditionFullname,
+        attributes: { exclude: ["sex", "jobs"] },
+        order: sequelize(["user_game_biodata_id ASC"]),
+      })
         .then((data) => {
           res.send(data);
         })
@@ -193,7 +271,11 @@ module.exports = {
           });
         });
     } else if (conditionSex) {
-      UserGameBiodata.findAll({ where: conditionSex })
+      UserGameBiodata.findAll({
+        where: conditionSex,
+        attributes: { exclude: ["fullname", "jobs"] },
+        order: sequelize(["user_game_biodata_id ASC"]),
+      })
         .then((data) => {
           res.send(data);
         })
@@ -202,14 +284,29 @@ module.exports = {
             message: err.message || "something error while search: " + sex,
           });
         });
-    } else {
-      UserGameBiodata.findAll({ where: conditionJobs })
+    } else if (conditionJobs) {
+      UserGameBiodata.findAll({
+        where: conditionJobs,
+        attributes: { exclude: ["fullname", "sex"] },
+        order: sequelize(["user_game_biodata_id ASC"]),
+      })
         .then((data) => {
           res.send(data);
         })
         .catch((err) => {
           res.status(500).send({
             message: err.message || "something error while search: " + jobs,
+          });
+        });
+    } else {
+      UserGameBiodata.findAll()
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message:
+              err.message || "something error while get all user game biodata",
           });
         });
     }
@@ -296,7 +393,11 @@ module.exports = {
       : null;
 
     if (conditionScore) {
-      UserGameHistory.findAll({ where: conditionScore })
+      UserGameHistory.findAll({
+        where: conditionScore,
+        attributes: { exclude: ["comment"] },
+        order: sequelize(["user_game_history_id ASC"]),
+      })
         .then((data) => {
           res.send(data);
         })
@@ -305,8 +406,24 @@ module.exports = {
             message: err.message || "something error while search: " + score,
           });
         });
+    } else if (conditionComment) {
+      UserGameHistory.findAll({
+        where: conditionComment,
+        attributes: { exclude: ["score"] },
+        order: sequelize(["user_game_history_id ASC"]),
+      })
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "something error while search: " + comment,
+          });
+        });
     } else {
-      UserGameHistory.findAll({ where: conditionComment })
+      UserGameHistory.findAll({
+        order: sequelize(["user_game_history_id ASC"]),
+      })
         .then((data) => {
           res.send(data);
         })

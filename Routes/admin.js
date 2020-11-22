@@ -7,6 +7,7 @@ const router = express.Router();
 router.post("/user-game", controllerAdmin.createUserGame);
 router.get("/user-game", controllerAdmin.getAllOrSearchByUsername);
 router.put("/user-game/:id", controllerAdmin.updateUserGame);
+router.put("/user-game-password/:id", controllerAdmin.changeUserGamePassword);
 router.delete(
   "/user-game/:id",
   middlewares.mustBeString,
