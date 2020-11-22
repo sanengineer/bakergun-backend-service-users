@@ -1,4 +1,5 @@
 const db = require("../Models");
+const bcrypt = require("bcryptjs");
 const UserGame = db.userGame;
 const UserGameBiodata = db.userGameBiodata;
 const UserGameHistory = db.userGameHistory;
@@ -10,7 +11,7 @@ module.exports = {
     const createUserGameReqBody = {
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password,
+      password: bcrypt.hashSync(req.body.password, 10),
     };
 
     if (
@@ -86,7 +87,23 @@ module.exports = {
   updateUserGame: (req, res) => {
     const { id } = req.params;
 
-    UserGame.update(req.body, {
+    const updateUserGameReqBody = {
+      username: req.body.username,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password, 10),
+    };
+
+    // UserGame.update(req.body, {
+    //   where: { user_id: id },
+    // })
+    // UserGame.update(
+    //   req.body,
+    //   { password: hash },
+    //   {
+    //     where: { user_id: id },
+    //   }
+    // )
+    UserGame.update(updateUserGameReqBody, {
       where: { user_id: id },
     })
       .then((num) => {
@@ -155,16 +172,47 @@ module.exports = {
   },
 
   getAllUserGameBiodata: (req, res) => {
-    UserGameBiodata.findAll()
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "something error to get all user game biodata",
+    const { fullname, sex, jobs } = req.query;
+
+    var conditionsFullname = fullname
+      ? { fullname: { [Op.iLike]: `%${fullname}%` } }
+      : null;
+
+    var conditionSex = sex ? { sex: { [Op.iLike]: `%${sex}` } } : null;
+
+    var conditionJobs = jobs ? { jobs: { [Op.iLike]: `%${jobs}%` } } : null;
+
+    if (conditionsFullname) {
+      UserGameBiodata.findAll({ where: conditionsFullname })
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "something error while search: " + fullname,
+          });
         });
-      });
+    } else if (conditionSex) {
+      UserGameBiodata.findAll({ where: conditionSex })
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "something error while search: " + sex,
+          });
+        });
+    } else {
+      UserGameBiodata.findAll({ where: conditionJobs })
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "something error while search: " + jobs,
+          });
+        });
+    }
   },
 
   // update user game biodata
@@ -239,16 +287,35 @@ module.exports = {
 
   // get all user game history
   getAllUserGameHistory: (req, res) => {
-    UserGameHistory.findAll()
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "something error to get all user game history",
+    const { score, comment } = req.query;
+
+    var conditionScore = score ? { score: { [Op.like]: `%${score}%` } } : null;
+
+    var conditionComment = comment
+      ? { comment: { [Op.iLike]: `%${comment}%` } }
+      : null;
+
+    if (conditionScore) {
+      UserGameHistory.findAll({ where: conditionScore })
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "something error while search: " + score,
+          });
         });
-      });
+    } else {
+      UserGameHistory.findAll({ where: conditionComment })
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "something error while search: " + comment,
+          });
+        });
+    }
   },
 
   // update user game history by id
