@@ -68,25 +68,67 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 - **POST** on:
 
+        Request Body:
+        {
+           "username": "string",
+           "email": "string"
+           "password": "string"
+        }
+
         http://localhost:{PORT}/admin-api/v1/user-game
 
-##### Get All Users Game
+##### Get All Users Game or Filtering By Query
 
-- **GET** on:
+- **GET** All on:
 
         http://localhost:{PORT}/admin-api/v1/user-game
+
+- **GET** All with Filtering by Query:
+
+        Request Params: USERNAME
+
+                http://localhost:{PORT}/admin-api/v1/user-game?username={USERNAME}
+
+
+        Request Params: EMAIL
+
+                http://localhost:{PORT}/admin-api/v1/user-game?email={EMAIL}
 
 ##### Update One User Game
 
 - **UPDATE** on:
 
+        Request Body:
+        {
+           "username": "string"
+        }
+
+        or
+
+        {
+           "email": "string"
+        }
+
         http://localhost:{PORT}/admin-api/v1/user-game/:id
+
+##### Change One User Game Password
+
+- **UPDATE** on:
+
+        Request Body:
+        {
+          "password": "string"
+        }
+
+        http://localhost:{PORT}/admin-api/v1/user-game-password/:id
 
 ##### Delete On User Game
 
 - **DELETE** on:
 
-        http://localhost:{PORT}/admin-api/v1/user-game/:id
+        Request Query: Username
+
+        http://localhost:{PORT}/admin-api/v1/user-game/:id?username={USERNAME}
 
 #### User Game Biodata Data
 
@@ -94,17 +136,56 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 - **POST** on:
 
+        Request Body:
+         {
+           "user_id" : integer,
+           "fullname": "string",
+           "sex" : "string",
+           "jobs" : "string"
+         }
+
         http://localhost:{PORT}/admin-api/v1/user-game-biodata
 
-##### Get All Users Game Biodata
+##### Get All Users Game Biodata or Filtering by Query
 
 - **GET** on:
 
         http://localhost:{PORT}/admin-api/v1/user-game-biodata
 
+- **GET** All Filtering By Query:
+
+        Request Query: FULLNAME
+
+                http://localhost:{PORT}/admin-api/v1/user-game-biodata?fullname={FULLNAME}
+
+
+        Request Query: SEX
+                http://localhost:{PORT}/admin-api/v1/user-game-biodata?sex={SEX}
+
+
+        Requst Query: JOBS
+                http://localhost:{PORT}/admin-api/v1/user-game-biodata?jobs={JOBS}
+
 ##### Update One User Game Biodata
 
 - **UPDATE** on:
+
+        Request Body:
+        {
+            "fullname": "string"
+        }
+
+        or
+
+        {
+            "sex": "string"
+        }
+
+        or
+
+        {
+            "jobs: "string"
+        }
 
         http://localhost:{PORT}/admin-api/v1/user-game-biodata/:id
 
@@ -112,7 +193,9 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 - **DELETE** on:
 
-        http://localhost:{PORT}/admin-api/v1/user-game-biodata/:id
+        Request Query: FULLNAME
+
+        http://localhost:{PORT}/admin-api/v1/user-game-biodata/:id?fullname={FULLNAME}
 
 #### User Game History Data
 
@@ -120,17 +203,45 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 - **POST** on:
 
+        Request Body:
+        {
+            "score"  : "string",
+            "comment": "string"
+        }
+
         http://localhost:{PORT}/admin-api/v1/user-game-history
 
-##### Get All Users Game History
+##### Get All Users Game History or Filtering By Query
 
-- **GET** on:
+- **GET** All on:
 
         http://localhost:{PORT}/admin-api/v1/user-game-history
+
+- **GET** All Filtering by Query on:
+
+        Request Query: SCORE
+
+                http://localhost:{PORT}/admin-api/v1/user-game-history?score={SCORE}
+
+
+        Request Query: COMMENT
+
+                http://localhost:{PORT}/admin-api/v1/user-game-history?comment={COMMENT}
 
 ##### Update One User Game History
 
 - **UPDATE** on:
+
+        Request BODY:
+        {
+            "score" : "string"
+        }
+
+        or
+
+        {
+            "comment" : "string"
+        }
 
         http://localhost:{PORT}/admin-api/v1/user-game-history/:id
 
@@ -138,7 +249,9 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 - **DELETE** on:
 
-        http://localhost:{PORT}/admin-api/v1/user-game-history/:id
+        Requst Query: SCORE
+
+        http://localhost:{PORT}/admin-api/v1/user-game-history/:id?score={SCORE}
 
 ## 🔫 Testing RestAPI On Local Machine With Swagger
 
@@ -177,7 +290,7 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 Use Node Version 12.18.4 LTS (Recomended).
 
-Watch Console Log! when debugging this project.
+Watch Terminal! when debugging this project.
 
 ### 🏃‍♂️️ Run Server On Dev Mode:
 

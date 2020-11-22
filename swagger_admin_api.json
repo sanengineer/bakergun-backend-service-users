@@ -118,14 +118,59 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "description": "Username value is required if you want need to delete",
+            "required": true,
+            "type": "string"
           }
         ],
+
         "responses": {
           "200": {
             "description": "Success delete user with id={user_id}"
           },
           "500": {
             "description": "Found error while delete user by id."
+          }
+        }
+      }
+    },
+    "/user-game-password/{user_id}": {
+      "put": {
+        "tags": ["User Game"],
+        "summary": "Change User Game Password User By ID",
+        "description": "change user game password",
+        "operationId": "changeUserGamePassword",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "description": "ID of user_game to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "change password user on Games",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserGamesPassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success update user game"
+          },
+          "500": {
+            "description": "Found error while update user game."
           }
         }
       }
@@ -252,6 +297,13 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "fullname",
+            "in": "query",
+            "description": "Fullname value is required if you want need to delete",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -380,6 +432,13 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "score",
+            "in": "query",
+            "description": "Score value is required if you want need to delete",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -408,17 +467,6 @@
         }
       }
     },
-    "Login": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        }
-      }
-    },
     "UserGames": {
       "type": "object",
       "properties": {
@@ -427,7 +475,12 @@
         },
         "email": {
           "type": "string"
-        },
+        }
+      }
+    },
+    "UserGamesPassword": {
+      "type": "object",
+      "properties": {
         "password": {
           "type": "string"
         }
