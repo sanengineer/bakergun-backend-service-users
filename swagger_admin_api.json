@@ -168,6 +168,29 @@
         "operationId": "getAllUserGameBiodata",
         "consumes": ["application/json"],
         "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "fullname",
+            "in": "query",
+            "description": "Fullname value is optionals if you want need to filtered by fullname",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sex",
+            "in": "query",
+            "description": "Sex value is optionals if you want need to filtered by sex",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "jobs",
+            "in": "query",
+            "description": "Jobs value is optionals if you want need to filtered by jobs",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success retrive all history of user game"
@@ -280,6 +303,22 @@
         "operationId": "getOneUserGameHistory",
         "consumes": ["application/json"],
         "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "score",
+            "in": "query",
+            "description": "Score value is optionals if you want need to filtered by score",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "comment",
+            "in": "query",
+            "description": "Comment value is optionals if you want need to filtered by comment",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success retrive all user game history"
