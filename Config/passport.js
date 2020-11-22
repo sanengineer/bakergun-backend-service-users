@@ -5,8 +5,11 @@ const JwtStrategy = require("passport-jwt").Strategy,
 const db = require("../Models");
 const UserGame = db.userGame;
 
-console.log(`\nthis is execute db on passport.js :`);
-console.log(UserGame);
+console.log(
+  `\n  This is execute table name on passport.js :\n\n     ✅ Table Name:`,
+  UserGame,
+  "\n\n"
+);
 
 module.exports = function (passport) {
   const options = {

@@ -163,8 +163,8 @@
       },
       "get": {
         "tags": ["User Game Biodata"],
-        "summary": "get all user game biodata",
-        "description": "get all user game biodata",
+        "summary": "Get All User Game Biodata Or Filtered By Fullname or Sex or Jobs",
+        "description": "get all user game biodata or filtered by fullname or sex or jobs",
         "operationId": "getAllUserGameBiodata",
         "consumes": ["application/json"],
         "produces": ["application/json"],
@@ -298,8 +298,8 @@
       },
       "get": {
         "tags": ["User Game History"],
-        "summary": "Retrive All User Game History",
-        "description": "get all user game history",
+        "summary": "Retrive All User Game History Or Filtered By Score or Comment",
+        "description": "get all user game history Or filtered by score or comment",
         "operationId": "getOneUserGameHistory",
         "consumes": ["application/json"],
         "produces": ["application/json"],

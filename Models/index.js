@@ -12,7 +12,21 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   },
 });
 
-console.log(dbConfig);
+console.log(
+  "\n",
+  "⚙️  Configuration For Access Database on 🐘 PostgreSQL : \n",
+  "\n  Database Name : " + dbConfig.DB,
+  "\n  Username : " + dbConfig.USER,
+  "\n  Password : " + dbConfig.PASSWORD,
+  "\n  Host : " + dbConfig.HOST,
+  "\n  Dialect : " + dbConfig.DIALECT,
+  "\n  Pool :",
+  "   \n  - max : " + dbConfig.pool.max,
+  "   \n  - min : " + dbConfig.pool.min,
+  "   \n  - acquire : " + dbConfig.pool.acquire,
+  "   \n  - idle : " + dbConfig.pool.idle,
+  "\n"
+);
 
 var db = {};
 db.Sequelize = Sequelize;
