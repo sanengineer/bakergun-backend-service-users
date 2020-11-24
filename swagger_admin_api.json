@@ -90,7 +90,7 @@
             "description": "update user on Games",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/UserGames"
+              "$ref": "#/definitions/UpdateUserGames"
             }
           }
         ],
@@ -161,7 +161,7 @@
             "description": "change password user on Games",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/UserGamesPassword"
+              "$ref": "#/definitions/ChangeUserGamesPassword"
             }
           }
         ],
@@ -269,7 +269,7 @@
             "description": "Update user game biodata",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/UserGameBiodata"
+              "$ref": "#/definitions/UpdateUserGameBiodata"
             }
           }
         ],
@@ -404,7 +404,7 @@
             "description": "Login user on Games",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/UserGameHistory"
+              "$ref": "#/definitions/UpdateUserGameHistory"
             }
           }
         ],
@@ -470,7 +470,7 @@
         }
       }
     },
-    "UserGames": {
+    "UpdateUserGames": {
       "type": "object",
       "properties": {
         "username": {
@@ -483,7 +483,7 @@
         }
       }
     },
-    "UserGamesPassword": {
+    "ChangeUserGamesPassword": {
       "type": "object",
       "properties": {
         "password": {
@@ -496,7 +496,7 @@
       "type": "object",
       "properties": {
         "user_id": {
-          "type": "number"
+          "type": "integer"
         },
         "fullname": {
           "type": "string",
@@ -508,7 +508,27 @@
         },
         "jobs": {
           "type": "string",
-          "example": "Jobsless"
+          "example": "Engineer"
+        }
+      }
+    },
+    "UpdateUserGameBiodata": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "integer"
+        },
+        "fullname": {
+          "type": "string",
+          "example": "San Developer"
+        },
+        "sex": {
+          "type": "string",
+          "example": "Male"
+        },
+        "jobs": {
+          "type": "string",
+          "example": "Developer"
         }
       }
     },
@@ -516,7 +536,7 @@
       "type": "object",
       "properties": {
         "user_id": {
-          "type": "string"
+          "type": "integer"
         },
         "score": {
           "type": "string",
@@ -525,6 +545,22 @@
         "comment": {
           "type": "string",
           "example": "🏡️ home isn't place, is a feeling 🖤️ "
+        }
+      }
+    },
+    "UpdateUserGameHistory": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "integer"
+        },
+        "score": {
+          "type": "string",
+          "example": "2020"
+        },
+        "comment": {
+          "type": "string",
+          "example": "be genius 🎭, but never show 🎡 it"
         }
       }
     }
