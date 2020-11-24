@@ -457,13 +457,16 @@
       "type": "object",
       "properties": {
         "username": {
-          "type": "string"
+          "type": "string",
+          "example": "sanenginer"
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "example": "hi@sanengineer.com"
         },
         "password": {
-          "type": "string"
+          "type": "string",
+          "example": "123"
         }
       }
     },
@@ -471,10 +474,12 @@
       "type": "object",
       "properties": {
         "username": {
-          "type": "string"
+          "type": "string",
+          "example": "hzmvmtrmvvi"
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "example": "sr@hzmvmtrmvvi.xln"
         }
       }
     },
@@ -482,7 +487,8 @@
       "type": "object",
       "properties": {
         "password": {
-          "type": "string"
+          "type": "string",
+          "example": "321"
         }
       }
     },
@@ -493,13 +499,16 @@
           "type": "number"
         },
         "fullname": {
-          "type": "string"
+          "type": "string",
+          "example": "San Engineer"
         },
         "sex": {
-          "type": "string"
+          "type": "string",
+          "example": "Male"
         },
         "jobs": {
-          "type": "string"
+          "type": "string",
+          "example": "Jobsless"
         }
       }
     },
@@ -507,13 +516,15 @@
       "type": "object",
       "properties": {
         "user_id": {
-          "type": "number"
+          "type": "string"
         },
         "score": {
-          "type": "string"
+          "type": "string",
+          "example": "1990"
         },
         "comment": {
-          "type": "string"
+          "type": "string",
+          "example": "🏡️ home isn't place, is a feeling 🖤️ "
         }
       }
     }
