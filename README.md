@@ -414,6 +414,13 @@ Use Node Version 12.18.4 LTS (Recomended).
 
 Watch Terminal! when debugging this project.
 
+Watch this:
+
+<video width="100%" height="100%" controls autoplay style="border-radius:6px">
+  <source src="https://res.cloudinary.com/dsv9w1ey3/video/upload/v1606207486/github%20video/bakergun_backend_service_user_terminal_logger_for_readme_github_px7vhe.mp4" type="video/mp4">
+  </source>
+</video>
+
 ### 🏃‍♂️️ Run Server On Dev Mode:
 
         $ cd
