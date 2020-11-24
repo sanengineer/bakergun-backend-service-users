@@ -30,11 +30,24 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 - **POST** on:
 
+        Request Body:
+        {
+           "username": "string",
+           "email": "string"
+           "password": "string"
+        }
+
         http://localhost:{PORT}/api/v1/user-game
 
 #### Login User Game
 
 - **POST** on:
+
+        Request Body:
+        {
+           "username": "string",
+           "password": "string"
+        }
 
         http://localhost:{PORT}/api/v1/user-game
 
@@ -42,23 +55,58 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 - **GET, PUT, DELETE** on :
 
-        http://localhost:{PORT}/api/v1/user-game/:id
+        Request Params: ID
+
+        http://localhost:{PORT}/api/v1/user-game/{ID}
+
+
+        Example:
+
+        http://localhost:8080/api/v1/user-game/1
 
 - **POST** on :
 
-        http://localhost:{PORT}/api/v1/user-game-history
-
-- **GET** and **PUT** on :
-
-        http://localhost:{PORT}/api/v1/user-game-history/:id
-
-- **POST** on :
+        Request Body:
+         {
+           "user_id" : integer,
+           "fullname": "string",
+           "sex" : "string",
+           "jobs" : "string"
+         }
 
         http://localhost:{PORT}/api/v1/user-game-biodata
 
 - **GET**, And **PUT** on:
 
-        http://localhost:{PORT}/api/v1/user-game-biodata/:id
+        Request Params: ID
+
+        http://localhost:{PORT}/api/v1/user-game-biodata/{ID}
+
+
+        Example:
+
+        http://localhost:{PORT}/api/v1/user-game-biodata/1
+
+- **POST** on :
+
+        Request Body:
+        {
+            "score"  : "string",
+            "comment": "string"
+        }
+
+        http://localhost:{PORT}/api/v1/user-game-history
+
+- **GET** and **PUT** on :
+
+        Request Params: ID
+
+        http://localhost:{PORT}/api/v1/user-game-history/{ID}
+
+
+        Example:
+
+        http://localhost:{PORT}/api/v1/user-game-history/1
 
 ### Endpoints URL For Admin
 
@@ -85,18 +133,26 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 - **GET** All with Filtering by Query:
 
-        Request Params: USERNAME
+        Request Query: USERNAME
 
                 http://localhost:{PORT}/admin-api/v1/user-game?username={USERNAME}
 
 
-        Request Params: EMAIL
+        Request Query: EMAIL
 
                 http://localhost:{PORT}/admin-api/v1/user-game?email={EMAIL}
+
+
+
+        Example:
+
+        http://localhost:8080/admin-api/v1/user-game?email=hi@sanengineer.com
 
 ##### Update One User Game
 
 - **UPDATE** on:
+
+        Request Params: ID
 
         Request Body:
         {
@@ -109,26 +165,48 @@ on https://bakergun-backend-service-users.herokuapp.com
            "email": "string"
         }
 
-        http://localhost:{PORT}/admin-api/v1/user-game/:id
+        http://localhost:{PORT}/admin-api/v1/user-game/{ID}
+
+
+
+        Example
+
+         http://localhost:8080/admin-api/v1/user-game/1
 
 ##### Change One User Game Password
 
 - **UPDATE** on:
+
+        Request Params: ID
 
         Request Body:
         {
           "password": "string"
         }
 
-        http://localhost:{PORT}/admin-api/v1/user-game-password/:id
+        http://localhost:{PORT}/admin-api/v1/user-game-password/{ID}
+
+
+
+        Example:
+
+        http://localhost:8080/admin-api/v1/user-game-password/1
 
 ##### Delete On User Game
 
 - **DELETE** on:
 
+        Request Params: ID
+
         Request Query: Username
 
-        http://localhost:{PORT}/admin-api/v1/user-game/:id?username={USERNAME}
+        http://localhost:{PORT}/admin-api/v1/user-game/{ID}?username={USERNAME}
+
+
+
+        Example:
+
+        http://localhost:8080/admin-api/v1/user-game/1?username=sanengineer
 
 #### User Game Biodata Data
 
@@ -160,15 +238,25 @@ on https://bakergun-backend-service-users.herokuapp.com
 
 
         Request Query: SEX
+
                 http://localhost:{PORT}/admin-api/v1/user-game-biodata?sex={SEX}
 
 
         Requst Query: JOBS
                 http://localhost:{PORT}/admin-api/v1/user-game-biodata?jobs={JOBS}
 
+
+
+        Example:
+
+        http://localhost:{PORT}/admin-api/v1/user-game-biodata?jobs=engineer
+
 ##### Update One User Game Biodata
 
 - **UPDATE** on:
+
+        Request Params: ID
+
 
         Request Body:
         {
@@ -187,15 +275,27 @@ on https://bakergun-backend-service-users.herokuapp.com
             "jobs: "string"
         }
 
-        http://localhost:{PORT}/admin-api/v1/user-game-biodata/:id
+        http://localhost:{PORT}/admin-api/v1/user-game-biodata/{ID}
+
+
+
+        Example:  http://localhost:8080/admin-api/v1/user-game-biodata/1
 
 ##### Delete On User Game Biodata
 
 - **DELETE** on:
 
+        Request Params: ID
+
         Request Query: FULLNAME
 
-        http://localhost:{PORT}/admin-api/v1/user-game-biodata/:id?fullname={FULLNAME}
+        http://localhost:{PORT}/admin-api/v1/user-game-biodata/{ID}?fullname={FULLNAME}
+
+
+
+        Example:
+
+        http://localhost:8080/admin-api/v1/user-game-biodata/1/fullname?sanengineer
 
 #### User Game History Data
 
@@ -228,9 +328,17 @@ on https://bakergun-backend-service-users.herokuapp.com
 
                 http://localhost:{PORT}/admin-api/v1/user-game-history?comment={COMMENT}
 
+
+
+        Example:
+
+        http://localhost:8080/admin-api/v1/user-game-history?score=30
+
 ##### Update One User Game History
 
 - **UPDATE** on:
+
+        Request Params:ID
 
         Request BODY:
         {
@@ -243,15 +351,29 @@ on https://bakergun-backend-service-users.herokuapp.com
             "comment" : "string"
         }
 
-        http://localhost:{PORT}/admin-api/v1/user-game-history/:id
+        http://localhost:{PORT}/admin-api/v1/user-game-history/{ID}
+
+
+
+        Example:
+
+        http://localhost:8080/admin-api/v1/user-game-history/1
 
 ##### Delete On User Game History
 
 - **DELETE** on:
 
+        Request Params: ID
+
         Requst Query: SCORE
 
-        http://localhost:{PORT}/admin-api/v1/user-game-history/:id?score={SCORE}
+        http://localhost:{PORT}/admin-api/v1/user-game-history/{ID}?score={SCORE}
+
+
+
+        Example:
+
+        http://localhost:8080/admin-api/v1/user-game-history/1?score=30
 
 ## 🔫 Testing RestAPI On Local Machine With Swagger
 
